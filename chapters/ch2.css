@@ -3,6 +3,7 @@
 }
 
 #fun-fact{
+  text-align : center;
   width : 260px;
   background-color : #e68a00;
   color : #000;
@@ -21,3 +22,12 @@
   margin-bottom : 0;
   font-size : 0.95rem;
 }
+
+@media (min-width : 600px) {
+  #fun-fact {
+    float : right;
+    width : 250px;
+    margin : 0 0 15px 20px;
+  }
+}
+
