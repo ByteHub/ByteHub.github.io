@@ -1,3 +1,24 @@
 #heading{
   text-align : center;
 }
+
+#fun-fact{
+  float : right;
+  width : 260px;
+  background-color : #e68a00;
+  color : #000;
+  border : 1px solid #333;
+  padding : 15px;
+  margin : 0 0 15px 20px;
+  text-align : center;
+}
+
+#fun-fact h3{
+  margin-top : 0;
+  font-size : 1.1rem;
+}
+
+#fun-fact p{
+  margin-bottom : 0;
+  font-size : 0.95rem;
+}
