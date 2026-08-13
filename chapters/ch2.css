@@ -30,7 +30,7 @@
     margin : 0 0 15px 20px;
   }
   p:first-of-type{
-    display : flow-root
+    display : flow-root;
   }
 }
 
