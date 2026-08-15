@@ -2,26 +2,32 @@
   text-align : center;
 }
 
-#fun-fact{
-  width : 85%;
-  max-width : 320px;
-  margin : 20px auto;
-  background-color : #e68a00;
-  color : #000;
-  border : 1px solid #333;
+#chess {
+  font-family : Arial, sans-serif;
+}
+
+#fun-fact {
+  background-color : #f5a623;
+  border : 2px solid #c47e0a;
   padding : 15px;
   text-align : center;
 }
 
-@media (min-width : 600 px) {
-  #fun-fact {
-    float : right;
-    width : 220px;
-    box-sizing : border-box;
-    margin : 0 0 15px 15px;
+@media (min-width : 600px) {
+  #chess {
+    display : flex;
+    gap : 20px;
+    align-items : flex-start;
   }
 
-  #chess {
-    overflow : hidden;
+  #fun-fact {
+    width : 200px;
+  }
+}
+
+@media (max-width : 599px) {
+  #fun-fact {
+    width : 100%;
+    margin-top : 20px;
   }
 }
