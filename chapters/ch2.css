@@ -20,10 +20,10 @@
 }
 
 @media (min-width : 600px) {
-  #chess {
-    display : flex;
-    gap : 20px;
+  #right {
+    flex-direction : row;
     align-items : flex-start;
+    gap : 20px;
   }
 
   #fun-fact {
