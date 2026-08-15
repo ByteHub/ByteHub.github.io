@@ -15,15 +15,16 @@
 
 @media (min-width: 600px) {
   #chess {
-    position : relative;
-    padding-right : 220px;
-    min-height : 200px;
+    position: relative;
+    padding-right: 220px;
+    min-height: 200px;
   }
+
   #fun-fact {
-    position : absolute;
-    right : 0;
-    top : 0;
-    width : 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
   }
 }
 
@@ -31,5 +32,6 @@
   #fun-fact {
     width: 80%;
     margin: 20px auto 0;
+    display: block;
   }
 }
