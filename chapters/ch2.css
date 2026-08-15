@@ -1,8 +1,9 @@
 #heading {
   text-align: center;
+}
+body {
   font-family : 'Space Grotesk', sans-serif;
 }
-
 #fun-fact {
   background-color: #f5a623;
   border: 2px solid #c47e0a;
