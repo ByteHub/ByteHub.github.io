@@ -3,13 +3,16 @@
 }
 
 #chess {
+  display : flex;
+  gap : 20px;
+  align-items : flex-start;
   font-family : Arial, sans-serif;
 }
 
 #right {
   display : flex;
-  flex-direction : column;
   align-items : flex-start;
+  gap : 20px;
 }
 
 #fun-fact {
@@ -17,21 +20,19 @@
   border : 2px solid #c47e0a;
   padding : 15px;
   text-align : center;
-}
-
-@media (min-width : 600px) {
-  #right {
-    flex-direction : row;
-    align-items : flex-start;
-    gap : 20px;
-  }
-
-  #fun-fact {
-    width : 200px;
-  }
+  width : 180px;
 }
 
 @media (max-width : 599px) {
+  #chess {
+    flex-direction : column;
+  }
+
+#right {
+  flex-direction : column;
+  width : 100%;
+}
+  
   #fun-fact {
     width : 100%;
     margin-top : 20px;
