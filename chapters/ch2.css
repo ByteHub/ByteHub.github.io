@@ -15,18 +15,13 @@
 
 @media (min-width: 600px) {
   #chess {
-    display: flex;
-    align-items: flex-start;
+    position : relative;
   }
-
-  #left {
-    flex: 1;
-  }
-
   #fun-fact {
-    width: 200px;
-    flex-shrink: 0;
-    margin-left: auto;
+    position : absolute;
+    right : 0;
+    top : 0;
+    width : 200px;
   }
 }
 
