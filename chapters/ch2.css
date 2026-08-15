@@ -16,6 +16,8 @@
 @media (min-width: 600px) {
   #chess {
     position : relative;
+    padding-right : 220px;
+    min-height : 200px;
   }
   #fun-fact {
     position : absolute;
