@@ -1,0 +1,79 @@
+/* ==========================================================================
+   GLOBAL ATTRACTIVE THEME (Shared across all pages)
+   ========================================================================== */
+
+/* Background Layer & Typography */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #f3f4f6;
+    background-color: #0b0f19;
+    /* High-quality dark abstract chessboard background */
+    background-image: linear-gradient(to bottom, rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.95)), 
+                      url('https://pxhere.com');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    line-height: 1.6;
+}
+
+/* Master Container */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Glassmorphic Main Layout Card */
+.main-card {
+    background: rgba(20, 27, 45, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Header Text Styling */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-top: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 15px;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #60a5fa;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.05rem;
+    color: #d1d5db;
+}
+
+/* Highlight tags wrapping important terms */
+strong {
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Global Divider line */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.3), transparent);
+    margin: 40px 0;
+}
