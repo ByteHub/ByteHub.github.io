@@ -1,9 +1,14 @@
+body{
+  background-color : red;
+  color : white;
+  font-family : 'Space Grotesk', sans-serif;
+}
+
+
 #heading {
   text-align: center;
 }
-body {
-  font-family : 'Space Grotesk', sans-serif;
-}
+
 #note {
   color : red;
 }
