@@ -1,10 +1,14 @@
+body{
+  background-color : black;
+  color : white;
+  font-family : 'Space Grotesk', sans-serif;
+}
+
 #heading {
 text-align : center;
   font-family : 'Space Grotesk', sans-serif;
 }
-body {
-  font-family : 'Space Grotesk', sans-serif;
-}
+
 
 figure{
   text-align : center;
