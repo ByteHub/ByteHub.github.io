@@ -21,5 +21,25 @@
       <br>
       <a href="chapters/ch3.html" target="_main">Chapter 3 : Chess Notations</a>
       <br>
+      <button onclick="doSomething()" style="
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+">☰</button>
+
+<script>
+  function doSomething() {
+    let menu = document.getElementById('menu')
+    if (menu.style.display === 'none') {
+      menu.style.display = 'block'
+    } else {
+      menu.style.display = 'none'
+    }
+  }
+</script>
   </body>
 </html>
