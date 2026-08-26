@@ -12,3 +12,6 @@ a {
 #contents{
   text-align : center;
 }
+#Menu_toggle{
+  display : inline-block;
+}
