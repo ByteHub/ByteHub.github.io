@@ -4,23 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess-O-Pedia</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Base Variables for Easy Theme Switching */
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(20, 27, 45, 0.75);
+            --text-color: #f3f4f6;
+            --heading-color: #60a5fa;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --link-color: #3b82f6;
+            --link-hover: #60a5fa;
+            --bg-image: linear-gradient(to bottom, rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.95)), 
+                        url('https://pxhere.com');
+        }
+
+        /* Light Theme Style Definitions */
+        [data-theme="light"] {
+            --bg-color: #f3f4f6;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-color: #1f2937;
+            --heading-color: #1d4ed8;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --link-color: #1d4ed8;
+            --link-hover: #2563eb;
+            --bg-image: linear-gradient(to bottom, rgba(243, 244, 246, 0.85), rgba(243, 244, 246, 0.95)), 
+                        url('https://pxhere.com');
+        }
+
+        /* Layout & Center Realignment Fixes */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Flexbox Header row matching heading and toggle button */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        h1#heading {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Minimalist Toggle Button styling */
+        .theme-btn {
+            background: var(--heading-color);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .theme-btn:hover {
+            opacity: 0.9;
+        }
+
+        .theme-btn:active {
+            transform: scale(0.96);
+        }
+
+        h3#contents {
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Custom Styling for Chapter Links */
+        a {
+            display: inline-block;
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            transform: translateX(4px);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 20px 0;
+        }
+    </style>
 </head>
-  <body>
-    <h1 id="heading">Chess-O-Pedia</h1>
-    <hr>
-    <p>Learn Chess the Simple way-from your very first move to Master-Level tactics!</p>
-    <hr>
-    <div>Welcome! Whether you are learning how the knight moves, or diving deep into opening strategies, we make chess simple, clear, and fun for everyone. Explore easy-to-read guides, interactive tips and timeless chess wisdom at your own pace.</div>
-      <hr>
-    <h3 id="contents">Contents</h3>
-      <hr>
-    <a href="chapters/ch1.html" target="_main">Chapter 1 : Introduction</a>
-    <br>
-      <a href="chapters/ch2.html" target="_main">Chapter 2 : The Pieces</a>
-      <br>
-      <a href="chapters/ch3.html" target="_main">Chapter 3 : Chess Notations</a>
-      <br>
-      
-  </body>
+<body>
+
+    <div class="container">
+        <div class="main-card">
+            
+            <!-- Heading and Theme Toggle on the same line -->
+            <div class="header-row">
+                <h1 id="heading">Chess-O-Pedia</h1>
+                <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+            </div>
+            
+            <hr>
+            <p>Learn Chess the Simple way—from your very first move to Master-Level tactics!</p>
+            <hr>
+            
+            <div>
+                Welcome! Whether you are learning how the knight moves, or diving deep into opening strategies, we make chess simple, clear, and fun for everyone. Explore easy-to-read guides, interactive tips and timeless chess wisdom at your own pace.
+            </div>
+            
+            <hr>
+            <h3 id="contents">Contents</h3>
+            <hr>
+            
+            <!-- Chapter Menu List -->
+            <a href="chapters/ch1.html" target="_main">Chapter 1 : Introduction</a>
+            <br>
+            <a href="chapters/ch2.html" target="_main">Chapter 2 : The Pieces</a>
+            <br>
+            <a href="chapters/ch3.html" target="_main">Chapter 3 : Chess Notations</a>
+            <br>
+
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Theme Swap smoothly -->
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const btn = document.getElementById('themeToggle');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                btn.innerHTML = '☀️ Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                btn.innerHTML = '🌙 Dark Mode';
+            }
+        }
+    </script>
+</body>
 </html>
