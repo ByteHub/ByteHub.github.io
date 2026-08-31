@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle" aria-label="Toggle theme">
-        <span id="theme-icon">☀️</span>
-    </button>
+    <!-- Button HTML -->
+<button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
+
+<!-- Button JS -->
+<script>
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  // Restore saved theme on page load
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggleBtn.textContent = '🌙';
+  }
+
+  // Toggle theme and icon on click
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    
+    themeToggleBtn.textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
     <nav>
         <div class="menu__toggle">
             <!-- Hidden Checkbox Trigger -->
