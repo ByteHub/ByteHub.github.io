@@ -137,8 +137,8 @@ body {
 
 /* Light Mode Theme Overrides */
 body.light-mode {
-    background-color: #f4f4f9;
-    color: #111111;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 body.light-mode a {
