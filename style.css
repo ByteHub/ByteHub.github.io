@@ -1,8 +1,3 @@
-body{
-  background-color : black;
-  color : white;
-  font-family : 'Space Grotesk', sans-serif;
-}
 a {
   color : blue;
 }
@@ -105,39 +100,57 @@ a {
     font-size: 22px;
 }
 
-:root {
-  --bg-color: #ffffff;
-  --btn-bg: #1a1a1a;
-  --btn-text: #ffffff;
-}
-
-body.dark-mode {
-  --bg-color: #121212;
-  --btn-bg: #f0f0f0;
-  --btn-text: #121212;
-}
-
-body {
-  background-color: var(--bg-color);
-  margin: 0;
-  transition: background-color 0.3s;
-}
-
+/* Fixed Button Container */
 .theme-btn {
   position: fixed;
   top: 15px;
   right: 15px;
-  z-index: 1000;
-  padding: 8px 16px;
+  z-index: 9999;
+  
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  font-weight: 600;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  transition: background-color 0.3s, color 0.3s, transform 0.1s;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
 .theme-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+/* Icon visibility state */
+.theme-btn .sun-icon {
+  display: none;
+}
+.theme-btn .moon-icon {
+  display: block;
+}
+
+/* Dark mode state overrides */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .theme-btn {
+  background-color: #f0f0f0;
+  color: #121212;
+}
+
+body.dark-mode .theme-btn .sun-icon {
+  display: block;
+}
+
+body.dark-mode .theme-btn .moon-icon {
+  display: none;
 }
