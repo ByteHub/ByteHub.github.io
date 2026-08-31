@@ -21,13 +21,6 @@ a {
     text-decoration: none;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    background-color: rgb(41, 56, 71);
-    color: #cdcdcd;
-}
-
 .menu__toggle {
     display: block;
     position: fixed;
