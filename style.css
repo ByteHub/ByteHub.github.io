@@ -105,24 +105,39 @@ a {
     font-size: 22px;
 }
 
-/* Button Base Styling */
+:root {
+  --bg-color: #ffffff;
+  --btn-bg: #1a1a1a;
+  --btn-text: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --btn-bg: #f0f0f0;
+  --btn-text: #121212;
+}
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  transition: background-color 0.3s;
+}
+
 .theme-btn {
-  background: #222222;
-  border: 1px solid #444444;
-  font-size: 18px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
+  font-weight: 600;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
-/* Light Mode Styling for Button */
-body.light-mode .theme-btn {
-  background: #e0e0e0;
-  border: 1px solid #ccc;
-}
-
-/* Click Animation */
-.theme-btn:active {
-  transform: scale(0.92);
+.theme-btn:hover {
+  transform: scale(1.05);
 }
