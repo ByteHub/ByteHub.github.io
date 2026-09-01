@@ -1,74 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess-O-Pedia</title>
-    <link rel="stylesheet" href="style.css">
-</head> 
-<body>  
-     <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-  <!-- Sun Icon (shown in dark mode) -->
-  <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="1" x2="12" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="23"></line>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-    <line x1="1" y1="12" x2="3" y2="12"></line>
-    <line x1="21" y1="12" x2="23" y2="12"></line>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-  </svg>
-  <!-- Moon Icon (shown in light mode) -->
-  <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
-</button>
-<script>
-const toggleBtn = document.getElementById('theme-toggle');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-0-Pedia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-// Load saved preference
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-}
+  <!-- Your Original Hamburger Menu & Navigation -->
+  <nav class="navbar">
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="chapters/ch1.html" target="_main">Chapter 1 : Introduction</a></li>
+      <li><a href="chapters/ch2.html" target="_main">Chapter 2 : The Pieces</a></li>
+      <li><a href="chapters/ch3.html" target="_main">Chapter 3 : Algebraic Chess</a></li>
+    </ul>
+  </nav>
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDarkMode = document.body.classList.contains('dark-mode');
-  localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-});
-</script>
-    <nav>
-        <div class="menu__toggle">
-            <!-- Hidden Checkbox Trigger -->
-            <input type="checkbox" />
+  <!-- Top Title Header -->
+  <header class="top-header">
+    <h1 id="heading">Chess-0-Pedia</h1>
+  </header>
 
-            <!-- Hamburger Bars -->
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <!-- Sliding Menu Links -->
-            <ul class="menu__links">
-                <li><a href="chapters/ch1.html" target="_main">Chapter 1 : Introduction</a></li>
-                <li><a href="chapters/ch2.html" target="_main">Chapter 2 : The Pieces</a></li>
-                <li><a href="chapters/ch3.html" target="_main">Chapter 3 : Algebraic Chess</a></li>
-            </ul>
-        </div>
-    </nav>
-
-<header class="top-bar">
-  <button class="menu-btn" aria-label="Open menu">
-    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
-
-  <h1 id="heading">Chess-0-Pedia</h1>
-
+  <!-- Fixed Top-Right Theme Toggle Button -->
   <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
     <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="5"></circle>
@@ -85,34 +44,46 @@ toggleBtn.addEventListener('click', () => {
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
     </svg>
   </button>
-</header>
 
-<main class="container">
-  <nav class="content-index" aria-label="Table of Contents">
-    <h2 id="contents">Contents</h2>
-    <ol class="chapter-list">
-      <li>
-        <a href="chapters/ch1.html" target="_main" class="chapter-link">
-          <span class="chapter-num">01</span>
-          <span class="chapter-title">Introduction</span>
-        </a>
-      </li>
-      <li>
-        <a href="chapters/ch2.html" target="_main" class="chapter-link">
-          <span class="chapter-num">02</span>
-          <span class="chapter-title">The Pieces</span>
-        </a>
-      </li>
-      <li>
-        <a href="chapters/ch3.html" target="_main" class="chapter-link">
-          <span class="chapter-num">03</span>
-          <span class="chapter-title">Algebraic Chess</span>
-        </a>
-      </li>
-    </ol>
-  </nav>
-</main>
+  <!-- Content Index Card -->
+  <main class="container">
+    <div class="content-index">
+      <p id="contents">Contents</p>
+      <ol class="chapter-list">
+        <li>
+          <a href="chapters/ch1.html" target="_main" class="chapter-link">
+            <span class="chapter-num">01</span>
+            <span class="chapter-title">Chapter 1 : Introduction</span>
+          </a>
+        </li>
+        <li>
+          <a href="chapters/ch2.html" target="_main" class="chapter-link">
+            <span class="chapter-num">02</span>
+            <span class="chapter-title">Chapter 2 : The Pieces</span>
+          </a>
+        </li>
+        <li>
+          <a href="chapters/ch3.html" target="_main" class="chapter-link">
+            <span class="chapter-num">03</span>
+            <span class="chapter-title">Chapter 3 : Algebraic Chess</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+  </main>
 
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
-
