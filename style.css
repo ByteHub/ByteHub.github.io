@@ -160,7 +160,7 @@ body.dark-mode .theme-btn .moon-icon { display: none; }
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  z-index: 100;
+  z-index: -1;
 }
 
 .hr-gradient {
