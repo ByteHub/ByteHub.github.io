@@ -1,8 +1,7 @@
 a {
   color : blue;
 }
-#heading{
-  text-align : center; 
+
 }
 #contents{
   text-align : center;
@@ -139,3 +138,15 @@ body.dark-mode .theme-btn {
 
 body.dark-mode .theme-btn .sun-icon { display: block; }
 body.dark-mode .theme-btn .moon-icon { display: none; }
+
+#heading {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  z-index: 100;
+}
