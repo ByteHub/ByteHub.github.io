@@ -164,10 +164,22 @@ body.dark-mode .theme-btn .moon-icon { display: none; }
 }
 
 .hr-gradient {
-  border: 0;
+  display: block;
+  border: none;
   height: 1px;
-  margin: 30px auto;
-  max-width: 80%;
+  width: 85%;
+  max-width: 600px;
+  
+  /* Pushes the line down to sit comfortably below the header elements */
+  margin-top: 65px; 
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Keeps the line behind open dropdown menus if necessary */
+  position: relative;
+  z-index: 1;
+
   background: linear-gradient(
     90deg, 
     transparent 0%, 
@@ -176,7 +188,7 @@ body.dark-mode .theme-btn .moon-icon { display: none; }
   );
 }
 
-/* Dark mode adjustment */
+/* Dark Mode Override */
 body.dark-mode .hr-gradient {
   background: linear-gradient(
     90deg, 
