@@ -197,3 +197,26 @@ body.dark-mode .hr-gradient {
     transparent 100%
   );
 }
+/*from here*/
+:root {
+  --bg-color: #f8f6f0;
+  --pattern-grid: rgba(0, 0, 0, 0.04);
+  --pattern-accent: rgba(0, 0, 0, 0.02);
+}
+
+body.dark-mode {
+  --bg-color: #121316;
+  --pattern-grid: rgba(255, 255, 255, 0.04);
+  --pattern-accent: rgba(255, 255, 255, 0.02);
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image: 
+    linear-gradient(var(--pattern-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pattern-grid) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, var(--pattern-accent) 20%, transparent 80%);
+  background-size: 32px 32px, 32px 32px, 64px 64px;
+  background-position: -1px -1px, -1px -1px, 0 0;
+  transition: background-color 0.3s ease;
+}
