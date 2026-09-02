@@ -21,39 +21,36 @@
 <a href="chapters/ch3.html"><li>Chapter 3 : Algebraic Chess</li></a>
 </div>
 </nav>
- <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-  <!-- Sun Icon (shown in dark mode) -->
-  <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="1" x2="12" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="23"></line>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-    <line x1="1" y1="12" x2="3" y2="12"></line>
-    <line x1="21" y1="12" x2="23" y2="12"></line>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-  </svg>
-  <!-- Moon Icon (shown in light mode) -->
-  <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
+ 
+<!-- Theme Toggle Button -->
+<button id="theme-toggle" aria-label="Toggle Theme">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C12.92 3.04 12.46 3 12 3z"/>
+  </svg>
 </button>
-<script>
-const toggleBtn = document.getElementById('theme-toggle');
 
-// Load saved preference
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-}
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDarkMode = document.body.classList.contains('dark-mode');
-  localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-});
-</script>
 <h1 id="heading">Chess-0-Pedia</h1>
+
+<!-- Gradient Horizontal Divider -->
+<hr class="hr-gradient">
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    // Apply saved theme state instantly
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+
+    // Toggle theme state instantly
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+</script>
 
 </body>
 </html>
