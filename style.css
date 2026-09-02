@@ -15,6 +15,10 @@ a {
     text-decoration: none;
 }
 
+body {
+overflow-x: hidden;
+}
+
 .menu__toggle {
     display: block;
     position: fixed;
@@ -97,61 +101,5 @@ a {
 .menu__links li {
     padding: 10px 0;
     font-size: 22px;
-}
-
-:root {
-  --bg-color: #f8f6f0;
-  --text-color: #1a1a1a;
-  --pattern-grid: rgba(0, 0, 0, 0.04);
-  --pattern-accent: rgba(0, 0, 0, 0.02);
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
-}
-
-body.dark-mode {
-  --bg-color: #121316;
-  --text-color: #f0f0f0;
-  --pattern-grid: rgba(255, 255, 255, 0.04);
-  --pattern-accent: rgba(255, 255, 255, 0.02);
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-}
-
-/* Background Pattern */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  background-image: 
-    linear-gradient(var(--pattern-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--pattern-grid) 1px, transparent 1px),
-    radial-gradient(circle at 50% 50%, var(--pattern-accent) 20%, transparent 80%);
-  background-size: 32px 32px, 32px 32px, 64px 64px;
-  background-position: -1px -1px, -1px -1px, 0 0;
-  margin: 0;
-  padding: 20px;
-overflow-x: hidden;
-}
-
-/* Gradient HR Divider */
-.hr-gradient {
-  border: 0;
-  height: 1px;
-  background-image: var(--hr-gradient);
-  margin: 20px 0;
-}
-
-/* Theme Toggle Button Base */
-#theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#theme-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
 }
 
