@@ -220,3 +220,18 @@ body {
   background-position: -1px -1px, -1px -1px, 0 0;
   transition: background-color 0.3s ease;
 }
+
+/* Water Ripple View Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
