@@ -118,3 +118,37 @@ body {
 .menu_links a:hover {
   color: orangered;
 }
+
+
+/* Smooth color fade transition for the body background and text */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Theme Toggle Button - Fixed Top Right (15px inset) */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+#theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
