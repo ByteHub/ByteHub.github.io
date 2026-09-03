@@ -149,3 +149,36 @@ body {
   height: 24px;
   fill: currentColor;
 }
+
+/* Update theme variables to include the gradient horizontal divider */
+:root {
+  --bg-color: #f8f6f0;
+  --text-color: #1a1a1a;
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+}
+
+body.dark-mode {
+  --bg-color: #121316;
+  --text-color: #f0f0f0;
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Heading Styling */
+.header-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Gradient Horizontal Divider */
+hr.hr-gradient {
+  border: 0;
+  height: 1px;
+  background-image: var(--hr-gradient);
+  margin: 30px auto;
+  width: 90%;
+  max-width: 800px;
+  transition: background-image 0.4s ease;
+}
