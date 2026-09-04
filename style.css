@@ -165,15 +165,18 @@ body.dark-mode {
 
 /* Heading Styling */
 .header-title {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 2.5rem;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  margin: 0;
+  font-size: 1.4rem; /* Reduced so it fits between icons on mobile */
   font-weight: 700;
   letter-spacing: -0.02em;
-position: fixed;
-top: 15px;
-left: 50%;
+  white-space: nowrap; /* Prevents text from wrapping */
 }
+
 
 /* Gradient Horizontal Divider */
 hr.hr-gradient {
