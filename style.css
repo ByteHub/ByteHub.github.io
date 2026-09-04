@@ -21,7 +21,6 @@ body.dark-mode {
   text-decoration: none;
 }
 
-/* min-height: 100vh fixes the white area below the hr in dark mode */
 html, body {
   min-height: 100vh;
   background-color: var(--bg-color);
@@ -34,7 +33,7 @@ body {
 }
 
 /* ===================================================
-   2. Header, Title & Divider
+   2. Header Title & Gradient Divider
    =================================================== */
 
 .header-title {
@@ -42,19 +41,21 @@ body {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000; /* Fixed: changed from -1 so it stays visible and clickable */
+  z-index: 1000;
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   white-space: nowrap;
+  color: var(--text-color);
+  transition: color 0.4s ease;
 }
 
 hr.hr-gradient {
   border: 0;
   height: 1px;
   background-image: var(--hr-gradient);
-  margin-top: 65px; /* Pushes the divider down so it doesn't overlap fixed elements */
+  margin-top: 65px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -64,15 +65,15 @@ hr.hr-gradient {
 }
 
 /* ===================================================
-   3. Menu Toggle Container (Top Left)
+   3. Hamburger Menu & Drawer
    =================================================== */
 
 .menu_toggle {
   display: block;
-  position: fixed; /* Fixed: keeps icon anchored on scroll */
+  position: fixed;
   top: 15px;
   left: 15px;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .menu_toggle input[type="checkbox"] {
@@ -84,7 +85,7 @@ hr.hr-gradient {
   left: -5px;
   cursor: pointer;
   opacity: 0;
-  z-index: 2;
+  z-index: 1003;
 }
 
 .menu_toggle span {
@@ -95,7 +96,7 @@ hr.hr-gradient {
   position: relative;
   background: var(--text-color);
   border-radius: 3px;
-  z-index: 1;
+  z-index: 1002;
   transform-origin: 4px 0px;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
               background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
@@ -118,17 +119,19 @@ hr.hr-gradient {
 }
 
 .menu_links {
-  position: fixed; /* Fixed: prevents menu from moving when scrolling */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 300px;
+  width: 280px;
   height: 100vh;
-  padding: 125px 50px 50px 50px;
-  background: var(--bg-color); /* Updated: uses theme variable instead of hardcoded white */
+  margin: 0;
+  padding: 100px 30px 30px 30px;
+  background: var(--bg-color);
   list-style-type: none;
   transform: translate(-100%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 0.4s ease;
-  z-index: -1;
+  z-index: 1001;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .menu_toggle input:checked ~ ul {
@@ -136,8 +139,8 @@ hr.hr-gradient {
 }
 
 .menu_links li {
-  padding: 10px 0;
-  font-size: 22px;
+  padding: 12px 0;
+  font-size: 1.1rem;
 }
 
 .menu_links a {
