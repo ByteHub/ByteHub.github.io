@@ -1,14 +1,17 @@
-/* ==========================================
+/* ===================================================
    1. Theme Variables & Reset
-   ========================================== */
+   =================================================== */
+
 :root {
   --bg-color: #f8f6f0;
   --text-color: #1a1a1a;
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
 }
 
 body.dark-mode {
   --bg-color: #121316;
   --text-color: #f0f0f0;
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
 * {
@@ -23,6 +26,34 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ===================================================
+   2. Fixed Top Header & Divider
+   =================================================== */
+
+.header-title {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+hr.hr-gradient {
+  border: 0;
+  height: 1px;
+  background-image: var(--hr-gradient);
+  margin-top: 65px;
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 800px;
+  transition: background-image 0.4s ease;
 }
 
 /* ==========================================
