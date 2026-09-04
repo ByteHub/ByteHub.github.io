@@ -52,17 +52,24 @@ body {
 }
 
 hr.hr-gradient {
+  position: fixed;
+  top: 55px; /* Locked height directly below the fixed header title and buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999; /* Keeps line right below header icons (1000+) but above body content */
+  
   border: 0;
   height: 1px;
   background-image: var(--hr-gradient);
-  margin-top: 65px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
   width: 90%;
   max-width: 800px;
+  margin: 0;
+  
+  /* Forces Safari / iOS hardware rendering to prevent scroll-shifting */
+  -webkit-transform: translateX(-50%) translateZ(0);
   transition: background-image 0.4s ease;
 }
+
 
 /* ==========================================
    3. Menu Toggle Container
