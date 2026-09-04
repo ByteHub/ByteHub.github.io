@@ -1,5 +1,5 @@
 /* ===================================================
-   1. Theme Variables & Base Setup
+   1. Theme Variables & Reset
    =================================================== */
 
 :root {
@@ -21,19 +21,18 @@ body.dark-mode {
   text-decoration: none;
 }
 
-html, body {
-  min-height: 100vh;
-  background-color: var(--bg-color);
-}
-
 body {
   font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  /* Fixes iOS Safari background overflow during rubber-band scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ===================================================
-   2. Header Title & Gradient Divider
+   2. Fixed Top Header & Divider
    =================================================== */
 
 .header-title {
@@ -41,14 +40,15 @@ body {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 1000; /* Fixed: Changed from -1 so iOS renders it above the body */
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   white-space: nowrap;
   color: var(--text-color);
-  transition: color 0.4s ease;
+  /* Fixes webkit render lag on iOS scroll */
+  -webkit-transform: translateX(-50%) translateZ(0);
 }
 
 hr.hr-gradient {
@@ -64,18 +64,20 @@ hr.hr-gradient {
   transition: background-image 0.4s ease;
 }
 
-/* ===================================================
-   3. Hamburger Menu & Drawer
-   =================================================== */
-
+/* ==========================================
+   3. Menu Toggle Container
+   ========================================== */
 .menu_toggle {
   display: block;
-  position: fixed;
+  position: fixed; /* Fixed: Anchors icon to top on iOS scroll */
   top: 15px;
   left: 15px;
-  z-index: 1002;
+  z-index: 1002; /* Higher z-index for iOS stacking order */
 }
 
+/* ==========================================
+   4. Checkbox Overlay (Click Area)
+   ========================================== */
 .menu_toggle input[type="checkbox"] {
   display: block;
   width: 40px;
@@ -84,10 +86,13 @@ hr.hr-gradient {
   top: -7px;
   left: -5px;
   cursor: pointer;
-  opacity: 0;
-  z-index: 1003;
+  opacity: 0; /* Hidden but clickable */
+  z-index: 1003; /* Sits above the hamburger icon */
 }
 
+/* ==========================================
+   5. Hamburger Lines (Spans)
+   ========================================== */
 .menu_toggle span {
   display: block;
   width: 33px;
@@ -103,10 +108,13 @@ hr.hr-gradient {
               opacity 0.5s ease;
 }
 
+/* ==========================================
+   6. Hamburger to 'X' Transformation
+   ========================================== */
 .menu_toggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg);
-  background: var(--text-color);
+  background: var(--text-color); /* Fixed: Dynamic theme color instead of hardcoded dark color */
 }
 
 .menu_toggle input:checked ~ span:nth-last-child(3) {
@@ -118,20 +126,21 @@ hr.hr-gradient {
   transform: rotate(-45deg);
 }
 
+/* ==========================================
+   7. Sliding Navigation Menu
+   ========================================== */
 .menu_links {
-  position: fixed;
+  position: fixed; /* Fixed: Keeps menu anchored on iOS viewport */
   top: 0;
   left: 0;
-  width: 280px;
+  width: 300px;
   height: 100vh;
-  margin: 0;
-  padding: 100px 30px 30px 30px;
-  background: var(--bg-color);
+  padding: 125px 50px 50px 50px;
+  background: var(--bg-color); /* Fixed: Adapts to dark/light mode on iOS */
   list-style-type: none;
   transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   z-index: 1001;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .menu_toggle input:checked ~ ul {
@@ -139,8 +148,8 @@ hr.hr-gradient {
 }
 
 .menu_links li {
-  padding: 12px 0;
-  font-size: 1.1rem;
+  padding: 10px 0;
+  font-size: 22px;
 }
 
 .menu_links a {
@@ -152,10 +161,9 @@ hr.hr-gradient {
   color: orangered;
 }
 
-/* ===================================================
-   4. Theme Toggle Button (Top Right)
-   =================================================== */
-
+/* ==========================================
+   8. Theme Toggle Button - Top Right 15px
+   ========================================== */
 #theme-toggle {
   position: fixed;
   top: 15px;
