@@ -1,5 +1,5 @@
 /* ===================================================
-   1. Theme Variables & Reset
+   1. Theme Variables & Base Setup
    =================================================== */
 
 :root {
@@ -21,15 +21,20 @@ body.dark-mode {
   text-decoration: none;
 }
 
+/* min-height: 100vh fixes the white area below the hr in dark mode */
+html, body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ===================================================
-   2. Fixed Top Header & Divider
+   2. Header, Title & Divider
    =================================================== */
 
 .header-title {
@@ -37,7 +42,7 @@ body {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 1000; /* Fixed: changed from -1 so it stays visible and clickable */
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
@@ -49,27 +54,27 @@ hr.hr-gradient {
   border: 0;
   height: 1px;
   background-image: var(--hr-gradient);
-  margin-top: 65px;
+  margin-top: 65px; /* Pushes the divider down so it doesn't overlap fixed elements */
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
   width: 90%;
   max-width: 800px;
   transition: background-image 0.4s ease;
 }
 
-/* ==========================================
-   2. Menu Toggle Container
-   ========================================== */
+/* ===================================================
+   3. Menu Toggle Container (Top Left)
+   =================================================== */
+
 .menu_toggle {
   display: block;
-  position: relative;
+  position: fixed; /* Fixed: keeps icon anchored on scroll */
   top: 15px;
   left: 15px;
-  z-index: 1;
+  z-index: 1001;
 }
 
-/* ==========================================
-   3. Checkbox Overlay (Click Area)
-   ========================================== */
 .menu_toggle input[type="checkbox"] {
   display: block;
   width: 40px;
@@ -78,13 +83,10 @@ hr.hr-gradient {
   top: -7px;
   left: -5px;
   cursor: pointer;
-  opacity: 0; /* Hidden but clickable */
-  z-index: 2; /* Sits above the hamburger icon */
+  opacity: 0;
+  z-index: 2;
 }
 
-/* ==========================================
-   4. Hamburger Lines (Spans)
-   ========================================== */
 .menu_toggle span {
   display: block;
   width: 33px;
@@ -100,13 +102,10 @@ hr.hr-gradient {
               opacity 0.5s ease;
 }
 
-/* ==========================================
-   5. Hamburger to 'X' Transformation
-   ========================================== */
 .menu_toggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg);
-  background: #232323;
+  background: var(--text-color);
 }
 
 .menu_toggle input:checked ~ span:nth-last-child(3) {
@@ -118,19 +117,18 @@ hr.hr-gradient {
   transform: rotate(-45deg);
 }
 
-/* ==========================================
-   6. Sliding Navigation Menu
-   ========================================== */
 .menu_links {
-  position: absolute;
+  position: fixed; /* Fixed: prevents menu from moving when scrolling */
+  top: 0;
+  left: 0;
   width: 300px;
   height: 100vh;
-  margin: -100px 0 0 -50px;
   padding: 125px 50px 50px 50px;
-  background: #ededed;
+  background: var(--bg-color); /* Updated: uses theme variable instead of hardcoded white */
   list-style-type: none;
   transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 0.4s ease;
+  z-index: -1;
 }
 
 .menu_toggle input:checked ~ ul {
@@ -143,7 +141,7 @@ hr.hr-gradient {
 }
 
 .menu_links a {
-  color: rgb(41, 56, 71);
+  color: var(--text-color);
   transition: color 0.3s ease;
 }
 
@@ -151,9 +149,10 @@ hr.hr-gradient {
   color: orangered;
 }
 
-/* ==========================================
-   7. Theme Toggle Button - Top Right 15px
-   ========================================== */
+/* ===================================================
+   4. Theme Toggle Button (Top Right)
+   =================================================== */
+
 #theme-toggle {
   position: fixed;
   top: 15px;
@@ -179,43 +178,4 @@ hr.hr-gradient {
   width: 24px;
   height: 24px;
   fill: currentColor;
-}
-
-/* Update theme variables to include the gradient horizontal divider */
-:root {
-  --bg-color: #f8f6f0;
-  --text-color: #1a1a1a;
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
-}
-
-body.dark-mode {
-  --bg-color: #121316;
-  --text-color: #f0f0f0;
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-}
-
-/* Heading Styling */
-.header-title {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
-  margin: 0;
-  font-size: 1.4rem; /* Reduced so it fits between icons on mobile */
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  white-space: nowrap; /* Prevents text from wrapping */
-}
-
-
-/* Gradient Horizontal Divider */
-hr.hr-gradient {
-  border: 0;
-  height: 1px;
-  background-image: var(--hr-gradient);
-  margin: 30px auto;
-  width: 90%;
-  max-width: 800px;
-  transition: background-image 0.4s ease;
 }
