@@ -31,189 +31,187 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-
 /* ===================================================
-   2. Fixed Top Header & Divider
-   =================================================== */
+   2. Fixed Top Header & Divider
+   =================================================== */
 
 .header-title {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000; /* Fixed: Changed from -1 so iOS renders it above the body */
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: var(--text-color);
-  /* Fixes webkit render lag on iOS scroll */
-  -webkit-transform: translateX(-50%) translateZ(0);
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Fixed: Changed from -1 so iOS renders it above the body */
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--text-color);
+  /* Fixes webkit render lag on iOS scroll */
+  -webkit-transform: translateX(-50%) translateZ(0);
 }
 
 hr.hr-gradient {
-  position: fixed;
-  top: 55px; /* Locked height directly below the fixed header title and buttons */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999; /* Keeps line right below header icons (1000+) but above body content */
-  
-  border: 0;
-  height: 1px;
-  background-image: var(--hr-gradient);
-  width: 90%;
-  max-width: 800px;
-  margin: 0;
-  
-  /* Forces Safari / iOS hardware rendering to prevent scroll-shifting */
-  -webkit-transform: translateX(-50%) translateZ(0);
-  transition: background-image 0.4s ease;
+  position: fixed;
+  top: 55px; /* Locked height directly below the fixed header title and buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999; /* Keeps line right below header icons (1000+) but above body content */
+
+  border: 0;
+  height: 1px;
+  background-image: var(--hr-gradient);
+  width: 90%;
+  max-width: 800px;
+  margin: 0;
+
+  /* Forces Safari / iOS hardware rendering to prevent scroll-shifting */
+  -webkit-transform: translateX(-50%) translateZ(0);
+  transition: background-image 0.4s ease;
 }
 
 
 /* ==========================================
-   3. Menu Toggle Container
-   ========================================== */
+   3. Menu Toggle Container
+   ========================================== */
 .menu_toggle {
-  display: block;
-  position: fixed; /* Fixed: Anchors icon to top on iOS scroll */
-  top: 15px;
-  left: 15px;
-  z-index: 1002; /* Higher z-index for iOS stacking order */
+  display: block;
+  position: fixed; /* Fixed: Anchors icon to top on iOS scroll */
+  top: 15px;
+  left: 15px;
+  z-index: 1002; /* Higher z-index for iOS stacking order */
 }
 
 /* ==========================================
-   4. Checkbox Overlay (Click Area)
-   ========================================== */
+   4. Checkbox Overlay (Click Area)
+   ========================================== */
 .menu_toggle input[type="checkbox"] {
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  cursor: pointer;
-  opacity: 0; /* Hidden but clickable */
-  z-index: 1003; /* Sits above the hamburger icon */
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* Hidden but clickable */
+  z-index: 1003; /* Sits above the hamburger icon */
 }
 
 /* ==========================================
-   5. Hamburger Lines (Spans)
-   ========================================== */
+   5. Hamburger Lines (Spans)
+   ========================================== */
 .menu_toggle span {
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  background: var(--text-color);
-  border-radius: 3px;
-  z-index: 1002;
-  transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-              opacity 0.5s ease;
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: var(--text-color);
+  border-radius: 3px;
+  z-index: 1002;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+              opacity 0.5s ease;
 }
 
 /* ==========================================
-   6. Hamburger to 'X' Transformation
-   ========================================== */
+   6. Hamburger to 'X' Transformation
+   ========================================== */
 .menu_toggle input:checked ~ span {
-  opacity: 1;
-  transform: rotate(45deg);
-  background: var(--text-color); /* Fixed: Dynamic theme color instead of hardcoded dark color */
+  opacity: 1;
+  transform: rotate(45deg);
+  background: var(--text-color); /* Fixed: Dynamic theme color instead of hardcoded dark color */
 }
 
 .menu_toggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
 }
 
 .menu_toggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /* ==========================================
-   7. Sliding Navigation Menu
-   ========================================== */
+   7. Sliding Navigation Menu
+   ========================================== */
 .menu_links {
-  position: fixed; /* Fixed: Keeps menu anchored on iOS viewport */
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100vh;
-  padding: 125px 50px 50px 50px;
-  background: var(--bg-color); /* Fixed: Adapts to dark/light mode on iOS */
-  list-style-type: none;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 1001;
+  position: fixed; /* Fixed: Keeps menu anchored on iOS viewport */
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 125px 50px 50px 50px;
+  background: var(--bg-color); /* Fixed: Adapts to dark/light mode on iOS */
+  list-style-type: none;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 1001;
 }
 
 .menu_toggle input:checked ~ ul {
-  transform: none;
+  transform: none;
 }
 
 .menu_links li {
-  padding: 10px 0;
-  font-size: 22px;
+  padding: 10px 0;
+  font-size: 22px;
 }
 
 .menu_links a {
-  color: var(--text-color);
-  transition: color 0.3s ease;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .menu_links a:hover {
-  color: orangered;
+  color: orangered;
 }
 
 /* ==========================================
-   8. Theme Toggle Button - Top Right 15px
-   ========================================== */
+   8. Theme Toggle Button - Top Right 15px
+   ========================================== */
 #theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 1000;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-color);
-  transition: opacity 0.2s ease, transform 0.2s ease, color 0.4s ease;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.4s ease;
 }
 
 #theme-toggle:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 #theme-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 /* Default state (Light Mode): Show Moon, Hide Sun */
 #theme-toggle .icon-sun {
-  display: none;
+  display: none;
 }
 
 #theme-toggle .icon-moon {
-  display: block;
+  display: block;
 }
 
 /* Dark Mode state: Show Sun, Hide Moon */
 body.dark-mode #theme-toggle .icon-sun {
-  display: block;
+  display: block;
 }
 
 body.dark-mode #theme-toggle .icon-moon {
-  display: none;
+  display: none;
 }
-
