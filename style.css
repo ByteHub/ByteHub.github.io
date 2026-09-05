@@ -197,3 +197,22 @@ hr.hr-gradient {
   height: 24px;
   fill: currentColor;
 }
+
+/* Default state (Light Mode): Show Moon, Hide Sun */
+#theme-toggle .icon-sun {
+  display: none;
+}
+
+#theme-toggle .icon-moon {
+  display: block;
+}
+
+/* Dark Mode state: Show Sun, Hide Moon */
+body.dark-mode #theme-toggle .icon-sun {
+  display: block;
+}
+
+body.dark-mode #theme-toggle .icon-moon {
+  display: none;
+}
+
