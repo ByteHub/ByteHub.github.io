@@ -1,5 +1,5 @@
 /* ===================================================
-   1. Theme Variables & Reset
+   1. Theme Variables & Locked Background Setup
    =================================================== */
 
 :root {
@@ -29,21 +29,37 @@ body.dark-mode {
   text-decoration: none;
 }
 
-html, body {
-  min-height: 100vh;
+html {
   background-color: var(--bg-color);
+  min-height: 100vh;
 }
 
 body {
   font-family: Arial, sans-serif;
   color: var(--text-color);
-  background-image: var(--bg-pattern);
-  background-size: 60px 60px;
-  background-attachment: fixed;
+  background-color: var(--bg-color);
   transition: background-color 0.4s ease, color 0.4s ease;
   padding-top: 75px;
+  min-height: 100vh;
+  position: relative;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Immovable Fixed Background Layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background-image: var(--bg-pattern);
+  background-size: 60px 60px;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+}
+
 /* ===================================================
    2. Fixed Top Header & Divider
    =================================================== */
