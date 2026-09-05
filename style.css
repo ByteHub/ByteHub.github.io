@@ -6,12 +6,20 @@
   --bg-color: #f8f6f0;
   --text-color: #1a1a1a;
   --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+  --bg-pattern: repeating-conic-gradient(
+    rgba(0, 0, 0, 0.02) 0% 25%, 
+    transparent 0% 50%
+  );
 }
 
 body.dark-mode {
   --bg-color: #121316;
   --text-color: #f0f0f0;
   --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  --bg-pattern: repeating-conic-gradient(
+    rgba(255, 255, 255, 0.025) 0% 25%, 
+    transparent 0% 50%
+  );
 }
 
 * {
@@ -21,16 +29,21 @@ body.dark-mode {
   text-decoration: none;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
+html, body {
   min-height: 100vh;
-  /* Fixes iOS Safari background overflow during rubber-band scrolling */
-  -webkit-overflow-scrolling: touch;
+  background-color: var(--bg-color);
 }
 
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-image: var(--bg-pattern);
+  background-size: 60px 60px;
+  background-attachment: fixed;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  padding-top: 75px;
+  -webkit-overflow-scrolling: touch;
+}
 /* ===================================================
    2. Fixed Top Header & Divider
    =================================================== */
