@@ -1,74 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess-O-Pedia</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-O-Pedia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-row">
+        <nav class="main-nav" aria-label="Main navigation">
+          <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
 
-  <nav>
-    <div class="menu_toggle">
-      <!-- Hidden Checkbox trick for toggle behavior -->
-      <input type="checkbox" />
+            <div class="menu-panel">
+              <div class="menu-brand">
+                <span class="menu-brand-glyph">♟</span>
+                <span class="menu-brand-text">Chess-O-Pedia</span>
+              </div>
+              <ul class="menu-links">
+                <li><a href="chapters/ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+                <li><a href="chapters/ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+                <li><a href="chapters/ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+              </ul>
 
-      <!-- Hamburger Lines -->
-      <span></span>
-      <span></span>
-      <span></span>
+              <div class="menu-footer">
+                <span class="menu-footer-icon">✦</span>
+                <span class="menu-footer-text">Chapter Map</span>
+              </div>
+            </div>
+          </div>
+        </nav>
 
-      <!-- Navigation Links -->
-      <ul class="menu_links">
-        <li><a href="chapters/ch1.html">Chapter 1 : Introduction</a></li>
-        <li><a href="chapters/ch2.html">Chapter 2 : The Pieces in Chess</a></li>
-        <li><a href="chapters/ch3.html">Chapter 3 : Algebraic Chess Notations</a></li>
-      </ul>
-    </div>
-  </nav>
-<button id="theme-toggle" aria-label="Toggle theme">
-  <!-- Moon Icon (Visible in Light Mode) -->
-  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/>
-  </svg>
+        <a class="top-title" href="index.html" aria-label="Chess-O-Pedia">
+          <span class="top-title-text">Chess-O-Pedia</span>
+        </a>
 
-  <!-- Sun Icon (Visible in Dark Mode) -->
-  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="5"></circle>
-  <line x1="12" y1="1" x2="12" y2="3"></line>
-  <line x1="12" y1="21" x2="12" y2="23"></line>
-  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-  <line x1="1" y1="12" x2="3" y2="12"></line>
-  <line x1="21" y1="12" x2="23" y2="12"></line>
-  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-</svg>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/>
+          </svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
 
+    <main class="content-area">
+      <section class="hero">
+        <div class="hero-grid">
+          <section class="hero-copy">
+            <span class="kicker">Chess Guide</span>
+            <h1 class="main-heading">Learn the Royal Game</h1>
+            <p class="lead-text">
+              Chess-O-Pedia helps you understand the board, the pieces, and the logic of every move.
+              Start with the basics and move through the chapters to build your chess confidence.
+            </p>
 
-</button>
+            <div class="instruction-strip">
+              <span class="instruction-title">How this site helps</span>
+              <span class="instruction-line">Use the menu to select a chapter.</span>
+              <span class="instruction-line">Read the lesson and follow the controls.</span>
+              <span class="instruction-line">Use the top-right icon to switch color mode.</span>
+            </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
+            <div class="controls-guide">
+              <span class="guide-label">Controls</span>
+              <div class="control-pills">
+                <span class="control-pill"><span class="control-icon">☰</span><span class="control-copy">Menu</span></span>
+                <span class="control-pill"><span class="control-icon">☼</span><span class="control-copy">Theme</span></span>
+              </div>
+            </div>
 
-    // Load saved preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-    }
+            <div class="hero-actions">
+              <a class="primary-button" href="chapters/ch1.html">Start Chapter 1</a>
+              <a class="secondary-button" href="#chapter-map">Explore Map</a>
+            </div>
+          </section>
 
-    // Toggle class allowing CSS to handle the smooth color fade
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  });
-</script>
-<h1 class="header-title">Chess-0-Pedia</h1>
+          <section class="board-panel">
+            <div class="board-scene">
+              <div class="board-frame">
+                <div class="board-top">
+                  <span class="board-kicker">Course Map</span>
+                  <span class="board-live">LIVE</span>
+                </div>
 
-<hr class="hr-gradient" />
+                <div class="chess-board">
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
+                  <span class="square white-piece">♙</span>
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
 
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                  <span class="square dark"></span>
+                  <span class="square light"></span>
+                </div>
+
+                <div class="board-footer">
+                  <span class="lesson-tag">01 / Introduction</span>
+                  <span class="lesson-tag">02 / Pieces</span>
+                  <span class="lesson-tag">03 / Notation</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <hr class="hr-gradient">
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('theme-toggle');
+      if (!toggleBtn) return;
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    });
+  </script>
 </body>
 </html>
