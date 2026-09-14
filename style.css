@@ -1,217 +1,793 @@
 /* ===================================================
-   1. Theme Variables & Reset
-   =================================================== */
+   1. Theme Variables & Reset
+=================================================== */
 
 :root {
-  --bg-color: #f8f6f0;
-  --text-color: #1a1a1a;
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+  --bg-color: #f8f6f0;
+  --panel-color: #fffdf8;
+  --text-color: #1a1a1a;
+  --soft-text: #565656;
+  --line-color: rgba(0, 0, 0, 0.2);
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+  --menu-bg: #f8f6f0;
+  --menu-panel: #fffaf4;
+  --accent: orangered;
+  --shadow: rgba(0, 0, 0, 0.15);
+  --gold: #b58c32;
+  --lime: #d6ffd1;
+  --sage: #adbd8c;
+  --cream: #fffdf1;
+  --chess-light: #f3d9b6;
+  --chess-dark: #3f301e;
 }
 
 body.dark-mode {
-  --bg-color: #121316;
-  --text-color: #f0f0f0;
-  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  --bg-color: #121316;
+  --panel-color: #202329;
+  --text-color: #f0f0f0;
+  --soft-text: #cfcfcf;
+  --line-color: rgba(255, 255, 255, 0.4);
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  --menu-bg: #202329;
+  --menu-panel: #171a20;
+  --accent: #ffb38f;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --gold: #f6d690;
+  --lime: #b7f8b4;
+  --sage: #96b275;
+  --cream: #f7f2dc;
+  --chess-light: #dfb987;
+  --chess-dark: #1d4428;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
-  min-height: 100vh;
-  /* Fixes iOS Safari background overflow during rubber-band scrolling */
-  -webkit-overflow-scrolling: touch;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(circle at 30% 8%, rgba(214, 255, 209, 0.55), transparent 14%),
+    radial-gradient(circle at 78% 72%, rgba(255, 171, 93, 0.45), transparent 16%),
+    linear-gradient(120deg, var(--bg-color), var(--panel-color));
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -80px;
+  background-image: radial-gradient(var(--line-color) 1px, transparent 1px);
+  background-size: 26px 26px;
+  transform: rotate(4deg);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: driftGrid 14s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 460px;
+  height: 460px;
+  left: -220px;
+  top: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--lime), transparent 72%);
+  filter: blur(80px);
+  opacity: 0.62;
+  pointer-events: none;
+  animation: orbFloat 11s ease-in-out infinite alternate;
+}
+
+.page {
+  min-height: 100vh;
+  background: transparent;
 }
 
 /* ===================================================
-   2. Fixed Top Header & Divider
-   =================================================== */
+   2. Header & Top Layout
+=================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: color-mix(in srgb, var(--bg-color) 88%, transparent);
+  border-bottom: 1px solid var(--line-color);
+  z-index: 1000;
+  box-shadow: 0 3px 10px var(--shadow);
+  backdrop-filter: blur(12px);
+}
 
+.header-row {
+  position: relative;
+  width: min(100%, 1200px);
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.top-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.top-title-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-shadow: 0 2px 4px var(--shadow);
+  background: linear-gradient(135deg, var(--text-color), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================
+   3. Menu Toggle Container
+========================================== */
+.menu-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  z-index: 1004;
+}
+
+.menu-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 1005;
+}
+
+.hamburger {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1006;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+.hamburger span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  background: var(--text-color);
+  border-radius: 3px;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.4s ease, width 0.25s ease;
+}
+
+.menu-checkbox:checked ~ .hamburger {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  transform: scale(1.04);
+}
+
+.menu-checkbox:checked ~ .hamburger span:nth-child(1) {
+  width: 36px;
+  transform: translateY(9px) rotate(45deg);
+  background: var(--accent);
+}
+
+.menu-checkbox:checked ~ .hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-checkbox:checked ~ .hamburger span:nth-child(3) {
+  width: 36px;
+  transform: translateY(-9px) rotate(-45deg);
+  background: var(--accent);
+}
+
+.menu-panel {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: min(340px, calc(100vw - 30px));
+  padding: 70px 24px 34px;
+  background:
+    linear-gradient(140deg, var(--menu-panel), color-mix(in srgb, var(--accent) 20%, var(--menu-panel)));
+  color: var(--text-color);
+  border: 1px solid var(--line-color);
+  border-radius: 22px;
+  box-shadow: 0 18px 40px var(--shadow);
+  transform: translateX(-120%) scale(0.96);
+  transform-origin: left top;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
+  opacity: 0;
+  z-index: 1004;
+  overflow: hidden;
+}
+
+.menu-panel::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(34px);
+  opacity: 0.6;
+}
+
+.menu-panel::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 8px);
+  pointer-events: none;
+}
+
+.menu-checkbox:checked ~ .menu-panel {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.menu-brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.menu-brand-glyph {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.menu-brand-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.menu-links {
+  position: relative;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.menu-links li {
+  padding: 12px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.menu-links a {
+  color: var(--text-color);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s ease, padding-left 0.3s ease, transform 0.3s ease;
+}
+
+.menu-links a:hover {
+  color: var(--accent);
+  padding-left: 8px;
+  transform: translateX(4px);
+}
+
+.menu-index {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text-color);
+  color: var(--bg-color);
+  font-size: 0.86rem;
+}
+
+.menu-label {
+  letter-spacing: 0.02em;
+}
+
+.menu-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-color);
+}
+
+.menu-footer-icon {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.menu-footer-text {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--soft-text);
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   4. Header Title and Divider
+========================================== */
 .header-title {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000; /* Fixed: Changed from -1 so iOS renders it above the body */
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: var(--text-color);
-  /* Fixes webkit render lag on iOS scroll */
-  -webkit-transform: translateX(-50%) translateZ(0);
+  position: relative;
+  display: block;
+  margin-top: 0;
+  padding-top: 90px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--text-color);
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  text-shadow: 0 2px 3px var(--shadow);
 }
 
-hr.hr-gradient {
-  position: fixed;
-  top: 55px; /* Locked height directly below the fixed header title and buttons */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999; /* Keeps line right below header icons (1000+) but above body content */
-
-  border: 0;
-  height: 1px;
-  background-image: var(--hr-gradient);
-  width: 90%;
-  max-width: 800px;
-  margin: 0;
-
-  /* Forces Safari / iOS hardware rendering to prevent scroll-shifting */
-  -webkit-transform: translateX(-50%) translateZ(0);
-  transition: background-image 0.4s ease;
-}
-
-
-/* ==========================================
-   3. Menu Toggle Container
-   ========================================== */
-.menu_toggle {
-  display: block;
-  position: fixed; /* Fixed: Anchors icon to top on iOS scroll */
-  top: 15px;
-  left: 15px;
-  z-index: 1002; /* Higher z-index for iOS stacking order */
+.hr-gradient {
+  width: min(75vw, 860px);
+  max-width: 820px;
+  margin: 14px auto 0;
+  border: none;
+  height: 1px;
+  background-image: var(--hr-gradient);
 }
 
 /* ==========================================
-   4. Checkbox Overlay (Click Area)
-   ========================================== */
-.menu_toggle input[type="checkbox"] {
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  cursor: pointer;
-  opacity: 0; /* Hidden but clickable */
-  z-index: 1003; /* Sits above the hamburger icon */
+   5. Theme Toggle Button
+========================================== */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--text-color);
+  z-index: 1002;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.4s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.8;
+  transform: scale(1.08);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+body.dark-mode .theme-toggle .icon-sun {
+  display: block;
+}
+
+body.dark-mode .theme-toggle .icon-moon {
+  display: none;
 }
 
 /* ==========================================
-   5. Hamburger Lines (Spans)
-   ========================================== */
-.menu_toggle span {
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  background: var(--text-color);
-  border-radius: 3px;
-  z-index: 1002;
-  transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-              opacity 0.5s ease;
+   6. Hero and Content
+========================================== */
+.content-area {
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.hero {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(420px, 1.2fr) minmax(360px, 0.8fr);
+  align-items: center;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+.hero-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.kicker {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.main-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.5rem, 6vw, 4.6rem);
+  line-height: 0.94;
+  color: var(--text-color);
+  margin-top: 12px;
+  text-shadow: 0 3px 1px var(--shadow);
+}
+
+.lead-text {
+  color: var(--soft-text);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.instruction-strip {
+  width: min(560px, 100%);
+  padding: 16px 18px;
+  background: color-mix(in srgb, var(--panel-color) 80%, transparent);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.instruction-title {
+  display: block;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.instruction-line {
+  display: block;
+  color: var(--soft-text);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.controls-guide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.guide-label {
+  border-radius: 20px;
+  background: var(--text-color);
+  color: var(--bg-color);
+  padding: 9px 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.control-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.control-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: var(--panel-color);
+  color: var(--text-color);
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  border: 1px solid var(--line-color);
+}
+
+.control-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 700;
+  font-size: 0.96rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  color: #fff;
+  box-shadow: 0 8px 16px var(--shadow);
+}
+
+.secondary-button {
+  background: transparent;
+  border: 1px solid var(--line-color);
+  color: var(--text-color);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-4px);
+}
+
+.board-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-scene {
+  width: min(450px, 90vw);
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 26px;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 60% 50%, color-mix(in srgb, var(--accent) 10%, transparent), transparent),
+    linear-gradient(135deg, var(--panel-color), var(--menu-bg));
+  border: 1px solid var(--line-color);
+  box-shadow: 0 20px 42px var(--shadow);
+  position: relative;
+}
+
+.board-scene::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 30px;
+  border: 1px dashed var(--accent);
+  transform: rotate(-2deg);
+}
+
+.board-frame {
+  width: 100%;
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.board-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 6px;
+}
+
+.board-kicker {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.board-live {
+  background: var(--text-color);
+  color: var(--bg-color);
+  font-size: 0.74rem;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 800;
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+  padding: 12px;
+  background: var(--panel-color);
+  border-radius: 16px;
+  border: 1px solid var(--line-color);
+}
+
+.square {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.square.light {
+  background: var(--chess-light);
+}
+
+.square.dark {
+  background: var(--chess-dark);
+}
+
+.square.white-piece {
+  background: var(--cream);
+  color: var(--accent);
+}
+
+.board-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lesson-tag {
+  font-size: 0.74rem;
+  color: var(--soft-text);
+  font-weight: 800;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-color);
+}
+
+@keyframes driftGrid {
+  from { transform: rotate(2deg) translateY(-8px); }
+  to { transform: rotate(7deg) translateY(8px); }
+}
+
+@keyframes orbFloat {
+  from { transform: translateX(0) translateY(0); }
+  to { transform: translateX(70px) translateY(40px); }
 }
 
 /* ==========================================
-   6. Hamburger to 'X' Transformation
-   ========================================== */
-.menu_toggle input:checked ~ span {
-  opacity: 1;
-  transform: rotate(45deg);
-  background: var(--text-color); /* Fixed: Dynamic theme color instead of hardcoded dark color */
+   7. Responsive Layout
+========================================== */
+@media screen and (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .board-scene {
+    min-height: 320px;
+  }
 }
 
-.menu_toggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
+@media screen and (max-width: 700px) {
+  .site-header {
+    height: 76px;
+  }
 
-.menu_toggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg);
-}
+  .header-row {
+    height: 76px;
+  }
 
-/* ==========================================
-   7. Sliding Navigation Menu
-   ========================================== */
-.menu_links {
-  position: fixed; /* Fixed: Keeps menu anchored on iOS viewport */
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100vh;
-  padding: 125px 50px 50px 50px;
-  background: var(--bg-color); /* Fixed: Adapts to dark/light mode on iOS */
-  list-style-type: none;
-  transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 1001;
-}
+  .top-title-text {
+    font-size: 1.5rem;
+  }
 
-.menu_toggle input:checked ~ ul {
-  transform: none;
-}
+  .main-heading {
+    font-size: clamp(2.8rem, 13vw, 3.8rem);
+  }
 
-.menu_links li {
-  padding: 10px 0;
-  font-size: 22px;
-}
+  .header-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    white-space: normal;
+    padding-top: 80px;
+  }
 
-.menu_links a {
-  color: var(--text-color);
-  transition: color 0.3s ease;
-}
+  .intro-panel {
+    padding: 20px;
+  }
 
-.menu_links a:hover {
-  color: orangered;
-}
+  .hero-actions {
+    align-items: stretch;
+  }
 
-/* ==========================================
-   8. Theme Toggle Button - Top Right 15px
-   ========================================== */
-#theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 1000;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-color);
-  transition: opacity 0.2s ease, transform 0.2s ease, color 0.4s ease;
-}
-
-#theme-toggle:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-
-#theme-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
-/* Default state (Light Mode): Show Moon, Hide Sun */
-#theme-toggle .icon-sun {
-  display: none;
-}
-
-#theme-toggle .icon-moon {
-  display: block;
-}
-
-/* Dark Mode state: Show Sun, Hide Moon */
-body.dark-mode #theme-toggle .icon-sun {
-  display: block;
-}
-
-body.dark-mode #theme-toggle .icon-moon {
-  display: none;
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    text-align: center;
+  }
 }
