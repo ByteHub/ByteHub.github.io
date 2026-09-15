@@ -1,67 +1,343 @@
-body{
-  background-color : black;
-  color : white;
-  font-family : 'Space Grotesk', sans-serif;
+:root {
+  --chapter-panel: var(--panel-color, #fffdf8);
+  --chapter-text: var(--text-color, #1a1a1a);
+  --chapter-soft: var(--soft-text, #565656);
+  --chapter-line: var(--line-color, rgba(0, 0, 0, 0.2));
+  --chapter-accent: var(--accent, orangered);
+  --chapter-card-bg: var(--panel-color);
 }
 
-#heading {
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
 }
 
-#fun-fact {
-  background-color: #f5a623;
-  border: 2px solid #c47e0a;
-  padding: 15px;
-  text-align: center;
+.chapter-page {
+  min-height: 100vh;
 }
 
-@media (min-width: 600px) {
-  #chess {
-    position: relative;
-    padding-right: 220px;
-    min-height: 200px;
-  }
-
-  #fun-fact {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 200px;
-  }
+.chapter-content-area {
+  padding-top: 96px;
 }
 
-@media (max-width: 599px) {
-  #fun-fact {
-    width: 80%;
-    margin: 20px auto 0;
-    display: block;
-  }
+.chapter-hero {
+  width: min(1180px, calc(100vw - 32px));
+  align-items: stretch;
 }
 
+.chapter-card-content p,
+.chapter-card-content li,
+.chapter-card-content h3,
+.chapter-title,
+.lead-text,
+.instruction-title,
+.instruction-line,
+.chapter-card-title,
+.chapter-card-content u,
+.chapter-card-content a,
+#note,
+.mini-list {
+  color: var(--text-color, #1a1a1a);
+  background-color: transparent;
+}
+
+.chapter-page .hero-copy,
+.chapter-page .chapter-card,
+.chapter-page .chapter-figure {
+  background: var(--panel-color);
+}
+
+.chapter-page .main-heading,
+.chapter-page .chapter-card-title,
+.chapter-page .chapter-card-content h3,
+.chapter-page .lead-text,
+.chapter-page .instruction-title,
+.chapter-page .instruction-line {
+  color: var(--text-color);
+}
+
+.chapter-page .chapter-card-content p,
+.chapter-page .chapter-card-content li,
+.mini-list {
+  color: var(--soft-text);
+}
+
+.chapter-card-content p,
+.chapter-card-content li,
+.chapter-card-content li u,
+.chapter-card-content .benefit-list li,
+#note {
+  color: var(--soft-text, #565656);
+}
+
+.chapter-card-content p,
+.chapter-card-content li,
+#note {
+  line-height: 1.8;
+}
+
+.chapter-card-content h3,
+.chapter-card-title,
+.chapter-title {
+  color: var(--text-color, #1a1a1a);
+  background-color: transparent;
+}
+
+.chapter-card-content a {
+  color: var(--accent, orangered);
+}
+
+.chapter-card {
+  color: var(--text-color, #1a1a1a);
+  background: var(--panel-color, #fffdf8);
+}
+
+.chapter-hero .hero-copy,
+.chapter-card {
+  border-color: var(--line-color, rgba(0, 0, 0, 0.2));
+}
+
+.chapter-figure figcaption {
+  color: var(--soft-text, #565656);
+}
+
+.chapter-links a {
+  color: var(--text-color, #1a1a1a);
+}
+
+.chapter-grid {
+  min-height: auto;
+  grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr);
+}
+
+.chapter-hero .hero-copy {
+  background: var(--panel-color);
+  border: 1px solid var(--line-color);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 14px 34px var(--shadow);
+}
+
+.chapter-title {
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  color: var(--text-color);
+  text-align: left;
+}
+
+.chapter-card {
+  width: min(1040px, 100%);
+  border-radius: 24px;
+  background: var(--chapter-card-bg);
+  color: var(--chapter-text);
+  border: 1px solid var(--line-color);
+  box-shadow: 0 16px 34px var(--shadow);
+  padding: 34px 30px;
+  margin-top: 26px;
+}
+
+.chapter-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line-color);
+  padding-bottom: 12px;
+}
+
+.chapter-card-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+}
+
+.chapter-card-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.chapter-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.chapter-card-content h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  color: var(--text-color);
+}
+
+.chapter-card-content p {
+  color: var(--chapter-soft);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.chapter-card-content ul {
+  margin-left: 24px;
+  color: var(--chapter-soft);
+  line-height: 1.8;
+}
+
+.chapter-card-content li {
+  padding: 8px 0;
+  line-height: 1.75;
+}
+
+.chapter-card-content u {
+  color: var(--accent);
+}
+
+.chapter-card-content a {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.chapter-figure {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--line-color);
+  background: var(--panel-color);
+  padding: 14px;
+}
+
+.chapter-figure img {
+  max-width: min(600px, 100%);
+  border-radius: 14px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.chapter-figure figcaption {
+  color: var(--soft-text);
+  font-weight: 700;
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.piece-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-color);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.mini-list {
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
 
 #note {
-  color : red;
+  border-left: 3px solid var(--accent);
+  padding-left: 14px;
+  margin-top: 4px;
 }
 
-figure{
-  text-align : center;
-  margin : 0;
+.chapter-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
 }
 
-  img{
-    width : 100%;
-    max-width : 600px;
+.chapter-links a {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-card-content .chapter-home-link {
+  background: var(--text-color);
+  color: var(--bg-color) !important;
+  border: 1px solid var(--text-color);
+}
+
+.chapter-card-content .chapter-next-link {
+  background: var(--accent);
+  color: #fff !important;
+  border: 1px solid var(--accent);
+}
+
+body.dark-mode .chapter-page .hero-copy,
+body.dark-mode .chapter-page .chapter-card,
+body.dark-mode .chapter-page .chapter-figure {
+  background: var(--panel-color);
+}
+
+body.dark-mode .chapter-page .main-heading,
+body.dark-mode .chapter-page .chapter-card-title,
+body.dark-mode .chapter-page .chapter-card-content h3,
+body.dark-mode .chapter-page .lead-text,
+body.dark-mode .chapter-page .instruction-title,
+body.dark-mode .chapter-page .instruction-line {
+  color: var(--text-color);
+}
+
+body.dark-mode .chapter-page .chapter-card-content p,
+body.dark-mode .chapter-page .chapter-card-content li,
+body.dark-mode .mini-list {
+  color: var(--soft-text);
+}
+
+@media screen and (max-width: 900px) {
+  .chapter-grid {
+    grid-template-columns: 1fr;
   }
 
-figcaption{
-  text-align : center;
-  margin-top : 8px;
-  margin-bottom : 25px;
-}
-
-  a{
-    text-align : center;
-    color : blue;
+  .chapter-hero .hero-copy {
+    order: 1;
   }
 
+  .board-panel {
+    order: 2;
+  }
+}
 
+@media screen and (max-width: 700px) {
+  .chapter-content-area {
+    padding-top: 72px;
+  }
+
+  .chapter-title {
+    font-size: clamp(2.4rem, 12vw, 3.2rem);
+  }
+
+  .chapter-hero .hero-copy {
+    padding: 20px;
+  }
+
+  .chapter-card {
+    padding: 20px;
+  }
+
+  .chapter-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chapter-links a {
+    width: 100%;
+    text-align: center;
+  }
+}
