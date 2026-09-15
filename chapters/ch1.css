@@ -4,7 +4,7 @@
   --chapter-soft: var(--soft-text, #565656);
   --chapter-line: var(--line-color, rgba(0, 0, 0, 0.2));
   --chapter-accent: var(--accent, orangered);
-  --chapter-card-bg: color-mix(in srgb, var(--panel-color) 82%, transparent);
+  --chapter-card-bg: var(--panel-color);
 }
 
 body {
@@ -24,13 +24,88 @@ body {
   align-items: stretch;
 }
 
+.chapter-card-content p,
+.chapter-card-content li,
+.chapter-card-content h3,
+.chapter-title,
+.lead-text,
+.instruction-title,
+.instruction-line,
+.chapter-card-title,
+.chapter-card-content u,
+.chapter-card-content a {
+  color: var(--text-color, #1a1a1a);
+  background-color: transparent;
+}
+
+.chapter-page .hero-copy,
+.chapter-page .chapter-card,
+.chapter-page .chapter-figure {
+  background: var(--panel-color);
+}
+
+.chapter-page .main-heading,
+.chapter-page .chapter-card-title,
+.chapter-page .chapter-card-content h3,
+.chapter-page .lead-text,
+.chapter-page .instruction-title,
+.chapter-page .instruction-line {
+  color: var(--text-color);
+}
+
+.chapter-page .chapter-card-content p,
+.chapter-page .chapter-card-content li {
+  color: var(--soft-text);
+}
+
+.chapter-card-content p,
+.chapter-card-content li,
+.chapter-card-content li u,
+.chapter-card-content .benefit-list li {
+  color: var(--soft-text, #565656);
+}
+
+.chapter-card-content p,
+.chapter-card-content li {
+  line-height: 1.8;
+}
+
+.chapter-card-content h3,
+.chapter-card-title,
+.chapter-title {
+  color: var(--text-color, #1a1a1a);
+  background-color: transparent;
+}
+
+.chapter-card-content a {
+  color: var(--accent, orangered);
+}
+
+.chapter-card {
+  color: var(--text-color, #1a1a1a);
+  background: var(--panel-color, #fffdf8);
+}
+
+.chapter-hero .hero-copy,
+.chapter-card {
+  border-color: var(--line-color, rgba(0, 0, 0, 0.2));
+}
+
+.chapter-figure figcaption {
+  color: var(--soft-text, #565656);
+}
+
+.chapter-links a {
+  color: var(--text-color, #1a1a1a);
+}
+
 .chapter-grid {
   min-height: auto;
   grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr);
 }
 
 .chapter-hero .hero-copy {
-  background: color-mix(in srgb, var(--panel-color) 80%, transparent);
+  background: var(--panel-color);
   border: 1px solid var(--line-color);
   border-radius: 24px;
   padding: 30px;
@@ -97,7 +172,7 @@ body {
 .chapter-card-content p {
   color: var(--chapter-soft);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .chapter-card-content ul {
@@ -108,6 +183,11 @@ body {
 
 .chapter-card-content li {
   padding: 8px 0;
+  line-height: 1.75;
+}
+
+.chapter-card-content {
+  font-size: 1.05rem;
 }
 
 .chapter-card-content u {
@@ -128,7 +208,7 @@ body {
   gap: 8px;
   border-radius: 16px;
   border: 1px solid var(--line-color);
-  background: color-mix(in srgb, var(--panel-color) 70%, transparent);
+  background: var(--panel-color);
   padding: 14px;
 }
 
@@ -160,19 +240,45 @@ body {
 }
 
 .chapter-links a {
+  display: inline-block;
   border-radius: 999px;
   padding: 12px 22px;
   font-weight: 800;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
 }
 
-.chapter-home-link {
+.chapter-card-content .chapter-home-link {
   background: var(--text-color);
   color: var(--bg-color) !important;
+  border: 1px solid var(--text-color);
 }
 
-.chapter-next-link {
+.chapter-card-content .chapter-next-link {
   background: var(--accent);
   color: #fff !important;
+  border: 1px solid var(--accent);
+}
+
+body.dark-mode .chapter-page .hero-copy,
+body.dark-mode .chapter-page .chapter-card,
+body.dark-mode .chapter-page .chapter-figure {
+  background: var(--panel-color);
+}
+
+body.dark-mode .chapter-page .main-heading,
+body.dark-mode .chapter-page .chapter-card-title,
+body.dark-mode .chapter-page .chapter-card-content h3,
+body.dark-mode .chapter-page .lead-text,
+body.dark-mode .chapter-page .instruction-title,
+body.dark-mode .chapter-page .instruction-line {
+  color: var(--text-color);
+}
+
+body.dark-mode .chapter-page .chapter-card-content p,
+body.dark-mode .chapter-page .chapter-card-content li {
+  color: var(--soft-text);
 }
 
 @media screen and (max-width: 900px) {
