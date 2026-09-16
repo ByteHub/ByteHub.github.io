@@ -1,35 +1,70 @@
-body{
-  background-color : black;
-  color : white;
-  font-family : 'Space Grotesk', sans-serif;
+:root {
+  --chapter-card-bg: var(--panel-color);
 }
 
+body { font-family: Arial, sans-serif; }
+.chapter-page { min-height: 100vh; }
+.chapter-content-area { padding-top: 96px; }
+.chapter-hero { width: min(1180px, calc(100vw - 32px)); align-items: stretch; }
+.chapter-grid { min-height: auto; grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr); }
 
-#heading {
-  text-align: center;
+.chapter-hero .hero-copy {
+  background: var(--panel-color);
+  border: 1px solid var(--line-color);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 14px 34px var(--shadow);
 }
 
-#note {
-  color : red;
+.chapter-title { font-size: clamp(2.8rem, 4vw, 4rem); text-align: left; color: var(--text-color); }
+
+.chapter-card {
+  width: min(1040px, 100%);
+  margin-top: 26px;
+  padding: 34px 30px;
+  border: 1px solid var(--line-color);
+  border-radius: 24px;
+  background: var(--chapter-card-bg);
+  color: var(--text-color);
+  box-shadow: 0 16px 34px var(--shadow);
 }
 
-figure{
-  text-align : center;
-  margin : 0;
+.chapter-card-header { display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--line-color); padding-bottom: 12px; }
+.chapter-card-number { width: 42px; height: 42px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-weight: 900; }
+.chapter-card-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--text-color); }
+.chapter-card-content { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; font-size: 1.05rem; }
+.chapter-card-content p, .chapter-card-content li { color: var(--soft-text); line-height: 1.8; }
+.chapter-card-content h3 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.6rem, 2vw, 2rem); color: var(--text-color); }
+.chapter-card-content strong { color: var(--text-color); }
+.chapter-card-content ul { margin-left: 24px; color: var(--soft-text); }
+.chapter-card-content li { padding: 8px 0; }
+
+.notation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.notation-item, .notation-example { border: 1px solid var(--line-color); border-radius: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.03); }
+.notation-item { display: flex; flex-direction: column; gap: 6px; }
+.notation-item strong { color: var(--accent); }
+.notation-item span, .notation-example span { color: var(--soft-text); line-height: 1.55; }
+.notation-example { display: flex; align-items: center; gap: 16px; }
+.example-move { min-width: 88px; color: var(--accent) !important; font-family: Georgia, "Times New Roman", serif; font-size: 1.4rem; font-weight: 700; }
+
+#note { border-left: 3px solid var(--accent); padding-left: 14px; }
+.chapter-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+.chapter-links a { display: inline-block; border-radius: 999px; padding: 12px 22px; font-weight: 800; line-height: 1.2; position: relative; z-index: 1; }
+.chapter-card-content .chapter-home-link { background: var(--text-color); color: var(--bg-color) !important; border: 1px solid var(--text-color); }
+.chapter-card-content .chapter-next-link { background: var(--accent); color: #fff !important; border: 1px solid var(--accent); }
+
+@media screen and (max-width: 900px) {
+  .chapter-grid { grid-template-columns: 1fr; }
+  .chapter-hero .hero-copy { order: 1; }
+  .board-panel { order: 2; }
+  .notation-grid { grid-template-columns: 1fr; }
 }
 
-  img{
-    width : 100%;
-    max-width : 600px;
-  }
-
-figcaption{
-  text-align : center;
-  margin-top : 8px;
-  margin-bottom : 25px;
+@media screen and (max-width: 700px) {
+  .chapter-content-area { padding-top: 72px; }
+  .chapter-title { font-size: clamp(2.4rem, 12vw, 3.2rem); }
+  .chapter-hero .hero-copy, .chapter-card { padding: 20px; }
+  .chapter-links { flex-direction: column; align-items: stretch; }
+  .chapter-links a { width: 100%; text-align: center; }
+  .notation-example { align-items: flex-start; flex-direction: column; gap: 6px; }
 }
-
-  a{
-    text-align : center;
-    color : blue;
-  }
