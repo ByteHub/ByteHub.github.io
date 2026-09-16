@@ -1,107 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebraic Chess</title>
-    <link rel="stylesheet" href="ch3.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-O-Pedia | Chapter 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="ch3.css">
 </head>
-  <body>
-    <h1 id="heading">The Notations in Chess</h1>
-      <hr>
-      <p>Algebraic notation is the universal language of chess. It allows players to record games, read chess books, and study tactics. Understanding it is the first step to improving your game. But first, we need to understand more about the Chessboard grid.</p>
-      <figure>
-      <img src="https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/ColinStapczynski/phpOuUNwZ.png" alt="Notations">
-          <figcaption>Algebraic Chess Notations</figcaption>
-      </figure>
-      <hr>
-      <h3>The Chessboard Grid</h3>
-      <hr>
-      <p>The chessboard is a grid made of 64 squares. Every square has its own unique two-character coordinate: a letter and a number.</p>
-      <ul>
-          <li><p><u>Files (Columns)</u>: The eight vertical columns are labeled a through h, starting from White's left side.</p></li>
-          <li><p><u>Ranks (Rows)</u>: The eight horizontal rows are numbered 1 through 8, starting from White's side (Rank 1) and moving up to Black's side (Rank 8).</p></li>
-      <li><p><u>A Diagonal</u> is a straight line of squares of the same color running slantwise across the board. The Bishop is the only piece that moves exclusively along diagonals.</p></li>
-      </ul>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2SaT58q4QeXiyN68o0bnDMass-qFAD2fetc1w03NrUQ&s=10" alt="Grid">
-      <figcaption>Files, Ranks, and Diagonals</figcaption>
-          </figure>
-      <hr>
-      <h3>Piece Abbreviations</h3>
-      <hr>
-      <p>Each chess piece is represented by a single capital letter. They are as follows :</p>
-      <ul>
-          <li>K: King</li>
-          <li>Q: Queen</li>
-          <li>R: Rook</li>
-          <li>B: Bishop</li>
-          <li>N: Knight (used because 'K' is already taken by the King)</li>
-      </ul>
-      <p id="note">IMPORTANT NOTE : <b>Pawns</b> do not get a capital letter. When a pawn moves, you only write the name of the destination square.</p>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKW3zo3_Sf418BRvb8TxN4hG5kGwuaJJ3gn_u_o9GJVQ&s=10" alt="Abbreviations">
-          <figcaption>Piece Abbreviations</figcaption>
-      </figure>
-      <hr>
-      <h3>How to Write Moves</h3>
-      <hr>
-      <p>A standard move is written by combining the piece letter with its destination square.</p>
-      <p>For example, </p>
-      <ul>
-          <li>Nf3: Knight moves to the f3 square.</li>
-          <li>Be4: Bishop moves to the e4 square.</li>
-          <li>e4: A pawn moves to the e4 square (no piece letter).</li>
-      </ul>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIAfah4U9DY09zv81-UXgr-K663ypMFPIwPqrMsoAIvw&s=10" alt="Movement of piece using Abbreviations">
-          <figcaption>Movement of a chess piece using Abbreviations</figcaption>
-      </figure>
-      <hr>
-      <h3>Special Symbols</h3>
-      <hr>
-      <p>Chess notation uses specific shorthand symbols to describe events on the board : </p>
-      <ul>
-          <li><b>Captures (x): When a piece captures an opponent's piece, insert an x between the piece letter and the destination square.</b>
-          </li>
-          <ul><li>Example: Bxf7 means Bishop captures on f7.</li>
-          <li>Pawn captures: Use the starting file letter of the pawn. exd5 means the pawn on the e-file captured a piece on d5.</li>
-          </ul>
-      </ul>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM7CV24gat1ozvPV_Iih1pjK6Yc0gFfSqFSGpZnLkmHA&s=10" alt="Capture">
-          <figcaption>Capturing a Piece</figcaption>
-      </figure>
-      <ul>
-          <li><b>Check (+)</b> : Placed at the very end of a move.</li>
-          <ul><li>Example: Qh5+</li></ul>
-      </ul>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ4xr6WScNDrJByDQ3xSfkp2nq1W42q2cxTFAh9TBKKg&s=10" alt="Check on King by a Piece">
-          <figcaption>Check on the King by a Piece</figcaption>
-      </figure>
-      <ul>
-          <li><b>Checkmate (#): Placed at the very end of a winning move.</b></li>
-          <ul><li>Example: Qxf7#</li></ul>
-      </ul>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRau6U28MoFCD0-o-1Jnu2BCj4O34uYOjlhUm8OX2yhYg&s=10" alt="Checkmate">
-          <figcaption>Checkmate by Queen</figcaption>
-      </figure>
-      <ul>
-          <li>Castling : </li>
-          <ul><li>O-O represents Kingside castling (short).</li>
-          <li>O-O-O represents Queenside castling (long).</li></ul>
-      </ul>
-      <figure>
-          <img src="data:image/png;base64,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" alt="Queenside">
-          <figcaption>Queenside Castling</figcaption>
-      </figure>
-      <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwkP84SlnsByPFW5CLGc6WxTCvx2mWDBLgcM-JUfmHYw&s=10" alt="Kingside">
-          <figcaption>Kingside Castling</figcaption>
-      </figure>
-      <hr>
-      <a href="../index.html">Redirect to Home</a>
-  </body> 
+<body>
+  <div class="page chapter-page">
+    <header class="site-header">
+      <div class="header-row">
+        <nav class="main-nav" aria-label="Main navigation">
+          <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+            <div class="menu-panel">
+              <div class="menu-brand"><span class="menu-brand-glyph">♟</span><span class="menu-brand-text">Chess-O-Pedia</span></div>
+              <ul class="menu-links">
+                <li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+                <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+                <li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+              </ul>
+              <div class="menu-footer"><span class="menu-footer-icon">✦</span><span class="menu-footer-text">Chapter Map</span></div>
+            </div>
+          </div>
+        </nav>
+        <a class="top-title" href="../index.html" aria-label="Chess-O-Pedia"><span class="top-title-text">Chess-O-Pedia</span></a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content-area chapter-content-area">
+      <section class="hero chapter-hero">
+        <div class="hero-grid chapter-grid">
+          <section class="hero-copy">
+            <span class="kicker">Chapter 03</span>
+            <h1 class="main-heading chapter-title">Chess Notation</h1>
+            <p class="lead-text">Chess notation is the language used to record every move. Learn how files, ranks, piece symbols, captures, checks, and special moves turn a game into a story you can read and replay.</p>
+            <div class="instruction-strip">
+              <span class="instruction-title">How this chapter helps</span>
+              <span class="instruction-line">Read and write moves with confidence.</span>
+              <span class="instruction-line">Replay games and study positions.</span>
+              <span class="instruction-line">Describe tactics clearly to other players.</span>
+            </div>
+            <div class="controls-guide"><span class="guide-label">Controls</span><div class="control-pills"><span class="control-pill"><span class="control-icon">☰</span><span class="control-copy">Menu</span></span><span class="control-pill"><span class="control-icon">☼</span><span class="control-copy">Theme</span></span></div></div>
+            <div class="hero-actions"><a class="primary-button" href="../index.html">Back to Home</a><a class="secondary-button" href="ch2.html">Previous</a></div>
+          </section>
+          <section class="board-panel"><div class="board-scene"><div class="board-frame"><div class="board-top"><span class="board-kicker">Chapter Map</span><span class="board-live">03</span></div><div class="chess-board" aria-label="Chess notation coordinate board"><span class="square light">a1</span><span class="square dark">b2</span><span class="square light">c3</span><span class="square dark">d4</span><span class="square dark">e5</span><span class="square light">f6</span><span class="square dark">g7</span><span class="square light">h8</span></div><div class="board-footer"><span class="lesson-tag">Files</span><span class="lesson-tag">Ranks</span><span class="lesson-tag">Moves</span></div></div></div></section>
+        </div>
+
+        <article class="chapter-card">
+          <div class="chapter-card-header"><span class="chapter-card-number">03</span><span class="chapter-card-title">The Language of Chess</span></div>
+          <div class="chapter-card-content">
+            <p>Modern chess uses algebraic notation. Every square has a name made from a letter for its file and a number for its rank. White starts from ranks 1 and 2, while Black starts from ranks 7 and 8.</p>
+            <div class="notation-grid"><div class="notation-item"><strong>Files</strong><span>a through h, the vertical columns.</span></div><div class="notation-item"><strong>Ranks</strong><span>1 through 8, the horizontal rows.</span></div><div class="notation-item"><strong>Squares</strong><span>A file and rank combine, such as e4.</span></div></div>
+            <h3>Piece Symbols</h3>
+            <p>Pieces use capital letters: <strong>K</strong> for king, <strong>Q</strong> for queen, <strong>R</strong> for rook, <strong>B</strong> for bishop, and <strong>N</strong> for knight. Pawns have no letter, so a pawn move uses only its destination square.</p>
+            <div class="notation-example"><span class="example-move">Nf3</span><span>Knight moves to f3.</span></div>
+            <h3>Captures and Checks</h3>
+            <p>Use <strong>x</strong> when a piece captures. A check is marked with <strong>+</strong>, while checkmate is marked with <strong>#</strong>.</p>
+            <div class="notation-example"><span class="example-move">Qxf7+</span><span>The queen captures on f7 and gives check.</span></div>
+            <h3>Special Moves</h3>
+            <ul><li><strong>O-O</strong> means kingside castling.</li><li><strong>O-O-O</strong> means queenside castling.</li><li><strong>e8=Q</strong> means a pawn promotes to a queen.</li><li><strong>e.p.</strong> may describe an en passant capture.</li></ul>
+            <h3>How to Read a Move</h3>
+            <p>In <strong>1. e4 e5 2. Nf3 Nc6</strong>, the number identifies the turn. White moves first, followed by Black. Read the sequence from left to right and use the coordinates to follow the position.</p>
+            <p id="note"><strong>Practice tip:</strong> Write down five moves from your next game, then replay them later and check each square against the board.</p>
+            <div class="chapter-links"><a href="ch2.html" class="chapter-home-link">Previous Chapter</a><a href="../index.html" class="chapter-next-link">Back to Home →</a></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('theme-toggle');
+      if (!toggleBtn) return;
+      if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      });
+    });
+  </script>
+</body>
 </html>
