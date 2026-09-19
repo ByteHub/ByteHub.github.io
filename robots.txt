@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bytehub.github.io/sitemap.xml
