@@ -3,6 +3,7 @@ body { font-family: Arial, sans-serif; }
 .chapter-content-area { padding-top: 96px; }
 .chapter-hero { width: min(1180px, calc(100vw - 32px)); align-items: stretch; }
 .chapter-grid { min-height: auto; grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr); }
+.notation-reference-list li { grid-template-columns: 76px minmax(0, 1fr); }
 
 .chapter-hero .hero-copy {
   background: var(--panel-color);
@@ -108,8 +109,28 @@ body.dark-mode .chapter-page .chapter-card-content .chapter-next-link {
 #note { border-left: 3px solid var(--accent); padding-left: 14px; }
 .chapter-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
 .chapter-links a { display: inline-block; border-radius: 999px; padding: 12px 22px; font-weight: 800; line-height: 1.2; position: relative; z-index: 1; }
-.chapter-card-content .chapter-home-link { background: var(--text-color); color: var(--bg-color) !important; border: 1px solid var(--text-color); }
-.chapter-card-content .chapter-next-link { background: var(--accent); color: #fff !important; border: 1px solid var(--accent); }
+.chapter-card-content .chapter-home-link { background: linear-gradient(135deg, #ff8738, #ffad55); color: #17191d !important; border: 1px solid #f17a2e; box-shadow: 0 8px 18px rgba(230, 104, 36, 0.24); }
+.chapter-card-content .chapter-next-link { background: var(--accent); color: #fff !important; border: 1px solid var(--accent); box-shadow: 0 8px 18px rgba(255, 102, 0, 0.22); }
+.chapter-card-content .chapter-previous-link { background: #17191d; color: #fff !important; border: 1px solid #17191d; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); }
+
+body.dark-mode .chapter-card-content .chapter-home-link {
+  background: linear-gradient(135deg, #ff8738, #ffad55);
+  color: #17191d !important;
+  border-color: #ffb46e;
+  box-shadow: 0 10px 22px rgba(230, 104, 36, 0.34);
+  opacity: 1;
+}
+
+body.dark-mode .chapter-card-content .chapter-next-link {
+  background: linear-gradient(135deg, #ff8d4d, var(--accent));
+  color: #fff !important;
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 10px 20px rgba(255, 120, 60, 0.3);
+}
+
+body.dark-mode .chapter-card-content .chapter-previous-link {
+  border-color: rgba(255, 255, 255, 0.45);
+}
 
 @media screen and (max-width: 900px) {
   .chapter-grid { grid-template-columns: 1fr; }
