@@ -93,27 +93,6 @@ body::after {
   background: transparent;
 }
 
-.desktop-menu-backdrop {
-  display: none;
-}
-
-@media screen and (min-width: 901px) {
-  .home-page .desktop-menu-backdrop {
-    display: block;
-    position: fixed;
-    inset: 80px 0 0;
-    z-index: 999;
-    background: rgba(18, 19, 22, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-
-  body.menu-open .home-page .desktop-menu-backdrop {
-    opacity: 1;
-  }
-}
-
 /* ===================================================
    2. Header & Top Layout
 =================================================== */
