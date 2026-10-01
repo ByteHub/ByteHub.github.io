@@ -161,5 +161,43 @@
       });
     });
   </script>
+  <script>
+    (() => {
+      const menuCheckbox = document.querySelector(".menu-checkbox");
+      if (!menuCheckbox) return;
+
+      let savedScrollPosition = 0;
+
+      const updateScrollLock = () => {
+        if (menuCheckbox.checked) {
+          savedScrollPosition = window.scrollY;
+          document.body.style.position = "fixed";
+          document.body.style.top = `-${savedScrollPosition}px`;
+          document.body.style.left = "0";
+          document.body.style.right = "0";
+          document.body.style.width = "100%";
+          document.body.style.overflow = "hidden";
+          return;
+        }
+
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, savedScrollPosition);
+      };
+
+      menuCheckbox.addEventListener("change", updateScrollLock);
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && menuCheckbox.checked) {
+          menuCheckbox.checked = false;
+          updateScrollLock();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
