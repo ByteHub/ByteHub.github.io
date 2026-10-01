@@ -27,6 +27,7 @@
             <div class="menu-panel">
               <div class="menu-brand"><span class="menu-brand-glyph">♟</span><span class="menu-brand-text">Chess-O-Pedia</span></div>
               <ul class="menu-links">
+                <li><a href="../index.html"><span class="menu-index home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span class="menu-label">Home</span></a></li>
                 <li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
                 <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
               </ul>
@@ -61,14 +62,20 @@
           <section class="board-panel chapter-feature-panel" aria-labelledby="notation-reference-title">
             <div class="chapter-feature-content">
               <span class="chapter-feature-kicker">Notation at a glance</span>
-              <h2 class="chapter-feature-title" id="notation-reference-title">Read a move</h2>
-              <p class="chapter-feature-intro">A few common symbols show how each move is recorded.</p>
-              <ul class="chapter-feature-list notation-reference-list">
-                <li><span class="chapter-feature-token">e4</span><span><span class="chapter-feature-label">Pawn move</span><span class="chapter-feature-detail">A pawn moves to e4.</span></span></li>
-                <li><span class="chapter-feature-token">Nf3</span><span><span class="chapter-feature-label">Piece move</span><span class="chapter-feature-detail">The knight moves to f3.</span></span></li>
-                <li><span class="chapter-feature-token">Qxf7+</span><span><span class="chapter-feature-label">Capture with check</span><span class="chapter-feature-detail">The queen captures on f7 and checks.</span></span></li>
-                <li><span class="chapter-feature-token">O-O</span><span><span class="chapter-feature-label">Castling</span><span class="chapter-feature-detail">The king castles kingside.</span></span></li>
-              </ul>
+              <h2 class="chapter-feature-title" id="notation-reference-title">Decode a move</h2>
+              <p class="chapter-feature-intro">Read each symbol in <strong>Qxf7+</strong> from left to right.</p>
+              <div class="notation-flow-example" aria-label="Q x f7 plus">
+                <span class="notation-flow-piece">Q</span>
+                <span class="notation-flow-capture">x</span>
+                <span class="notation-flow-square">f7</span>
+                <span class="notation-flow-check">+</span>
+              </div>
+              <ol class="chapter-feature-list notation-flow-steps">
+                <li><span class="notation-flow-node">Q</span><span><span class="chapter-feature-label">Piece</span><span class="chapter-feature-detail">The queen makes the move.</span></span></li>
+                <li><span class="notation-flow-node">x</span><span><span class="chapter-feature-label">Action</span><span class="chapter-feature-detail">The queen captures a piece.</span></span></li>
+                <li><span class="notation-flow-node">f7</span><span><span class="chapter-feature-label">Destination</span><span class="chapter-feature-detail">The capture happens on square f7.</span></span></li>
+                <li><span class="notation-flow-node">+</span><span><span class="chapter-feature-label">Result</span><span class="chapter-feature-detail">The move gives check.</span></span></li>
+              </ol>
             </div>
           </section>
         </div>
@@ -106,6 +113,44 @@
         localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
       });
     });
+  </script>
+  <script>
+    (() => {
+      const menuCheckbox = document.querySelector(".menu-checkbox");
+      if (!menuCheckbox) return;
+
+      let savedScrollPosition = 0;
+
+      const updateScrollLock = () => {
+        if (menuCheckbox.checked) {
+          savedScrollPosition = window.scrollY;
+          document.body.style.position = "fixed";
+          document.body.style.top = `-${savedScrollPosition}px`;
+          document.body.style.left = "0";
+          document.body.style.right = "0";
+          document.body.style.width = "100%";
+          document.body.style.overflow = "hidden";
+          return;
+        }
+
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, savedScrollPosition);
+      };
+
+      menuCheckbox.addEventListener("change", updateScrollLock);
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && menuCheckbox.checked) {
+          menuCheckbox.checked = false;
+          updateScrollLock();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
