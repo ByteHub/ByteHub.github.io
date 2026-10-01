@@ -3,7 +3,67 @@ body { font-family: Arial, sans-serif; }
 .chapter-content-area { padding-top: 96px; }
 .chapter-hero { width: min(1180px, calc(100vw - 32px)); align-items: stretch; }
 .chapter-grid { min-height: auto; grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr); }
-.notation-reference-list li { grid-template-columns: 76px minmax(0, 1fr); }
+
+.notation-flow-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 20px;
+  padding: 10px 14px;
+  border: 1px solid var(--line-color);
+  border-radius: 12px;
+  background: var(--panel-color);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.notation-flow-piece,
+.notation-flow-square {
+  color: var(--text-color);
+}
+
+.notation-flow-capture,
+.notation-flow-check {
+  color: var(--accent);
+}
+
+.notation-flow-steps li {
+  position: relative;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 0 0 16px;
+  border: 0;
+}
+
+.notation-flow-steps li:not(:last-child)::after {
+  position: absolute;
+  top: 32px;
+  bottom: 0;
+  left: 16px;
+  width: 2px;
+  background: var(--line-color);
+  content: "";
+}
+
+.notation-flow-node {
+  z-index: 1;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #17191d;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.notation-flow-steps li:last-child {
+  padding-bottom: 0;
+}
 
 .chapter-hero .hero-copy {
   background: var(--panel-color);
