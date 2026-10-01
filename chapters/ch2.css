@@ -109,6 +109,15 @@ body {
   grid-template-columns: minmax(430px, 1fr) minmax(360px, 0.8fr);
 }
 
+.piece-value-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+.piece-value-list li {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
 .chapter-hero .hero-copy {
   background: var(--panel-color);
   border: 1px solid var(--line-color);
@@ -268,15 +277,43 @@ body {
 }
 
 .chapter-card-content .chapter-home-link {
-  background: var(--text-color);
-  color: var(--bg-color) !important;
-  border: 1px solid var(--text-color);
+  background: linear-gradient(135deg, #ff8738, #ffad55);
+  color: #17191d !important;
+  border: 1px solid #f17a2e;
+  box-shadow: 0 8px 18px rgba(230, 104, 36, 0.24);
 }
 
 .chapter-card-content .chapter-next-link {
   background: var(--accent);
   color: #fff !important;
   border: 1px solid var(--accent);
+  box-shadow: 0 8px 18px rgba(255, 102, 0, 0.22);
+}
+
+.chapter-card-content .chapter-previous-link {
+  background: #17191d;
+  color: #ffffff !important;
+  border: 1px solid #17191d;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .chapter-card-content .chapter-home-link {
+  background: linear-gradient(135deg, #ff8738, #ffad55);
+  color: #17191d !important;
+  border-color: #ffb46e;
+  box-shadow: 0 10px 22px rgba(230, 104, 36, 0.34);
+  opacity: 1;
+}
+
+body.dark-mode .chapter-card-content .chapter-next-link {
+  background: linear-gradient(135deg, #ff8d4d, var(--accent));
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 20px rgba(255, 120, 60, 0.3);
+}
+
+body.dark-mode .chapter-card-content .chapter-previous-link {
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 body.dark-mode .chapter-page .hero-copy,
@@ -339,5 +376,9 @@ body.dark-mode .mini-list {
   .chapter-links a {
     width: 100%;
     text-align: center;
+  }
+
+  .piece-value-list {
+    grid-template-columns: 1fr;
   }
 }
