@@ -79,8 +79,6 @@
       </div>
     </header>
 
-    <div class="desktop-menu-backdrop" aria-hidden="true"></div>
-
     <main class="content-area">
       <section class="hero">
         <div class="hero-grid">
@@ -182,7 +180,6 @@
       const updateScrollLock = () => {
         if (menuCheckbox.checked) {
           savedScrollPosition = window.scrollY;
-          document.body.classList.add('menu-open');
           document.body.style.position = "fixed";
           document.body.style.top = `-${savedScrollPosition}px`;
           document.body.style.left = "0";
@@ -192,7 +189,6 @@
           return;
         }
 
-        document.body.classList.remove('menu-open');
         document.body.style.position = "";
         document.body.style.top = "";
         document.body.style.left = "";
