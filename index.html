@@ -13,16 +13,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chess-O-Pedia</title>
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch {
+      // Theme storage may be unavailable in private browsing.
+    }
+  </script>
+  <style>
+    html {
+      min-height: 100%;
+      background-color: #f8f6f0;
+      color-scheme: light;
+    }
+
+    html.dark-mode,
+    html.dark-mode body {
+      background-color: #121316;
+      color-scheme: dark;
+    }
+  </style>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <script>
-    try {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-    } catch {
-      // Theme storage may be unavailable in private browsing.
+    if (document.documentElement.classList.contains('dark-mode')) {
+      document.body.classList.add('dark-mode');
     }
   </script>
   <div class="page home-page">
@@ -111,39 +129,34 @@
             </div>
           </section>
 
-          <section class="board-panel" id="chapter-map">
-            <div class="board-scene">
-              <div class="board-frame">
-                <div class="board-top">
-                  <span class="board-kicker">Course Map</span>
-                  <span class="board-live">LIVE</span>
-                </div>
-
-                <div class="chess-board">
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-                  <span class="square white-piece">♙</span>
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                  <span class="square dark"></span>
-                  <span class="square light"></span>
-                </div>
-
-                <div class="board-footer">
-                  <span class="lesson-tag">01 / Introduction</span>
-                  <span class="lesson-tag">02 / Pieces</span>
-                  <span class="lesson-tag">03 / Notation</span>
-                </div>
+          <section class="board-panel chapter-feature-panel home-path-panel" id="chapter-map" aria-labelledby="home-path-title">
+            <div class="chapter-feature-content">
+              <span class="chapter-feature-kicker">Your learning path</span>
+              <h2 class="chapter-feature-title" id="home-path-title">Three steps to chess</h2>
+              <p class="chapter-feature-intro">Follow the chapters in order, from the game’s origins to reading moves.</p>
+              <ol class="chapter-feature-list home-path-list">
+                <li>
+                  <span class="chapter-feature-token home-path-number">01</span>
+                  <span>
+                    <a class="chapter-feature-label home-path-link" href="chapters/ch1.html">Introduction</a>
+                    <span class="chapter-feature-detail">Discover how chess began and spread.</span>
+                  </span>
+                </li>
+                <li>
+                  <span class="chapter-feature-token home-path-number">02</span>
+                  <span>
+                    <a class="chapter-feature-label home-path-link" href="chapters/ch2.html">The Pieces</a>
+                    <span class="chapter-feature-detail">Learn how each piece moves and works.</span>
+                  </span>
+                </li>
+                <li>
+                  <span class="chapter-feature-token home-path-number">03</span>
+                  <span>
+                    <a class="chapter-feature-label home-path-link" href="chapters/ch3.html">Notation</a>
+                    <span class="chapter-feature-detail">Read and record moves with confidence.</span>
+                  </span>
+                </li>
+              </ol>
               </div>
             </div>
           </section>
@@ -162,6 +175,7 @@
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', isDark);
         try {
           localStorage.setItem('theme', isDark ? 'dark' : 'light');
         } catch {
