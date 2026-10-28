@@ -14,15 +14,3 @@ An interactive, beginner-friendly web guide designed to help players learn chess
 
 ---
 
-## 📂 Project Structure
-
-```text
-├── index.html # Main landing page
-├── style.css # Stylesheet for home page
-├── sitemap.xml # Search engine indexing map
-├── robots.txt # Search crawler permissions
-└── chapters/ # Chapter lessons
-    ├── ch1.html
-    ├── ch2.html
-    └── ch3.html
-
