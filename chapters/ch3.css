@@ -200,7 +200,7 @@ body.dark-mode .chapter-card-content .chapter-previous-link {
 }
 
 @media screen and (max-width: 700px) {
-  .chapter-content-area { padding-top: 72px; }
+  .chapter-content-area { padding-top: 88px; }
   .chapter-title { font-size: clamp(2.4rem, 12vw, 3.2rem); }
   .chapter-hero .hero-copy, .chapter-card { padding: 20px; }
   .chapter-links { flex-direction: column; align-items: stretch; }
