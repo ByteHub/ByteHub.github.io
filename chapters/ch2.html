@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch {
+      // Theme storage may be unavailable in private browsing.
+    }
+  </script>
+  <style>
+    html {
+      min-height: 100%;
+      background-color: #f8f6f0;
+      color-scheme: light;
+    }
+
+    html.dark-mode,
+    html.dark-mode body {
+      background-color: #121316;
+      color-scheme: dark;
+    }
+  </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
 <script>
@@ -17,6 +39,11 @@
   <link rel="stylesheet" href="ch2.css">
 </head>
 <body>
+  <script>
+    if (document.documentElement.classList.contains('dark-mode')) {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
   <div class="page chapter-page">
     <header class="site-header">
       <div class="header-row">
@@ -214,14 +241,15 @@
       const toggleBtn = document.getElementById('theme-toggle');
       if (!toggleBtn) return;
 
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark-mode', isDark);
+        try {
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        } catch {
+          // Keep the current-page theme even if storage is unavailable.
+        }
       });
     });
   </script>
