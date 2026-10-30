@@ -353,7 +353,7 @@ body.dark-mode .mini-list {
 
 @media screen and (max-width: 700px) {
   .chapter-content-area {
-    padding-top: 72px;
+    padding-top: 88px;
   }
 
   .chapter-title {
@@ -382,4 +382,3 @@ body.dark-mode .mini-list {
     grid-template-columns: 1fr;
   }
 }
-
