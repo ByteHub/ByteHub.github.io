@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chess-O-Pedia | Chapter 4: Tactics</title>
+	<meta name="description" content="Learn thirteen practical chess tactics, from forks and pins to deflection and zwischenzug.">
+	<script>
+		try {
+			if (localStorage.getItem('theme') === 'dark') {
+				document.documentElement.classList.add('dark-mode');
+			}
+		} catch {
+			// Theme storage may be unavailable in private browsing.
+		}
+	</script>
+	<style>
+		html {
+			min-height: 100%;
+			background-color: #f8f6f0;
+			color-scheme: light;
+		}
+
+		html.dark-mode,
+		html.dark-mode body {
+			background-color: #121316;
+			color-scheme: dark;
+		}
+	</style>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="ch4.css">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { window.dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-ZQ93NX8W6J');
+	</script>
+</head>
+<body>
+	<script>
+		if (document.documentElement.classList.contains('dark-mode')) {
+			document.body.classList.add('dark-mode');
+		}
+	</script>
+	<div class="page chapter-page">
+		<header class="site-header">
+			<div class="header-row">
+				<nav class="main-nav" aria-label="Main navigation">
+					<div class="menu-toggle">
+						<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+						<label for="menu-toggle" class="hamburger" aria-label="Open menu">
+							<span></span><span></span><span></span>
+						</label>
+						<div class="menu-panel">
+							<div class="menu-brand">
+								<span class="menu-brand-glyph">&#9823;</span>
+								<span class="menu-brand-text">Chess-O-Pedia</span>
+							</div>
+							<ul class="menu-links">
+								<li><a href="../index.html"><span class="menu-index home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span class="menu-label">Home</span></a></li>
+								<li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+								<li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+								<li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+							</ul>
+							<div class="menu-footer">
+								<span class="menu-footer-icon">&#10022;</span>
+								<span class="menu-footer-text">Explore Chapters</span>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+				<a class="top-title" href="../index.html" aria-label="Chess-O-Pedia">
+					<span class="top-title-text">Chess-O-Pedia</span>
+				</a>
+
+				<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/>
+					</svg>
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+					</svg>
+				</button>
+			</div>
+		</header>
+
+		<main class="content-area chapter-content-area">
+			<section class="hero chapter-hero">
+				<div class="hero-grid chapter-grid">
+					<section class="hero-copy">
+						<span class="kicker">Chapter 04</span>
+						<h1 class="main-heading chapter-title">Chess Tactics</h1>
+						<p class="lead-text">Tactics are carefully timed moves that create an advantage. Learn to spot threats, exploit loose defenses, and turn difficult positions into chances to win.</p>
+
+						<div class="instruction-strip">
+							<span class="instruction-title">How this chapter helps</span>
+							<span class="instruction-line">Recognize common tactical patterns.</span>
+							<span class="instruction-line">Find forcing moves and exposed pieces.</span>
+							<span class="instruction-line">Turn a threat into a concrete gain.</span>
+						</div>
+
+						<div class="controls-guide">
+							<span class="guide-label">Controls</span>
+							<div class="control-pills">
+								<span class="control-pill"><span class="control-icon">&#9776;</span><span class="control-copy">Menu</span></span>
+								<span class="control-pill"><span class="control-icon">&#9788;</span><span class="control-copy">Theme</span></span>
+							</div>
+						</div>
+
+						<div class="hero-actions">
+							<a class="primary-button" href="ch3.html">Previous Chapter</a>
+							<a class="secondary-button" href="../index.html">Home</a>
+						</div>
+					</section>
+
+					<section class="board-panel chapter-feature-panel" aria-labelledby="tactics-overview-title">
+						<div class="chapter-feature-content">
+							<span class="chapter-feature-kicker">Tactics at a glance</span>
+							<h2 class="chapter-feature-title" id="tactics-overview-title">Four tactical families</h2>
+							<p class="chapter-feature-intro">Look for forcing moves, loose defenders, and lines that can be opened.</p>
+							<ol class="chapter-feature-list tactics-overview">
+								<li><span class="chapter-feature-token">01</span><span><a class="chapter-feature-label tactics-overview-link" href="#forcing-moves">Forcing moves</a><span class="chapter-feature-detail">Fork, pin, skewer</span></span></li>
+								<li><span class="chapter-feature-token">02</span><span><a class="chapter-feature-label tactics-overview-link" href="#open-lines">Open lines</a><span class="chapter-feature-detail">Discovered attack, check, double check</span></span></li>
+								<li><span class="chapter-feature-token">03</span><span><a class="chapter-feature-label tactics-overview-link" href="#manipulation">Manipulation</a><span class="chapter-feature-detail">Deflection, decoy, interference, overload</span></span></li>
+								<li><span class="chapter-feature-token">04</span><span><a class="chapter-feature-label tactics-overview-link" href="#space-and-timing">Space and timing</a><span class="chapter-feature-detail">Clearance, windmill, zwischenzug</span></span></li>
+							</ol>
+						</div>
+					</section>
+				</div>
+
+				<article class="chapter-card">
+					<div class="chapter-card-header">
+						<span class="chapter-card-number">04</span>
+						<span class="chapter-card-title">A Field Guide to Tactics</span>
+					</div>
+
+					<div class="chapter-card-content tactics-content">
+						<p>A tactic is a short sequence of moves that uses a concrete threat to gain material, improve a position, or deliver checkmate. Many tactics rely on forcing the opponent to respond before they can carry out their own plan.</p>
+
+						<section class="tactics-group" id="forcing-moves">
+							<h3>Forcing Moves</h3>
+							<section class="tactic-item" id="fork">
+								<h4>1. The Fork</h4>
+								<p>A single piece attacks two or more targets at the same time.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The opponent usually has time to save only one target, leaving another vulnerable. Knights and pawns often deliver surprising forks.</p>
+							</section>
+							<section class="tactic-item" id="pin">
+								<h4>2. The Pin</h4>
+								<p>An attacking piece threatens a target that cannot move without exposing a more valuable piece behind it.</p>
+								<p class="tactic-note"><strong>Absolute pin:</strong> The king is behind the pinned piece, so moving it is illegal. <strong>Relative pin:</strong> A valuable piece, such as the queen, is behind it; moving is legal but may lose material.</p>
+							</section>
+							<section class="tactic-item" id="skewer">
+								<h4>3. The Skewer</h4>
+								<p>Sometimes called a reversed pin, a skewer attacks a valuable piece with a less valuable target behind it.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The valuable piece must move out of danger, exposing the piece behind it to capture.</p>
+							</section>
+						</section>
+
+						<section class="tactics-group" id="open-lines">
+							<h3>Creating and Exploiting Open Lines</h3>
+							<section class="tactic-item" id="discovered-attack">
+								<h4>4. Discovered Attack</h4>
+								<p>A piece moves out of the way and reveals an attack by a piece behind it.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The moving piece can create a separate threat while the newly uncovered piece attacks its target.</p>
+							</section>
+							<section class="tactic-item" id="discovered-check">
+								<h4>5. Discovered Check</h4>
+								<p>A discovered attack that opens a line of attack directly onto the opposing king.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The opponent must answer the check immediately, giving the moving piece time to create or carry out another threat.</p>
+							</section>
+							<section class="tactic-item" id="double-check">
+								<h4>6. Double Check</h4>
+								<p>Both the moving piece and the piece it uncovers give check at the same time.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The king is checked along two lines, so blocking or capturing one attacker cannot stop both. The king must move.</p>
+							</section>
+						</section>
+
+						<section class="tactics-group" id="manipulation">
+							<h3>Manipulation Tactics</h3>
+							<section class="tactic-item" id="deflection">
+								<h4>7. Deflection</h4>
+								<p>A move forces a defending piece away from a square or duty it needs to protect.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> A threat or sacrifice distracts the defender and leaves an important target unprotected.</p>
+							</section>
+							<section class="tactic-item" id="decoy">
+								<h4>8. Decoy</h4>
+								<p>A move lures an opposing piece onto a square where it becomes vulnerable.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> Drawing a piece onto a specific square can set up a fork, a pin, or a mating attack.</p>
+							</section>
+							<section class="tactic-item" id="interference">
+								<h4>9. Interference</h4>
+								<p>A piece is placed between a defending piece and the target it protects.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> Breaking the defensive line disrupts coordination and can leave the target exposed.</p>
+							</section>
+							<section class="tactic-item" id="overloading">
+								<h4>10. Overloading</h4>
+								<p>A defender is responsible for protecting more than one important target.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> Attacking one target forces the defender to choose which duty to abandon.</p>
+							</section>
+						</section>
+
+						<section class="tactics-group" id="space-and-timing">
+							<h3>Structural and Timing Tactics</h3>
+							<section class="tactic-item" id="clearance-sacrifice">
+								<h4>11. Clearance Sacrifice</h4>
+								<p>A piece is sacrificed to clear a square, file, or diagonal for another piece.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> Removing your own blocker can open the path for a decisive attack.</p>
+							</section>
+							<section class="tactic-item" id="windmill">
+								<h4>12. The Windmill (Seesaw)</h4>
+								<p>A rare combination of repeated discovered checks and other checks, often making the king move back and forth.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> The repeated checks create time to win material while the opposing king is forced to respond.</p>
+							</section>
+							<section class="tactic-item" id="zwischenzug">
+								<h4>13. Zwischenzug (In-Between Move)</h4>
+								<p>An unexpected forcing move is inserted before an expected reply, such as recapturing a piece.</p>
+								<p class="tactic-note"><strong>Why it works:</strong> A check or stronger threat changes the order of the exchange and can improve its final outcome.</p>
+							</section>
+						</section>
+
+						<div class="chapter-links">
+							<a href="ch3.html" class="chapter-previous-link">Previous Chapter</a>
+							<a href="../index.html" class="chapter-home-link">Back to Home</a>
+						</div>
+					</div>
+				</article>
+			</section>
+		</main>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const toggleBtn = document.getElementById('theme-toggle');
+			if (!toggleBtn) return;
+
+			toggleBtn.addEventListener('click', () => {
+				document.body.classList.toggle('dark-mode');
+				const isDark = document.body.classList.contains('dark-mode');
+				document.documentElement.classList.toggle('dark-mode', isDark);
+				try {
+					localStorage.setItem('theme', isDark ? 'dark' : 'light');
+				} catch {
+					// Keep the current-page theme even if storage is unavailable.
+				}
+			});
+		});
+	</script>
+	<script>
+		(() => {
+			const menuCheckbox = document.querySelector('.menu-checkbox');
+			if (!menuCheckbox) return;
+
+			let savedScrollPosition = 0;
+
+			const updateScrollLock = () => {
+				if (menuCheckbox.checked) {
+					savedScrollPosition = window.scrollY;
+					document.body.style.position = 'fixed';
+					document.body.style.top = `-${savedScrollPosition}px`;
+					document.body.style.left = '0';
+					document.body.style.right = '0';
+					document.body.style.width = '100%';
+					document.body.style.overflow = 'hidden';
+					return;
+				}
+
+				document.body.style.position = '';
+				document.body.style.top = '';
+				document.body.style.left = '';
+				document.body.style.right = '';
+				document.body.style.width = '';
+				document.body.style.overflow = '';
+				window.scrollTo(0, savedScrollPosition);
+			};
+
+			menuCheckbox.addEventListener('change', updateScrollLock);
+			document.addEventListener('keydown', event => {
+				if (event.key === 'Escape' && menuCheckbox.checked) {
+					menuCheckbox.checked = false;
+					updateScrollLock();
+				}
+			});
+		})();
+	</script>
+</body>
+</html>
