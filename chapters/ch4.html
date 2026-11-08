@@ -29,6 +29,9 @@
 	</style>
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="ch4.css">
+	<link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+		integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+		crossorigin="anonymous">
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -226,6 +229,97 @@
 						</div>
 					</div>
 				</article>
+
+				<article class="chapter-card chapter-quiz" data-chapter-quiz aria-labelledby="chapter-quiz-title">
+					<div class="chapter-card-header">
+						<span class="chapter-card-number">04</span>
+						<h2 class="chapter-card-title" id="chapter-quiz-title">Chapter 4 knowledge check</h2>
+					</div>
+					<div class="chapter-card-content">
+						<p class="quiz-intro">See if you can recognize the tactical ideas from this chapter. Each hint offers a clue; you still have to choose the answer.</p>
+						<p class="quiz-progress" data-quiz-progress role="status" aria-live="polite"></p>
+						<p class="quiz-focus" data-quiz-focus role="status" aria-live="polite"></p>
+
+						<section class="quiz-question" data-quiz-question data-answer="1"
+							data-hint1="Revisit the forcing moves section of the chapter."
+							data-hint2="Look for a pattern that can be delivered by different kinds of pieces."
+							data-explanation="A fork attacks two or more targets at once, forcing the opponent to deal with competing threats.">
+							<h3 id="ch4-question-1">1. Which tactic attacks two or more targets at the same time?</h3>
+							<fieldset class="quiz-options" aria-labelledby="ch4-question-1">
+								<label class="quiz-option"><input type="radio" name="ch4-question-1" value="0"> Pin</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-1" value="1"> Fork</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-1" value="2"> Clearance sacrifice</label>
+							</fieldset>
+							<div class="quiz-question-actions">
+								<button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+								<button type="button" data-quiz-check>Check answer</button>
+							</div>
+							<p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+							<p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+						</section>
+
+						<section class="quiz-question" data-quiz-question data-answer="0"
+							data-hint1="Compare the king and other valuable pieces in the pin examples."
+							data-hint2="Ask what could happen if the threatened piece moved away."
+							data-explanation="In an absolute pin, moving the pinned piece would expose its king, making that move illegal.">
+							<h3 id="ch4-question-2">2. What makes a pin absolute?</h3>
+							<fieldset class="quiz-options" aria-labelledby="ch4-question-2">
+								<label class="quiz-option"><input type="radio" name="ch4-question-2" value="0"> The pinned piece cannot legally move because the king is behind it</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-2" value="1"> The pinned piece is protecting two targets at once</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-2" value="2"> The attacker is checking along two lines</label>
+							</fieldset>
+							<div class="quiz-question-actions">
+								<button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+								<button type="button" data-quiz-check>Check answer</button>
+							</div>
+							<p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+							<p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+						</section>
+
+						<section class="quiz-question" data-quiz-question data-answer="2"
+							data-hint1="Review the section about attacks revealed when a piece moves."
+							data-hint2="Consider how many attack lines are active at the same time."
+							data-explanation="A double check gives check from both the moved piece and the uncovered piece, so the king has to move.">
+							<h3 id="ch4-question-3">3. When a king is in double check, what is the only legal response?</h3>
+							<fieldset class="quiz-options" aria-labelledby="ch4-question-3">
+								<label class="quiz-option"><input type="radio" name="ch4-question-3" value="0"> Capture either checking piece</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-3" value="1"> Block one line of attack</label>
+								<label class="quiz-option"><input type="radio" name="ch4-question-3" value="2"> Move the king</label>
+							</fieldset>
+							<div class="quiz-question-actions">
+								<button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+								<button type="button" data-quiz-check>Check answer</button>
+							</div>
+							<p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+							<p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+						</section>
+
+						<section class="board-challenge" data-board-puzzle
+							data-position="r3k3/8/8/1N6/8/8/8/7K w - - 0 1"
+							data-from="b5"
+							data-to="c7"
+							data-board-label="Interactive chessboard: find the knight fork that checks the king and attacks the rook."
+							data-initial-message="White to move. Find a knight move that checks the king and attacks another piece."
+							data-success-message="Correct! This is a knight fork: the king is checked while the rook is attacked."
+							data-board-hint1="Look for a move that creates two threats at once."
+							data-board-hint2="One of the threats should force the king to respond."
+							aria-labelledby="ch4-board-title">
+							<span class="chapter-feature-kicker">Board challenge</span>
+							<h3 id="ch4-board-title">Find the knight fork</h3>
+							<p>White to move. Can you check the black king and attack another piece with the same knight move?</p>
+							<div class="chapter-board" data-chessboard></div>
+							<p class="board-status" data-board-status role="status" aria-live="polite">White to move. Find a knight move that checks the king and attacks another piece.</p>
+							<div class="board-controls">
+								<button type="button" data-board-hint>Hint</button>
+								<button type="button" data-board-reset>Reset board</button>
+							</div>
+							<p class="board-hint" data-board-hint-text aria-live="polite"></p>
+						</section>
+
+						<p class="quiz-summary" data-quiz-summary role="status" aria-live="polite"></p>
+						<button class="quiz-reset" type="button" data-quiz-reset>Try again</button>
+					</div>
+				</article>
 			</section>
 		</main>
 	</div>
@@ -283,6 +377,221 @@
 				}
 			});
 		})();
+	</script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+		integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+		crossorigin="anonymous"></script>
+	<script>
+		document.querySelectorAll('[data-chapter-quiz]').forEach(quiz => {
+			const questions = [...quiz.querySelectorAll('[data-quiz-question]')];
+			const progress = quiz.querySelector('[data-quiz-progress]');
+			const focus = quiz.querySelector('[data-quiz-focus]');
+			const summary = quiz.querySelector('[data-quiz-summary]');
+			const resetButton = quiz.querySelector('[data-quiz-reset]');
+			const completedQuestions = new Set();
+			const hintCounts = new Map();
+
+			const updateProgress = () => {
+				const solved = completedQuestions.size;
+				const remaining = questions.length - solved;
+				progress.textContent = `Correct answers: ${solved} of ${questions.length}`;
+
+				if (solved === questions.length) {
+					focus.textContent = 'Point of focus: You solved every trivia question correctly. Excellent recall across this chapter.';
+				} else if (solved > 0) {
+					focus.textContent = `Point of focus: You solved ${solved} trivia question${solved === 1 ? '' : 's'}; ${remaining} still need practice.`;
+				} else {
+					focus.textContent = 'Point of focus: No trivia questions solved yet. Choose one to try, then use the lesson to build confidence.';
+				}
+			};
+
+			questions.forEach(question => {
+				const hintButton = question.querySelector('[data-quiz-hint]');
+				const checkButton = question.querySelector('[data-quiz-check]');
+				const hintText = question.querySelector('[data-quiz-hint-text]');
+				const feedback = question.querySelector('[data-quiz-feedback]');
+				const options = [...question.querySelectorAll('input[type="radio"]')];
+
+				options.forEach(option => {
+					option.addEventListener('change', () => {
+						completedQuestions.delete(question);
+						question.classList.remove('is-correct');
+						feedback.textContent = '';
+						feedback.removeAttribute('data-state');
+						summary.textContent = '';
+						updateProgress();
+					});
+				});
+
+				hintButton.addEventListener('click', () => {
+					const hintsUsed = hintCounts.get(question) || 0;
+					const nextHint = hintsUsed + 1;
+					const hint = question.dataset[`hint${nextHint}`];
+
+					if (!hint) {
+						hintText.textContent = 'That is all the hints for this question. Take another look at the lesson and try a choice.';
+						return;
+					}
+
+					hintCounts.set(question, nextHint);
+					hintText.textContent = hint;
+					hintButton.textContent = nextHint < 2 ? 'Show another hint' : 'Hints used';
+					hintButton.disabled = nextHint >= 2;
+				});
+
+				checkButton.addEventListener('click', () => {
+					const selectedOption = options.find(option => option.checked);
+
+					if (!selectedOption) {
+						feedback.textContent = 'Choose an option before checking your answer.';
+						feedback.dataset.state = 'try-again';
+						return;
+					}
+
+					if (Number(selectedOption.value) !== Number(question.dataset.answer)) {
+						completedQuestions.delete(question);
+						question.classList.remove('is-correct');
+						summary.textContent = '';
+						feedback.textContent = 'Not quite. Revisit the lesson or use a hint, then try another choice.';
+						feedback.dataset.state = 'try-again';
+						updateProgress();
+						return;
+					}
+
+					completedQuestions.add(question);
+					question.classList.add('is-correct');
+					feedback.textContent = `Correct. ${question.dataset.explanation}`;
+					feedback.dataset.state = 'correct';
+					updateProgress();
+
+					if (completedQuestions.size === questions.length) {
+						summary.textContent = 'Quiz complete! You answered every question correctly.';
+					}
+				});
+			});
+
+			resetButton.addEventListener('click', () => {
+				completedQuestions.clear();
+				hintCounts.clear();
+				summary.textContent = '';
+
+				questions.forEach(question => {
+					question.classList.remove('is-correct');
+					question.querySelectorAll('input[type="radio"]').forEach(option => {
+						option.checked = false;
+						option.disabled = false;
+					});
+					question.querySelector('[data-quiz-hint-text]').textContent = '';
+					question.querySelector('[data-quiz-feedback]').textContent = '';
+					question.querySelector('[data-quiz-feedback]').removeAttribute('data-state');
+					question.querySelector('[data-quiz-hint]').disabled = false;
+					question.querySelector('[data-quiz-hint]').textContent = 'Hint';
+					question.querySelector('[data-quiz-check]').disabled = false;
+				});
+
+				updateProgress();
+			});
+
+			updateProgress();
+
+			const puzzle = quiz.querySelector('[data-board-puzzle]');
+			if (!puzzle) return;
+
+			const boardElement = puzzle.querySelector('[data-chessboard]');
+			const status = puzzle.querySelector('[data-board-status]');
+			const hintButton = puzzle.querySelector('[data-board-hint]');
+			const resetBoardButton = puzzle.querySelector('[data-board-reset]');
+			const initialPosition = puzzle.dataset.position;
+			const fromSquare = puzzle.dataset.from;
+			const targetSquare = puzzle.dataset.to;
+			const acceptsAnyLegalMove = puzzle.dataset.acceptAnyLegalMove === 'true';
+			let board;
+			let game;
+			let solved = false;
+			let hintsUsed = 0;
+
+			const setBoardStatus = (message, state = 'default') => {
+				status.textContent = message;
+				status.dataset.state = state;
+			};
+
+			const startBoardPuzzle = async () => {
+				try {
+					const { Chess } = await import('https://esm.sh/chess.js@1.4.0');
+					if (typeof Chessboard !== 'function') {
+						throw new Error('The chessboard library did not load.');
+					}
+
+					game = new Chess(initialPosition);
+					boardElement.setAttribute('aria-label', puzzle.dataset.boardLabel);
+					board = Chessboard(boardElement, {
+						position: initialPosition,
+						draggable: true,
+						pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+						onDragStart: (source, piece) => {
+							return !solved && source === fromSquare && piece.startsWith('w');
+						},
+						onDrop: (source, target) => {
+							const move = game.moves({ verbose: true }).find(candidate => (
+								candidate.from === source && candidate.to === target
+							));
+
+							if (!move) {
+								setBoardStatus('That is not a legal move for this piece. Try another square.', 'error');
+								return 'snapback';
+							}
+
+							if (!acceptsAnyLegalMove && (source !== fromSquare || target !== targetSquare)) {
+								setBoardStatus('That move is legal, but it does not meet the challenge. Try another move.', 'error');
+								return 'snapback';
+							}
+
+							const playedMove = game.move({ from: source, to: target });
+							solved = true;
+							if (acceptsAnyLegalMove) {
+								setBoardStatus(`Good move! ${playedMove.san} is legal. The knight moved in an L-shape.`, 'success');
+							} else {
+								setBoardStatus(puzzle.dataset.successMessage, 'success');
+							}
+							hintButton.disabled = true;
+						},
+						onSnapEnd: () => board.position(game.fen())
+					});
+
+					hintButton.addEventListener('click', () => {
+						const nextHint = hintsUsed + 1;
+						const hint = puzzle.dataset[`boardHint${nextHint}`];
+						if (!hint) return;
+
+						hintsUsed = nextHint;
+						puzzle.querySelector('[data-board-hint-text]').textContent = hint;
+						hintButton.textContent = nextHint < 2 ? 'Show another hint' : 'Hints used';
+						hintButton.disabled = nextHint >= 2;
+					});
+
+					resetBoardButton.addEventListener('click', () => {
+						game.load(initialPosition);
+						solved = false;
+						hintsUsed = 0;
+						board.position(initialPosition);
+						hintButton.disabled = false;
+						hintButton.textContent = 'Hint';
+						puzzle.querySelector('[data-board-hint-text]').textContent = '';
+						setBoardStatus(puzzle.dataset.initialMessage);
+					});
+
+					window.addEventListener('resize', () => board.resize());
+				} catch (error) {
+					console.error('Unable to initialize the chapter chessboard.', error);
+					setBoardStatus('The chessboard could not load. Check your connection and refresh to try again.', 'error');
+					hintButton.disabled = true;
+					resetBoardButton.disabled = true;
+				}
+			};
+
+			startBoardPuzzle();
+		});
 	</script>
 </body>
 </html>
