@@ -991,6 +991,18 @@ body.dark-mode .theme-toggle .icon-moon {
   margin: 0 auto;
 }
 
+.chapter-quiz .chapter-board.ios-touch-board {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.chapter-quiz .chapter-board.ios-touch-board img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .chapter-quiz .chapter-board .white-1e1d7 {
   background-color: var(--chess-light);
 }
