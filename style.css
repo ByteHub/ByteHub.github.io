@@ -504,7 +504,7 @@ body.dark-mode .theme-toggle .icon-moon {
 .main-heading {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(3.5rem, 6vw, 4.6rem);
-  line-height: 0.94;
+  line-height: 1.15;
   color: var(--text-color);
   margin-top: 12px;
   text-shadow: 0 3px 1px var(--shadow);
@@ -957,6 +957,7 @@ body.dark-mode .theme-toggle .icon-moon {
 
 .chapter-quiz .board-challenge {
   display: grid;
+  min-width: 0;
   gap: 12px;
   padding: 18px;
   border: 1px solid var(--line-color);
@@ -986,6 +987,7 @@ body.dark-mode .theme-toggle .icon-moon {
 
 .chapter-quiz .chapter-board {
   width: min(100%, 440px);
+  min-width: 0;
   margin: 0 auto;
 }
 
