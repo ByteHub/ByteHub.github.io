@@ -35,8 +35,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chess-O-Pedia | Chapter 1</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ch1.css">
+  <link rel="stylesheet" href="chapter-quiz.css">
 </head>
 <body>
   <script>
@@ -178,7 +179,7 @@
             </p>
 
             <figure class="chapter-figure">
-              <img src="../images/Ch1.1.png" alt="Chess">
+              <img src="../images%20for%20ch1.html/chess-development.jpg" alt="Chess">
               <figcaption>Chess</figcaption>
             </figure>
 
@@ -196,12 +197,12 @@
             </ul>
 
             <figure class="chapter-figure">
-              <img src="../images/Ch1.2.png" alt="Ancient Chess">
+              <img src="../images%20for%20ch1.html/ancient-chess.jpg" alt="Ancient Chess">
               <figcaption>Ancient Chess</figcaption>
             </figure>
 
             <figure class="chapter-figure">
-              <img src="../images/Ch1.3.png" alt="Modern Chess">
+              <img src="../images%20for%20ch1.html/modern-chess.jpg" alt="Modern Chess">
               <figcaption>Modern Chess</figcaption>
             </figure>
 
@@ -225,6 +226,75 @@
             </div>
           </div>
         </article>
+
+        <article class="chapter-card chapter-quiz" data-chapter-quiz aria-labelledby="chapter-quiz-title">
+          <div class="chapter-card-header">
+            <span class="chapter-card-number">01</span>
+            <h2 class="chapter-card-title" id="chapter-quiz-title">Chapter 1 knowledge check</h2>
+          </div>
+          <div class="chapter-card-content">
+            <p class="quiz-intro">Test what you remember about the origins and journey of chess. Hints offer clues, not answers.</p>
+            <p class="quiz-progress" data-quiz-progress role="status" aria-live="polite"></p>
+            <p class="quiz-focus" data-quiz-focus role="status" aria-live="polite"></p>
+
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="Revisit the opening paragraph and the first event in the timeline."
+              data-hint2="The passage connects the early game's pieces to four divisions of an army."
+              data-explanation="Chaturanga developed in Northern India in the 6th century CE.">
+              <h3 id="ch1-question-1">1. What was the early Indian game that preceded modern chess?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch1-question-1">
+                <label class="quiz-option"><input type="radio" name="ch1-question-1" value="0"> Shatranj</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-1" value="1"> Chaturanga</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-1" value="2"> Chaturaji</label>
+              </fieldset>
+              <div class="quiz-question-actions">
+                <button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+                <button type="button" data-quiz-check>Check answer</button>
+              </div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-question" data-quiz-question data-answer="2"
+              data-hint1="Follow the route of the game as it travels west from India."
+              data-hint2="Focus on the place listed at the second step of the timeline."
+              data-explanation="Chess spread from India to Persia, where it became known as Shatranj.">
+              <h3 id="ch1-question-2">2. Where did the game become known as Shatranj?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch1-question-2">
+                <label class="quiz-option"><input type="radio" name="ch1-question-2" value="0"> Northern Africa</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-2" value="1"> Europe</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-2" value="2"> Persia</label>
+              </fieldset>
+              <div class="quiz-question-actions">
+                <button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+                <button type="button" data-quiz-check>Check answer</button>
+              </div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-question" data-quiz-question data-answer="0"
+              data-hint1="Think about what a player does before choosing a move."
+              data-hint2="It concerns judging possible outcomes, rather than memorizing positions or maintaining focus."
+              data-explanation="Considering situations and planning several moves ahead exercises critical and analytical thinking.">
+              <h3 id="ch1-question-3">3. Which skill is practiced when a player analyzes positions and plans several moves ahead?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch1-question-3">
+                <label class="quiz-option"><input type="radio" name="ch1-question-3" value="0"> Critical thinking</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-3" value="1"> Concentration</label>
+                <label class="quiz-option"><input type="radio" name="ch1-question-3" value="2"> Memory</label>
+              </fieldset>
+              <div class="quiz-question-actions">
+                <button class="quiz-hint" type="button" data-quiz-hint>Hint</button>
+                <button type="button" data-quiz-check>Check answer</button>
+              </div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <p class="quiz-summary" data-quiz-summary role="status" aria-live="polite"></p>
+            <button class="quiz-reset" type="button" data-quiz-reset>Try again</button>
+          </div>
+        </article>
       </section>
     </main>
   </div>
@@ -244,7 +314,7 @@
           // Keep the current-page theme even if storage is unavailable.
         }
       });
-    });P
+    });
   </script>
   <script>
     (() => {
@@ -283,6 +353,120 @@
         }
       });
     })();
+  </script>
+  <script>
+    document.querySelectorAll('[data-chapter-quiz]').forEach(quiz => {
+      const questions = [...quiz.querySelectorAll('[data-quiz-question]')];
+      const progress = quiz.querySelector('[data-quiz-progress]');
+      const focus = quiz.querySelector('[data-quiz-focus]');
+      const summary = quiz.querySelector('[data-quiz-summary]');
+      const resetButton = quiz.querySelector('[data-quiz-reset]');
+      const completedQuestions = new Set();
+      const hintCounts = new Map();
+
+      const updateProgress = () => {
+        const solved = completedQuestions.size;
+        const remaining = questions.length - solved;
+        progress.textContent = `Correct answers: ${solved} of ${questions.length}`;
+
+        if (solved === questions.length) {
+          focus.textContent = 'Point of focus: You solved every trivia question correctly. Excellent recall across this chapter.';
+        } else if (solved > 0) {
+          focus.textContent = `Point of focus: You solved ${solved} trivia question${solved === 1 ? '' : 's'}; ${remaining} still need practice.`;
+        } else {
+          focus.textContent = 'Point of focus: No trivia questions solved yet. Choose one to try, then use the lesson to build confidence.';
+        }
+      };
+
+      questions.forEach(question => {
+        const hintButton = question.querySelector('[data-quiz-hint]');
+        const checkButton = question.querySelector('[data-quiz-check]');
+        const hintText = question.querySelector('[data-quiz-hint-text]');
+        const feedback = question.querySelector('[data-quiz-feedback]');
+        const options = [...question.querySelectorAll('input[type="radio"]')];
+
+        options.forEach(option => {
+          option.addEventListener('change', () => {
+            completedQuestions.delete(question);
+            question.classList.remove('is-correct');
+            feedback.textContent = '';
+            feedback.removeAttribute('data-state');
+            summary.textContent = '';
+            updateProgress();
+          });
+        });
+
+        hintButton.addEventListener('click', () => {
+          const hintsUsed = hintCounts.get(question) || 0;
+          const nextHint = hintsUsed + 1;
+          const hint = question.dataset[`hint${nextHint}`];
+
+          if (!hint) {
+            hintText.textContent = 'That is all the hints for this question. Take another look at the lesson and try a choice.';
+            return;
+          }
+
+          hintCounts.set(question, nextHint);
+          hintText.textContent = hint;
+          hintButton.textContent = nextHint < 2 ? 'Show another hint' : 'Hints used';
+          hintButton.disabled = nextHint >= 2;
+        });
+
+        checkButton.addEventListener('click', () => {
+          const selectedOption = options.find(option => option.checked);
+
+          if (!selectedOption) {
+            feedback.textContent = 'Choose an option before checking your answer.';
+            feedback.dataset.state = 'try-again';
+            return;
+          }
+
+          if (Number(selectedOption.value) !== Number(question.dataset.answer)) {
+            completedQuestions.delete(question);
+            question.classList.remove('is-correct');
+            summary.textContent = '';
+            feedback.textContent = 'Not quite. Revisit the lesson or use a hint, then try another choice.';
+            feedback.dataset.state = 'try-again';
+            updateProgress();
+            return;
+          }
+
+          completedQuestions.add(question);
+          question.classList.add('is-correct');
+          feedback.textContent = `Correct. ${question.dataset.explanation}`;
+          feedback.dataset.state = 'correct';
+          updateProgress();
+
+          if (completedQuestions.size === questions.length) {
+            summary.textContent = 'Quiz complete! You answered every question correctly.';
+          }
+        });
+      });
+
+      resetButton.addEventListener('click', () => {
+        completedQuestions.clear();
+        hintCounts.clear();
+        summary.textContent = '';
+
+        questions.forEach(question => {
+          question.classList.remove('is-correct');
+          question.querySelectorAll('input[type="radio"]').forEach(option => {
+            option.checked = false;
+            option.disabled = false;
+          });
+          question.querySelector('[data-quiz-hint-text]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').removeAttribute('data-state');
+          question.querySelector('[data-quiz-hint]').disabled = false;
+          question.querySelector('[data-quiz-hint]').textContent = 'Hint';
+          question.querySelector('[data-quiz-check]').disabled = false;
+        });
+
+        updateProgress();
+      });
+
+      updateProgress();
+    });
   </script>
 </body>
 </html>
