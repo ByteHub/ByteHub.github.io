@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-O-Pedia | Chapter 5: Openings</title>
+  <meta name="description" content="Learn three essential chess opening principles: control the center, develop efficiently, and keep your king safe.">
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
+    } catch {
+      // Theme storage may be unavailable in private browsing.
+    }
+  </script>
+  <style>
+    html { min-height: 100%; background-color: #f8f6f0; color-scheme: light; }
+    html.dark-mode, html.dark-mode body { background-color: #121316; color-scheme: dark; }
+  </style>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="ch5.css">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+    integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+    crossorigin="anonymous">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZQ93NX8W6J');
+  </script>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');
+  </script>
+  <div class="page chapter-page">
+    <header class="site-header">
+      <div class="header-row">
+        <nav class="main-nav" aria-label="Main navigation">
+          <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+            <div class="menu-panel">
+              <div class="menu-brand"><span class="menu-brand-glyph">&#9823;</span><span class="menu-brand-text">Chess-O-Pedia</span></div>
+              <ul class="menu-links">
+                <li><a href="../index.html"><span class="menu-index home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span class="menu-label">Home</span></a></li>
+                <li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+                <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+                <li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+                <li><a href="ch4.html"><span class="menu-index">04</span><span class="menu-label">Tactics</span></a></li>
+              </ul>
+              <div class="menu-footer"><span class="menu-footer-icon">&#10022;</span><span class="menu-footer-text">Explore Chapters</span></div>
+            </div>
+          </div>
+        </nav>
+        <a class="top-title" href="../index.html" aria-label="Chess-O-Pedia"><span class="top-title-text">Chess-O-Pedia</span></a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="18.36"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content-area chapter-content-area">
+      <section class="hero chapter-hero">
+        <div class="hero-grid chapter-grid">
+          <section class="hero-copy">
+            <span class="kicker">Chapter 05</span>
+            <h1 class="main-heading chapter-title">Opening Principles</h1>
+            <p class="lead-text">A strong opening is not about memorizing dozens of moves. Learn to claim central space, bring your pieces into play, and make your king safe.</p>
+            <div class="instruction-strip">
+              <span class="instruction-title">The opening formula</span>
+              <span class="instruction-line">Control the center.</span>
+              <span class="instruction-line">Develop each piece purposefully.</span>
+              <span class="instruction-line">Castle and connect your rooks.</span>
+            </div>
+            <div class="controls-guide">
+              <span class="guide-label">Controls</span>
+              <div class="control-pills">
+                <span class="control-pill"><span class="control-icon">&#9776;</span><span class="control-copy">Menu</span></span>
+                <span class="control-pill"><span class="control-icon">&#9788;</span><span class="control-copy">Theme</span></span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a class="primary-button" href="ch4.html">Previous Chapter</a>
+              <a class="secondary-button" href="../index.html">Home</a>
+            </div>
+          </section>
+
+          <section class="board-panel chapter-feature-panel" aria-labelledby="opening-principles-title">
+            <div class="chapter-feature-content">
+              <span class="chapter-feature-kicker">Opening priorities</span>
+              <h2 class="chapter-feature-title" id="opening-principles-title">Three goals, one plan</h2>
+              <p class="chapter-feature-intro">Use these priorities to guide your early moves instead of making moves without a purpose.</p>
+              <ol class="chapter-feature-list opening-priority-list">
+                <li><span class="chapter-feature-token">01</span><span><span class="chapter-feature-label">Center</span><span class="chapter-feature-detail">Fight for e4, d4, e5, and d5.</span></span></li>
+                <li><span class="chapter-feature-token">02</span><span><span class="chapter-feature-label">Development</span><span class="chapter-feature-detail">Bring knights and bishops out efficiently.</span></span></li>
+                <li><span class="chapter-feature-token">03</span><span><span class="chapter-feature-label">King safety</span><span class="chapter-feature-detail">Castle and connect your rooks.</span></span></li>
+              </ol>
+            </div>
+          </section>
+        </div>
+
+        <article class="chapter-card">
+          <div class="chapter-card-header">
+            <span class="chapter-card-number">05</span>
+            <h2 class="chapter-card-title">The Architecture of Openings</h2>
+          </div>
+          <div class="chapter-card-content opening-lesson">
+            <p>Every good chess opening rests on three practical principles. A move that does not help with one of these goals may still be useful, but it should have a clear reason.</p>
+
+            <section class="opening-principle" id="control-the-center">
+              <span class="opening-principle-number">01</span>
+              <div>
+                <h3>Control the Center</h3>
+                <p>The central squares <strong>e4, d4, e5, and d5</strong> are the high ground of the board. Pieces placed in or controlling the center command more squares, travel across the board faster, and can limit the opponent's space.</p>
+                <h4>How to apply it</h4>
+                <ul>
+                  <li>Claim central space early with a pawn move such as <strong>1.e4</strong> or <strong>1.d4</strong>.</li>
+                  <li>In a hypermodern approach, let the opponent occupy the center while your knights and bishops pressure it from a distance.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="opening-principle" id="develop-efficiently">
+              <span class="opening-principle-number">02</span>
+              <div>
+                <h3>Develop Your Pieces Efficiently</h3>
+                <p>Pawns make space, but active pieces help create plans. Pieces left on their starting squares cannot influence the game.</p>
+                <h4>How to apply it</h4>
+                <ul>
+                  <li><strong>Develop knights and bishops:</strong> bring your minor pieces toward useful squares so they contribute to the fight for the center.</li>
+                  <li><strong>Aim to move each piece once:</strong> avoid moving the same piece repeatedly unless there is a concrete reason, such as meeting a threat.</li>
+                  <li><strong>Keep the queen back at first:</strong> an early queen sortie can let developing pieces attack her while gaining time.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="opening-principle" id="king-safety">
+              <span class="opening-principle-number">03</span>
+              <div>
+                <h3>Secure Your King and Connect the Rooks</h3>
+                <p>A king left in the open center can become a target. Castling usually moves the king to safety and brings a rook closer to the action.</p>
+                <h4>How to apply it</h4>
+                <ul>
+                  <li><strong>Look for a timely castle:</strong> castle when the path is clear and the position makes it safe; there is no fixed move-count deadline.</li>
+                  <li><strong>Protect the pawn shield:</strong> avoid weakening the pawns near your castled king without a concrete reason.</li>
+                  <li><strong>Connect your rooks:</strong> develop the back-rank pieces and move the queen when appropriate so the rooks can support each other.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="opening-checklist" aria-labelledby="opening-checklist-title">
+              <div class="opening-checklist-heading">
+                <span class="chapter-feature-kicker">Before you move</span>
+                <h3 id="opening-checklist-title">The Golden Opening Checklist</h3>
+              </div>
+              <div class="opening-checklist-grid">
+                <div class="opening-checklist-column opening-do">
+                  <h4>Do</h4>
+                  <ul>
+                    <li>Fight for central squares.</li>
+                    <li>Develop knights and bishops.</li>
+                    <li>Castle when it is safe and useful.</li>
+                    <li>Keep your king's shelter in mind.</li>
+                  </ul>
+                </div>
+                <div class="opening-checklist-column opening-avoid">
+                  <h4>Avoid</h4>
+                  <ul>
+                    <li>Moving flank pawns without a clear purpose.</li>
+                    <li>Moving the same piece again and again without need.</li>
+                    <li>Bringing the queen out early just to grab a pawn.</li>
+                    <li>Leaving your king in the center while the position opens.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <p class="opening-note"><strong>Remember:</strong> these are guiding principles, not unbreakable rules. A tactical threat or a specific opponent move can make a different choice best.</p>
+            <div class="chapter-links">
+              <a href="ch4.html" class="chapter-previous-link">Previous Chapter</a>
+              <a href="../index.html" class="chapter-home-link">Back to Home</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-card chapter-quiz" data-chapter-quiz aria-labelledby="chapter-quiz-title">
+          <div class="chapter-card-header">
+            <span class="chapter-card-number">05</span>
+            <h2 class="chapter-card-title" id="chapter-quiz-title">Chapter 5 knowledge check</h2>
+          </div>
+          <div class="chapter-card-content">
+            <p class="quiz-intro">Check your understanding of opening principles. Hints point you back to an idea without giving away the choice.</p>
+            <p class="quiz-progress" data-quiz-progress role="status" aria-live="polite"></p>
+            <p class="quiz-focus" data-quiz-focus role="status" aria-live="polite"></p>
+
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="Think about which part of the board helps your pieces move freely."
+              data-hint2="The key squares include e4, d4, e5, and d5."
+              data-explanation="Central control gives your pieces more routes and helps restrict the opponent's space.">
+              <h3 id="ch5-question-1">1. Why is the center important in the opening?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch5-question-1">
+                <label class="quiz-option"><input type="radio" name="ch5-question-1" value="0"> It lets you move only pawns for the whole game</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-1" value="1"> It helps pieces reach more squares and contest space</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-1" value="2"> It makes castling unnecessary</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-question" data-quiz-question data-answer="0"
+              data-hint1="Consider which pieces are often developed before the queen."
+              data-hint2="An early queen move can give the opponent a chance to develop with tempo."
+              data-explanation="If the queen is attacked by developing pieces, you may have to move it again while your opponent improves their position.">
+              <h3 id="ch5-question-2">2. Why is bringing the queen out very early often inefficient?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch5-question-2">
+                <label class="quiz-option"><input type="radio" name="ch5-question-2" value="0"> The opponent can attack it while developing their pieces</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-2" value="1"> The queen cannot move until a rook has moved</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-2" value="2"> It prevents your pawns from controlling the center</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-question" data-quiz-question data-answer="2"
+              data-hint1="Ask what castling does for the king and a rook."
+              data-hint2="Look for the opening goal that reduces risk to your king."
+              data-explanation="Castling can move the king away from the center and bring a rook toward the center, when the position allows it.">
+              <h3 id="ch5-question-3">3. What is a main benefit of castling in the opening?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch5-question-3">
+                <label class="quiz-option"><input type="radio" name="ch5-question-3" value="0"> It wins a pawn automatically</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-3" value="1"> It develops the queen and both bishops at once</label>
+                <label class="quiz-option"><input type="radio" name="ch5-question-3" value="2"> It can improve king safety and activate a rook</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p>
+              <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="board-challenge" data-board-puzzle
+              data-position="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+              data-from="e2" data-to="e4"
+              data-board-label="Interactive chessboard: make the opening move e4 to claim central space."
+              data-initial-message="White to move. Play 1.e4 to claim space in the center."
+              data-success-message="Correct! 1.e4 stakes a claim in the center and opens lines for development."
+              data-board-hint1="Think about how a pawn move can contest central squares."
+              data-board-hint2="The king's pawn can advance two squares from its starting rank."
+              aria-labelledby="ch5-board-title">
+              <span class="chapter-feature-kicker">Board challenge</span>
+              <h3 id="ch5-board-title">Make a principled first move</h3>
+              <p>Play <strong>1.e4</strong>. Notice how the move claims central space and opens a path for the bishop and queen.</p>
+              <div class="chapter-board" data-chessboard></div>
+              <p class="board-status" data-board-status role="status" aria-live="polite">White to move. Play 1.e4 to claim space in the center.</p>
+              <div class="board-controls"><button type="button" data-board-hint>Hint</button><button type="button" data-board-reset>Reset board</button></div>
+              <p class="board-hint" data-board-hint-text aria-live="polite"></p>
+            </section>
+
+            <p class="quiz-summary" data-quiz-summary role="status" aria-live="polite"></p>
+            <button class="quiz-reset" type="button" data-quiz-reset>Try again</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+    crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('theme-toggle');
+      if (!toggleButton) return;
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', isDark);
+        try {
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        } catch {
+          // Keep the current-page theme even if storage is unavailable.
+        }
+      });
+    });
+
+    (() => {
+      const menuCheckbox = document.querySelector('.menu-checkbox');
+      if (!menuCheckbox) return;
+      let savedScrollPosition = 0;
+      const updateScrollLock = () => {
+        if (menuCheckbox.checked) {
+          savedScrollPosition = window.scrollY;
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${savedScrollPosition}px`;
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, savedScrollPosition);
+      };
+      menuCheckbox.addEventListener('change', updateScrollLock);
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menuCheckbox.checked) {
+          menuCheckbox.checked = false;
+          updateScrollLock();
+        }
+      });
+    })();
+
+    (() => {
+      const quiz = document.querySelector('[data-chapter-quiz]');
+      if (!quiz) return;
+      const questions = [...quiz.querySelectorAll('[data-quiz-question]')];
+      const progress = quiz.querySelector('[data-quiz-progress]');
+      const focus = quiz.querySelector('[data-quiz-focus]');
+      const summary = quiz.querySelector('[data-quiz-summary]');
+      const resetQuizButton = quiz.querySelector('[data-quiz-reset]');
+      const completedQuestions = new Set();
+      const hintCounts = new Map();
+
+      const updateProgress = () => {
+        const solved = completedQuestions.size;
+        const remaining = questions.length - solved;
+        progress.textContent = `Correct answers: ${solved} of ${questions.length}`;
+        if (solved === questions.length) {
+          focus.textContent = 'Point of focus: You applied all three opening principles correctly.';
+        } else if (solved > 0) {
+          focus.textContent = `Point of focus: ${solved} question${solved === 1 ? '' : 's'} solved; keep practicing the other ${remaining}.`;
+        } else {
+          focus.textContent = 'Point of focus: No questions solved yet. Review the principles, then try a question.';
+        }
+      };
+
+      questions.forEach(question => {
+        const hintButton = question.querySelector('[data-quiz-hint]');
+        const checkButton = question.querySelector('[data-quiz-check]');
+        const hintText = question.querySelector('[data-quiz-hint-text]');
+        const feedback = question.querySelector('[data-quiz-feedback]');
+        const options = [...question.querySelectorAll('input[type="radio"]')];
+
+        options.forEach(option => option.addEventListener('change', () => {
+          completedQuestions.delete(question);
+          question.classList.remove('is-correct');
+          feedback.textContent = '';
+          feedback.removeAttribute('data-state');
+          summary.textContent = '';
+          updateProgress();
+        }));
+
+        hintButton.addEventListener('click', () => {
+          const nextHint = (hintCounts.get(question) || 0) + 1;
+          const hint = question.dataset[`hint${nextHint}`];
+          if (!hint) return;
+          hintCounts.set(question, nextHint);
+          hintText.textContent = hint;
+          hintButton.textContent = nextHint < 2 ? 'Show another hint' : 'Hints used';
+          hintButton.disabled = nextHint >= 2;
+        });
+
+        checkButton.addEventListener('click', () => {
+          const selected = options.find(option => option.checked);
+          if (!selected) {
+            feedback.textContent = 'Choose an option before checking your answer.';
+            feedback.dataset.state = 'try-again';
+            return;
+          }
+          if (Number(selected.value) !== Number(question.dataset.answer)) {
+            completedQuestions.delete(question);
+            question.classList.remove('is-correct');
+            summary.textContent = '';
+            feedback.textContent = 'Not quite. Review the lesson or use a hint, then try again.';
+            feedback.dataset.state = 'try-again';
+            updateProgress();
+            return;
+          }
+          completedQuestions.add(question);
+          question.classList.add('is-correct');
+          feedback.textContent = `Correct. ${question.dataset.explanation}`;
+          feedback.dataset.state = 'correct';
+          updateProgress();
+          if (completedQuestions.size === questions.length) {
+            summary.textContent = 'Quiz complete! You answered every question correctly.';
+          }
+        });
+      });
+
+      resetQuizButton.addEventListener('click', () => {
+        completedQuestions.clear();
+        hintCounts.clear();
+        summary.textContent = '';
+        questions.forEach(question => {
+          question.classList.remove('is-correct');
+          question.querySelectorAll('input[type="radio"]').forEach(option => {
+            option.checked = false;
+            option.disabled = false;
+          });
+          question.querySelector('[data-quiz-hint-text]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').removeAttribute('data-state');
+          question.querySelector('[data-quiz-hint]').disabled = false;
+          question.querySelector('[data-quiz-hint]').textContent = 'Hint';
+          question.querySelector('[data-quiz-check]').disabled = false;
+        });
+        updateProgress();
+      });
+      updateProgress();
+
+      const puzzle = quiz.querySelector('[data-board-puzzle]');
+      const boardElement = puzzle.querySelector('[data-chessboard]');
+      const status = puzzle.querySelector('[data-board-status]');
+      const hintButton = puzzle.querySelector('[data-board-hint]');
+      const resetBoardButton = puzzle.querySelector('[data-board-reset]');
+      const initialPosition = puzzle.dataset.position;
+      let board;
+      let game;
+      let solved = false;
+      let hintsUsed = 0;
+
+      const setBoardStatus = (message, state = 'default') => {
+        status.textContent = message;
+        status.dataset.state = state;
+      };
+
+      const startBoardPuzzle = async () => {
+        try {
+          const { Chess } = await import('https://esm.sh/chess.js@1.4.0');
+          if (typeof Chessboard !== 'function') throw new Error('The chessboard library did not load.');
+          game = new Chess(initialPosition);
+          boardElement.setAttribute('aria-label', puzzle.dataset.boardLabel);
+          const isTouchDevice = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+          if (isTouchDevice) {
+            boardElement.classList.add('touch-board');
+            const preventNativeTouchBehavior = event => event.preventDefault();
+            boardElement.addEventListener('touchstart', preventNativeTouchBehavior, { passive: false });
+            boardElement.addEventListener('touchmove', preventNativeTouchBehavior, { passive: false });
+            boardElement.addEventListener('dragstart', preventNativeTouchBehavior);
+          }
+          board = Chessboard(boardElement, {
+            position: initialPosition,
+            draggable: true,
+            pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+            onDragStart: (source, piece) => !solved && source === puzzle.dataset.from && piece.startsWith('w'),
+            onDrop: (source, target) => {
+              const move = game.moves({ verbose: true }).find(candidate => candidate.from === source && candidate.to === target);
+              if (!move) {
+                setBoardStatus('That is not a legal move. Try another square.', 'error');
+                return 'snapback';
+              }
+              if (source !== puzzle.dataset.from || target !== puzzle.dataset.to) {
+                setBoardStatus('That move is legal, but it does not meet the challenge. Try again.', 'error');
+                return 'snapback';
+              }
+              game.move({ from: source, to: target });
+              solved = true;
+              setBoardStatus(puzzle.dataset.successMessage, 'success');
+              hintButton.disabled = true;
+            },
+            onSnapEnd: () => board.position(game.fen())
+          });
+          hintButton.addEventListener('click', () => {
+            const nextHint = hintsUsed + 1;
+            const hint = puzzle.dataset[`boardHint${nextHint}`];
+            if (!hint) return;
+            hintsUsed = nextHint;
+            puzzle.querySelector('[data-board-hint-text]').textContent = hint;
+            hintButton.textContent = nextHint < 2 ? 'Show another hint' : 'Hints used';
+            hintButton.disabled = nextHint >= 2;
+          });
+          resetBoardButton.addEventListener('click', () => {
+            game.load(initialPosition);
+            solved = false;
+            hintsUsed = 0;
+            board.position(initialPosition);
+            hintButton.disabled = false;
+            hintButton.textContent = 'Hint';
+            puzzle.querySelector('[data-board-hint-text]').textContent = '';
+            setBoardStatus(puzzle.dataset.initialMessage);
+          });
+          window.addEventListener('resize', () => board.resize());
+        } catch (error) {
+          console.error('Unable to initialize the chapter chessboard.', error);
+          setBoardStatus('The chessboard could not load. Check your connection and refresh to try again.', 'error');
+          hintButton.disabled = true;
+          resetBoardButton.disabled = true;
+        }
+      };
+      startBoardPuzzle();
+    })();
+  </script>
+</body>
+</html>
