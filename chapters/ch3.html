@@ -426,10 +426,9 @@
 
           game = new Chess(initialPosition);
           boardElement.setAttribute('aria-label', puzzle.dataset.boardLabel);
-          const isAppleTouchDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-          if (isAppleTouchDevice) {
-            boardElement.classList.add('ios-touch-board');
+          const isTouchDevice = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+          if (isTouchDevice) {
+            boardElement.classList.add('touch-board');
             const preventNativeTouchBehavior = event => event.preventDefault();
             boardElement.addEventListener('touchstart', preventNativeTouchBehavior, { passive: false });
             boardElement.addEventListener('touchmove', preventNativeTouchBehavior, { passive: false });
