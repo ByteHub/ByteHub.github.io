@@ -991,14 +991,14 @@ body.dark-mode .theme-toggle .icon-moon {
   margin: 0 auto;
 }
 
-.chapter-quiz .chapter-board.ios-touch-board {
+.chapter-quiz .chapter-board.touch-board {
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
 }
 
-.chapter-quiz .chapter-board.ios-touch-board img {
+.chapter-quiz .chapter-board.touch-board img {
   -webkit-user-drag: none;
   user-select: none;
 }
