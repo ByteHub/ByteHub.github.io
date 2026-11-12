@@ -169,6 +169,12 @@ body {
 	color: #fff;
 }
 
+.chapter-next-link {
+	border: 1px solid var(--accent);
+	background: var(--accent);
+	color: #17191d;
+}
+
 .chapter-home-link {
 	border: 1px solid #f17a2e;
 	background: linear-gradient(135deg, #ff8738, #ffad55);
