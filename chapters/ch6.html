@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-O-Pedia | Chapter 6: Exchanges</title>
+  <meta name="description" content="Learn when to trade chess pieces, evaluate piece activity, and understand the structural consequences of exchanges.">
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
+    } catch {
+      // Theme storage may be unavailable in private browsing.
+    }
+  </script>
+  <style>
+    html { min-height: 100%; background-color: #f8f6f0; color-scheme: light; }
+    html.dark-mode, html.dark-mode body { background-color: #121316; color-scheme: dark; }
+  </style>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="ch6.css">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+    integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+    crossorigin="anonymous">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZQ93NX8W6J');
+  </script>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');
+  </script>
+  <div class="page chapter-page">
+    <header class="site-header">
+      <div class="header-row">
+        <nav class="main-nav" aria-label="Main navigation">
+          <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+            <div class="menu-panel">
+              <div class="menu-brand"><span class="menu-brand-glyph">&#9823;</span><span class="menu-brand-text">Chess-O-Pedia</span></div>
+              <ul class="menu-links">
+                <li><a href="../index.html"><span class="menu-index home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span class="menu-label">Home</span></a></li>
+                <li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+                <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+                <li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+                <li><a href="ch4.html"><span class="menu-index">04</span><span class="menu-label">Tactics</span></a></li>
+                <li><a href="ch5.html"><span class="menu-index">05</span><span class="menu-label">Openings</span></a></li>
+                <li><a href="ch7.html"><span class="menu-index">07</span><span class="menu-label">Endgames</span></a></li>
+              </ul>
+              <div class="menu-footer"><span class="menu-footer-icon">&#10022;</span><span class="menu-footer-text">Explore Chapters</span></div>
+            </div>
+          </div>
+        </nav>
+        <a class="top-title" href="../index.html" aria-label="Chess-O-Pedia"><span class="top-title-text">Chess-O-Pedia</span></a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 0 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="18.36"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content-area chapter-content-area">
+      <section class="hero chapter-hero">
+        <div class="hero-grid chapter-grid">
+          <section class="hero-copy">
+            <span class="kicker">Chapter 06</span>
+            <h1 class="main-heading chapter-title">The Art of Trading</h1>
+            <p class="lead-text">An exchange changes more than the piece count. Learn to compare activity, space, pawn structure, and the lines that open before you trade.</p>
+            <div class="instruction-strip">
+              <span class="instruction-title">Before every exchange</span>
+              <span class="instruction-line">Ask what improves after the trade.</span>
+              <span class="instruction-line">Compare the pieces, not just their values.</span>
+              <span class="instruction-line">Check what the recapture changes.</span>
+            </div>
+            <div class="controls-guide">
+              <span class="guide-label">Controls</span>
+              <div class="control-pills">
+                <span class="control-pill"><span class="control-icon">&#9776;</span><span class="control-copy">Menu</span></span>
+                <span class="control-pill"><span class="control-icon">&#9788;</span><span class="control-copy">Theme</span></span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a class="primary-button" href="ch5.html">Previous Chapter</a>
+              <a class="secondary-button" href="ch7.html">Next Chapter</a>
+            </div>
+          </section>
+          <section class="board-panel chapter-feature-panel" aria-labelledby="trade-checklist-title">
+            <div class="chapter-feature-content">
+              <span class="chapter-feature-kicker">Trade checklist</span>
+              <h2 class="chapter-feature-title" id="trade-checklist-title">Four questions first</h2>
+              <p class="chapter-feature-intro">A quick scan helps you see what the position will look like after the pieces come off.</p>
+              <ol class="chapter-feature-list exchange-priority-list">
+                <li><span class="chapter-feature-token">01</span><span><span class="chapter-feature-label">Material</span><span class="chapter-feature-detail">Will simplifying help the side that is ahead?</span></span></li>
+                <li><span class="chapter-feature-token">02</span><span><span class="chapter-feature-label">Activity</span><span class="chapter-feature-detail">Which piece is doing more useful work?</span></span></li>
+                <li><span class="chapter-feature-token">03</span><span><span class="chapter-feature-label">Structure</span><span class="chapter-feature-detail">Could a recapture create a lasting weakness?</span></span></li>
+                <li><span class="chapter-feature-token">04</span><span><span class="chapter-feature-label">Open lines</span><span class="chapter-feature-detail">Who benefits from the files and diagonals?</span></span></li>
+              </ol>
+            </div>
+          </section>
+        </div>
+
+        <article class="chapter-card">
+          <div class="chapter-card-header"><span class="chapter-card-number">06</span><h2 class="chapter-card-title">The Art of Trading Pieces</h2></div>
+          <div class="chapter-card-content exchange-lesson">
+            <p>Trading pieces is a choice about the position that remains. The same exchange can help one player and hurt the other, so look beyond the immediate capture.</p>
+            <section class="exchange-principle">
+              <span class="exchange-principle-number">01</span>
+              <div>
+                <h3>Choose Trades for a Reason</h3>
+                <ul>
+                  <li><strong>When ahead in material:</strong> exchanging pieces often reduces counterplay and can make a favorable endgame easier to convert. Preserve useful pawns unless a pawn trade has a concrete benefit.</li>
+                  <li><strong>When cramped:</strong> exchanges can free squares and make it easier for your remaining pieces to move. With more space, keeping pieces may maintain pressure.</li>
+                  <li><strong>Target the opponent's best piece:</strong> consider trading a strong outpost knight, active bishop, or key defender if doing so weakens their plan.</li>
+                  <li><strong>Do not trade automatically:</strong> an unneeded capture may simply help the opponent develop or improve their structure.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="exchange-principle">
+              <span class="exchange-principle-number">02</span>
+              <div>
+                <h3>Evaluate the Pieces on Their Squares</h3>
+                <p>A piece's value depends on its current activity and the pawn structure around it.</p>
+                <ul>
+                  <li>A bishop can be restricted when its own central pawns are fixed on squares of the bishop's color. Exchanging a poor bishop for a strong opposing piece can be favorable.</li>
+                  <li>Bishops often thrive in open positions with play on both sides of the board; knights can excel in closed positions where stable outposts are available.</li>
+                  <li>Compare actual roles: a well-placed rook can be far more useful than a rook still waiting on its starting square.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="exchange-principle">
+              <span class="exchange-principle-number">03</span>
+              <div>
+                <h3>Look at What the Capture Changes</h3>
+                <ul>
+                  <li>A forced pawn recapture may create doubled or isolated pawns, or expose the king's shelter.</li>
+                  <li>Captures can open files and diagonals for either side's rooks and bishops. Check who can use them first.</li>
+                  <li>Removing a central defender may make a pawn break possible, but verify the resulting tactics before committing.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="exchange-checklist" aria-labelledby="exchange-checklist-title">
+              <span class="chapter-feature-kicker">A practical routine</span>
+              <h3 id="exchange-checklist-title">Before you capture</h3>
+              <ol>
+                <li>Identify the piece you are trading and the likely recapture.</li>
+                <li>Compare which side's piece is more active or important.</li>
+                <li>Inspect the resulting pawn structure and open lines.</li>
+                <li>Check for tactics before deciding whether the trade helps.</li>
+              </ol>
+            </section>
+            <p class="exchange-note"><strong>Remember:</strong> “trade when ahead” and “trade when cramped” are useful tendencies, not automatic rules. Calculate the position after the exchange.</p>
+            <div class="chapter-links">
+              <a href="ch5.html" class="chapter-previous-link">Previous Chapter</a>
+              <a href="ch7.html" class="chapter-next-link">Next Chapter</a>
+              <a href="../index.html" class="chapter-home-link">Back to Home</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-card chapter-quiz" data-chapter-quiz aria-labelledby="chapter-quiz-title">
+          <div class="chapter-card-header"><span class="chapter-card-number">06</span><h2 class="chapter-card-title" id="chapter-quiz-title">Chapter 6 knowledge check</h2></div>
+          <div class="chapter-card-content">
+            <p class="quiz-intro">Practice judging exchanges by their purpose and the position they leave behind.</p>
+            <p class="quiz-progress" data-quiz-progress role="status" aria-live="polite"></p>
+            <p class="quiz-focus" data-quiz-focus role="status" aria-live="polite"></p>
+
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="Think about which side benefits when fewer attacking pieces remain."
+              data-hint2="Simplification can reduce counterplay for the side that is behind."
+              data-explanation="When ahead in material, a favorable piece trade can reduce the opponent's active chances. Always check the resulting position.">
+              <h3 id="ch6-question-1">1. Why can trading pieces help when you are ahead in material?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch6-question-1">
+                <label class="quiz-option"><input type="radio" name="ch6-question-1" value="0"> It always wins a pawn</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-1" value="1"> It can reduce the opponent's counterplay</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-1" value="2"> It makes your king immune to checks</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="0"
+              data-hint1="Consider whether a bishop's own pawns block its lines."
+              data-hint2="The color of the bishop and its own central pawns matters."
+              data-explanation="A bishop can be called bad when its own pawns restrict its movement, often because they are fixed on squares of its color.">
+              <h3 id="ch6-question-2">2. What can make a bishop “bad”?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch6-question-2">
+                <label class="quiz-option"><input type="radio" name="ch6-question-2" value="0"> Its own pawns restrict its diagonals</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-2" value="1"> It has moved more than once</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-2" value="2"> The opponent has a king on the same file</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="2"
+              data-hint1="Think about what happens to files and diagonals after the pieces disappear."
+              data-hint2="The recapture can change the pawn structure as well as open lines."
+              data-explanation="A trade can create doubled or isolated pawns, expose a king, or open lines for rooks and bishops.">
+              <h3 id="ch6-question-3">3. What should you inspect before making an exchange?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch6-question-3">
+                <label class="quiz-option"><input type="radio" name="ch6-question-3" value="0"> Only the number of moves already played</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-3" value="1"> Whether the exchange looks symmetrical</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-3" value="2"> The recapture, resulting structure, and newly opened lines</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="Think about the pawn chains and whether the position is open or locked."
+              data-hint2="One piece type can hop over blocked pawn chains to stable squares."
+              data-explanation="Knights can be especially effective in closed positions with secure outposts; bishops tend to benefit from open lines.">
+              <h3 id="ch6-question-4">4. Which piece often has an advantage in a closed position with stable outposts?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch6-question-4">
+                <label class="quiz-option"><input type="radio" name="ch6-question-4" value="0"> Bishop, because closed pawns always open its diagonals</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-4" value="1"> Knight, because it can hop over pawn chains</label>
+                <label class="quiz-option"><input type="radio" name="ch6-question-4" value="2"> Rook, because it can jump over pieces</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="board-challenge" data-board-puzzle
+              data-position="k7/5n2/8/8/2B5/8/8/4K3 w - - 0 1"
+              data-from="c4" data-to="f7"
+              data-board-label="Interactive chessboard: trade the bishop for the knight on f7."
+              data-initial-message="White to move. Capture the knight on f7 with the bishop, then consider what changed."
+              data-success-message="The bishop captured the knight. In a real game, assess the recapture, activity, and pawn structure before deciding if a trade is favorable."
+              data-board-hint1="Trace the bishop's diagonal from c4 toward the black knight."
+              data-board-hint2="The target is the black knight on f7."
+              aria-labelledby="ch6-board-title">
+              <span class="chapter-feature-kicker">Trade-or-keep exercise</span>
+              <h3 id="ch6-board-title">Make the exchange</h3>
+              <p>In this simplified position, capture the knight with your bishop. Afterward, use the checklist: what piece disappeared, and what would you need to inspect in a real position?</p>
+              <div class="chapter-board" data-chessboard></div>
+              <p class="board-status" data-board-status role="status" aria-live="polite">White to move. Capture the knight on f7 with the bishop, then consider what changed.</p>
+              <div class="board-controls"><button type="button" data-board-hint>Hint</button><button type="button" data-board-reset>Reset board</button></div>
+              <p class="board-hint" data-board-hint-text aria-live="polite"></p>
+            </section>
+            <p class="quiz-summary" data-quiz-summary role="status" aria-live="polite"></p>
+            <button class="quiz-reset" type="button" data-quiz-reset>Try again</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+    crossorigin="anonymous"></script>
+  <script>
+    (() => {
+      const themeButton = document.getElementById('theme-toggle');
+      themeButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const dark = document.body.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', dark);
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch { /* Keep this page's theme. */ }
+      });
+
+      const menu = document.querySelector('.menu-checkbox');
+      let scrollPosition = 0;
+      const setMenuLock = () => {
+        if (menu.checked) {
+          scrollPosition = window.scrollY;
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${scrollPosition}px`;
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollPosition);
+      };
+      menu.addEventListener('change', setMenuLock);
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.checked) { menu.checked = false; setMenuLock(); }
+      });
+
+      const quiz = document.querySelector('[data-chapter-quiz]');
+      const questions = [...quiz.querySelectorAll('[data-quiz-question]')];
+      const progress = quiz.querySelector('[data-quiz-progress]');
+      const focus = quiz.querySelector('[data-quiz-focus]');
+      const summary = quiz.querySelector('[data-quiz-summary]');
+      const completed = new Set();
+      const hintCounts = new Map();
+      const updateProgress = () => {
+        const solved = completed.size;
+        const remaining = questions.length - solved;
+        progress.textContent = `Correct answers: ${solved} of ${questions.length}`;
+        focus.textContent = solved === questions.length
+          ? 'Point of focus: You considered activity, structure, and purpose across the trades.'
+          : solved
+            ? `Point of focus: ${solved} question${solved === 1 ? '' : 's'} solved; ${remaining} still need practice.`
+            : 'Point of focus: No questions solved yet. Practice evaluating what changes after a trade.';
+      };
+      questions.forEach(question => {
+        const options = [...question.querySelectorAll('input[type="radio"]')];
+        const hintButton = question.querySelector('[data-quiz-hint]');
+        const feedback = question.querySelector('[data-quiz-feedback]');
+        options.forEach(option => option.addEventListener('change', () => {
+          completed.delete(question);
+          question.classList.remove('is-correct');
+          feedback.textContent = '';
+          feedback.removeAttribute('data-state');
+          summary.textContent = '';
+          updateProgress();
+        }));
+        hintButton.addEventListener('click', () => {
+          const next = (hintCounts.get(question) || 0) + 1;
+          const hint = question.dataset[`hint${next}`];
+          if (!hint) return;
+          hintCounts.set(question, next);
+          question.querySelector('[data-quiz-hint-text]').textContent = hint;
+          hintButton.textContent = next < 2 ? 'Show another hint' : 'Hints used';
+          hintButton.disabled = next >= 2;
+        });
+        question.querySelector('[data-quiz-check]').addEventListener('click', () => {
+          const selected = options.find(option => option.checked);
+          if (!selected) {
+            feedback.textContent = 'Choose an option before checking your answer.';
+            feedback.dataset.state = 'try-again';
+          } else if (Number(selected.value) !== Number(question.dataset.answer)) {
+            completed.delete(question);
+            question.classList.remove('is-correct');
+            summary.textContent = '';
+            feedback.textContent = 'Not quite. Review the lesson or use a hint, then try again.';
+            feedback.dataset.state = 'try-again';
+            updateProgress();
+          } else {
+            completed.add(question);
+            question.classList.add('is-correct');
+            feedback.textContent = `Correct. ${question.dataset.explanation}`;
+            feedback.dataset.state = 'correct';
+            updateProgress();
+            if (completed.size === questions.length) summary.textContent = 'Quiz complete! You answered every question correctly.';
+          }
+        });
+      });
+      quiz.querySelector('[data-quiz-reset]').addEventListener('click', () => {
+        completed.clear();
+        hintCounts.clear();
+        summary.textContent = '';
+        questions.forEach(question => {
+          question.classList.remove('is-correct');
+          question.querySelectorAll('input[type="radio"]').forEach(option => { option.checked = false; option.disabled = false; });
+          question.querySelector('[data-quiz-hint-text]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').removeAttribute('data-state');
+          const hint = question.querySelector('[data-quiz-hint]');
+          hint.disabled = false;
+          hint.textContent = 'Hint';
+          question.querySelector('[data-quiz-check]').disabled = false;
+        });
+        updateProgress();
+      });
+      updateProgress();
+
+      const puzzle = quiz.querySelector('[data-board-puzzle]');
+      const boardElement = puzzle.querySelector('[data-chessboard]');
+      const status = puzzle.querySelector('[data-board-status]');
+      const hintButton = puzzle.querySelector('[data-board-hint]');
+      const resetButton = puzzle.querySelector('[data-board-reset]');
+      const initialPosition = puzzle.dataset.position;
+      const fromSquare = puzzle.dataset.from;
+      const targetSquare = puzzle.dataset.to;
+      const setStatus = (message, state = 'default') => { status.textContent = message; status.dataset.state = state; };
+      let board;
+      let game;
+      let solved = false;
+      let hintsUsed = 0;
+      (async () => {
+        try {
+          const { Chess } = await import('https://esm.sh/chess.js@1.4.0');
+          if (typeof Chessboard !== 'function') throw new Error('The chessboard library did not load.');
+          game = new Chess(initialPosition);
+          boardElement.setAttribute('aria-label', puzzle.dataset.boardLabel);
+          if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) {
+            boardElement.classList.add('touch-board');
+            const preventNativeTouch = event => event.preventDefault();
+            boardElement.addEventListener('touchstart', preventNativeTouch, { passive: false });
+            boardElement.addEventListener('touchmove', preventNativeTouch, { passive: false });
+            boardElement.addEventListener('dragstart', preventNativeTouch);
+          }
+          board = Chessboard(boardElement, {
+            position: initialPosition,
+            draggable: true,
+            pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+            onDragStart: (source, piece) => !solved && source === fromSquare && piece.startsWith('w'),
+            onDrop: (source, target) => {
+              const move = game.moves({ verbose: true }).find(candidate => candidate.from === source && candidate.to === target);
+              if (!move) { setStatus('That is not a legal move. Try another square.', 'error'); return 'snapback'; }
+              if (source !== fromSquare || target !== targetSquare) {
+                setStatus('That move is legal, but it does not meet the challenge. Try again.', 'error');
+                return 'snapback';
+              }
+              game.move({ from: source, to: target });
+              solved = true;
+              setStatus(puzzle.dataset.successMessage, 'success');
+              hintButton.disabled = true;
+            },
+            onSnapEnd: () => board.position(game.fen())
+          });
+          hintButton.addEventListener('click', () => {
+            const next = hintsUsed + 1;
+            const hint = puzzle.dataset[`boardHint${next}`];
+            if (!hint) return;
+            hintsUsed = next;
+            puzzle.querySelector('[data-board-hint-text]').textContent = hint;
+            hintButton.textContent = next < 2 ? 'Show another hint' : 'Hints used';
+            hintButton.disabled = next >= 2;
+          });
+          resetButton.addEventListener('click', () => {
+            game.load(initialPosition);
+            solved = false;
+            hintsUsed = 0;
+            board.position(initialPosition);
+            hintButton.disabled = false;
+            hintButton.textContent = 'Hint';
+            puzzle.querySelector('[data-board-hint-text]').textContent = '';
+            setStatus(puzzle.dataset.initialMessage);
+          });
+          window.addEventListener('resize', () => board.resize());
+        } catch (error) {
+          console.error('Unable to initialize the chapter chessboard.', error);
+          setStatus('The chessboard could not load. Check your connection and refresh to try again.', 'error');
+          hintButton.disabled = true;
+          resetButton.disabled = true;
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>
