@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess-O-Pedia | Chapter 7: Endgames</title>
+  <meta name="description" content="Learn practical endgame fundamentals: active kings, passed pawns, opposition, the square rule, and rook-endgame plans.">
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
+    } catch {
+      // Theme storage may be unavailable in private browsing.
+    }
+  </script>
+  <style>
+    html { min-height: 100%; background-color: #f8f6f0; color-scheme: light; }
+    html.dark-mode, html.dark-mode body { background-color: #121316; color-scheme: dark; }
+  </style>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="ch7.css">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+    integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+    crossorigin="anonymous">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQ93NX8W6J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZQ93NX8W6J');
+  </script>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');
+  </script>
+  <div class="page chapter-page">
+    <header class="site-header">
+      <div class="header-row">
+        <nav class="main-nav" aria-label="Main navigation">
+          <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+            <div class="menu-panel">
+              <div class="menu-brand"><span class="menu-brand-glyph">&#9823;</span><span class="menu-brand-text">Chess-O-Pedia</span></div>
+              <ul class="menu-links">
+                <li><a href="../index.html"><span class="menu-index home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span class="menu-label">Home</span></a></li>
+                <li><a href="ch1.html"><span class="menu-index">01</span><span class="menu-label">Introduction</span></a></li>
+                <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
+                <li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
+                <li><a href="ch4.html"><span class="menu-index">04</span><span class="menu-label">Tactics</span></a></li>
+                <li><a href="ch5.html"><span class="menu-index">05</span><span class="menu-label">Openings</span></a></li>
+                <li><a href="ch6.html"><span class="menu-index">06</span><span class="menu-label">Exchanges</span></a></li>
+              </ul>
+              <div class="menu-footer"><span class="menu-footer-icon">&#10022;</span><span class="menu-footer-text">Explore Chapters</span></div>
+            </div>
+          </div>
+        </nav>
+        <a class="top-title" href="../index.html" aria-label="Chess-O-Pedia"><span class="top-title-text">Chess-O-Pedia</span></a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 0 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="18.36"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content-area chapter-content-area">
+      <section class="hero chapter-hero">
+        <div class="hero-grid chapter-grid">
+          <section class="hero-copy">
+            <span class="kicker">Chapter 07</span>
+            <h1 class="main-heading chapter-title">Endgame Fundamentals</h1>
+            <p class="lead-text">With fewer pieces on the board, the king can become an active fighter. Learn to centralize it, support passed pawns, and use practical plans in pawn and rook endings.</p>
+            <div class="instruction-strip">
+              <span class="instruction-title">Endgame priorities</span>
+              <span class="instruction-line">Activate your king.</span>
+              <span class="instruction-line">Create and support passed pawns.</span>
+              <span class="instruction-line">Improve your pieces before rushing.</span>
+            </div>
+            <div class="controls-guide">
+              <span class="guide-label">Controls</span>
+              <div class="control-pills">
+                <span class="control-pill"><span class="control-icon">&#9776;</span><span class="control-copy">Menu</span></span>
+                <span class="control-pill"><span class="control-icon">&#9788;</span><span class="control-copy">Theme</span></span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a class="primary-button" href="ch6.html">Previous Chapter</a>
+              <a class="secondary-button" href="../index.html">Home</a>
+            </div>
+          </section>
+          <section class="board-panel chapter-feature-panel" aria-labelledby="endgame-priorities-title">
+            <div class="chapter-feature-content">
+              <span class="chapter-feature-kicker">Endgame at a glance</span>
+              <h2 class="chapter-feature-title" id="endgame-priorities-title">King, pawn, rook</h2>
+              <p class="chapter-feature-intro">Use the remaining pieces actively and coordinate them with your passed pawns.</p>
+              <ol class="chapter-feature-list endgame-priority-list">
+                <li><span class="chapter-feature-token">01</span><span><span class="chapter-feature-label">King activity</span><span class="chapter-feature-detail">Bring the king toward the center and useful targets.</span></span></li>
+                <li><span class="chapter-feature-token">02</span><span><span class="chapter-feature-label">Passed pawns</span><span class="chapter-feature-detail">Advance them when supported and safe.</span></span></li>
+                <li><span class="chapter-feature-token">03</span><span><span class="chapter-feature-label">Rook activity</span><span class="chapter-feature-detail">Place rooks behind passed pawns when possible.</span></span></li>
+                <li><span class="chapter-feature-token">04</span><span><span class="chapter-feature-label">Patience</span><span class="chapter-feature-detail">Improve first; calculate before committing.</span></span></li>
+              </ol>
+            </div>
+          </section>
+        </div>
+
+        <article class="chapter-card">
+          <div class="chapter-card-header"><span class="chapter-card-number">07</span><h2 class="chapter-card-title">Converting Your Advantage</h2></div>
+          <div class="chapter-card-content endgame-lesson">
+            <p>The endgame often begins when queens or many pieces have been exchanged, but there is no single material count that defines every endgame. The key change is that the king can often leave shelter and join the action.</p>
+            <section class="endgame-principle">
+              <span class="endgame-principle-number">01</span>
+              <div>
+                <h3>Activate the King and Create Passed Pawns</h3>
+                <ul>
+                  <li>Bring your king toward the center and toward weaknesses. A passive king may leave pawns undefended or let the opponent's king take over.</li>
+                  <li>A passed pawn has no opposing pawn ahead of it on its file or adjacent files that can stop it by capture. It can force enemy pieces to spend time blockading it.</li>
+                  <li>Push a passed pawn when it is safe and supported, but do not advance it blindly into a blockade or tactical loss.</li>
+                  <li>Improve your king and pieces, restrict the opponent, and only then choose a pawn break when the position calls for it.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="endgame-principle">
+              <span class="endgame-principle-number">02</span>
+              <div>
+                <h3>Use Your Rooks Actively</h3>
+                <p>Tarrasch's practical rule is to place the rook behind a passed pawn when the position allows it—behind your own pawn to support it, or behind an enemy pawn to attack it along its path.</p>
+                <p>Rook activity, king safety, and the pawn's promotion threats all matter. Do not follow a rule mechanically if a check, tactic, or more urgent task takes priority.</p>
+              </div>
+            </section>
+            <section class="endgame-principle">
+              <span class="endgame-principle-number">03</span>
+              <div>
+                <h3>Understand Opposition and Key Squares</h3>
+                <ul>
+                  <li><strong>Opposition:</strong> when kings face each other with one square between them, the side not to move may be able to make the other king give way. The exact result depends on the pawn position and available routes.</li>
+                  <li><strong>Key squares:</strong> in a pawn ending, squares that let the attacking king support the pawn's advance can determine whether promotion is possible. Their location depends on the pawn and king arrangement.</li>
+                  <li><strong>Square rule:</strong> for a lone pawn with no king support, imagine a square from its current square to its promotion square. If the defending king can reach that square in time, it may catch the pawn; always account for whose turn it is and any obstacles.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="endgame-principle">
+              <span class="endgame-principle-number">04</span>
+              <div>
+                <h3>Know the Main Rook-Endgame Plans</h3>
+                <ul>
+                  <li><strong>Lucena position (winning method):</strong> in the classic setup, the attacking king supports a seventh-rank pawn while the defending king is cut off. The attacker uses the rook to build a bridge against checks and help the king shelter the pawn's promotion.</li>
+                  <li><strong>Philidor position (drawing method):</strong> in a common defensive setup, the defender uses the king to block the pawn and the rook to check from the side or rear at the right moment. Exact placement and timing are essential.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="endgame-principle">
+              <span class="endgame-principle-number">05</span>
+              <div>
+                <h3>Match the Minor Piece to the Position</h3>
+                <ul>
+                  <li>Opposite-colored bishops can increase drawing chances because each bishop controls squares the other cannot; the position and number of pawns still matter.</li>
+                  <li>A knight can be strong against a bishop when it has a stable central outpost and the opponent's pawns are fixed on squares the bishop cannot attack easily.</li>
+                  <li>Bishops often gain value when play exists on both sides of the board and their diagonals are open.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="endgame-checklist" aria-labelledby="endgame-checklist-title">
+              <span class="chapter-feature-kicker">Before pushing a pawn</span>
+              <h3 id="endgame-checklist-title">A four-step safety check</h3>
+              <ol>
+                <li>Can the pawn be stopped or captured immediately?</li>
+                <li>Can your king support its advance or reach a key square?</li>
+                <li>Can a rook get behind the pawn or cut off the opposing king?</li>
+                <li>Does the move allow a check, stalemate, or tactical resource?</li>
+              </ol>
+            </section>
+            <p class="endgame-note"><strong>Study tip:</strong> set up Lucena and Philidor positions on a board and practice both sides. Knowing the goal is useful; accurate piece placement is what makes the method work.</p>
+            <div class="chapter-links">
+              <a href="ch6.html" class="chapter-previous-link">Previous Chapter</a>
+              <a href="../index.html" class="chapter-home-link">Back to Home</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-card chapter-quiz" data-chapter-quiz aria-labelledby="chapter-quiz-title">
+          <div class="chapter-card-header"><span class="chapter-card-number">07</span><h2 class="chapter-card-title" id="chapter-quiz-title">Chapter 7 knowledge check</h2></div>
+          <div class="chapter-card-content">
+            <p class="quiz-intro">Check your endgame judgment. Use the hints to recall the idea, then decide for yourself.</p>
+            <p class="quiz-progress" data-quiz-progress role="status" aria-live="polite"></p>
+            <p class="quiz-focus" data-quiz-focus role="status" aria-live="polite"></p>
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="With fewer attacking pieces around, the king's role changes."
+              data-hint2="Think about which piece should help win pawns and support your own."
+              data-explanation="An active king can approach weaknesses, support pawns, and contest key squares.">
+              <h3 id="ch7-question-1">1. What is a useful general plan for your king in many endgames?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch7-question-1">
+                <label class="quiz-option"><input type="radio" name="ch7-question-1" value="0"> Keep it in the corner for the rest of the game</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-1" value="1"> Bring it toward the center and useful targets</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-1" value="2"> Trade it for a pawn whenever possible</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="2"
+              data-hint1="Consider the rook's position relative to the pawn's route."
+              data-hint2="The rook should stay active while supporting or restraining the passer."
+              data-explanation="A rook behind a passed pawn can support its advance or attack it while preserving activity.">
+              <h3 id="ch7-question-2">2. Where is a rook often well placed in relation to a passed pawn?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch7-question-2">
+                <label class="quiz-option"><input type="radio" name="ch7-question-2" value="0"> In front of its own pawn, blocking it permanently</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-2" value="1"> On the edge of the board, regardless of the position</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-2" value="2"> Behind the passed pawn, if the position allows</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="0"
+              data-hint1="Imagine a square whose side reaches from the pawn to its promotion rank."
+              data-hint2="The defending king's distance and the side to move both matter."
+              data-explanation="The square rule is a quick estimate of whether the defending king can catch a lone pawn, assuming no other pieces interfere.">
+              <h3 id="ch7-question-3">3. What does the square rule help you estimate?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch7-question-3">
+                <label class="quiz-option"><input type="radio" name="ch7-question-3" value="0"> Whether a king can catch a lone passed pawn</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-3" value="1"> Whether a bishop can move like a knight</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-3" value="2"> Whether two rooks can castle together</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+            <section class="quiz-question" data-quiz-question data-answer="1"
+              data-hint1="One is a bridge-building plan for the stronger side."
+              data-hint2="The other is a defensive rook setup used to hold a draw."
+              data-explanation="The classic Lucena position is a winning technique; the Philidor position is a key drawing method in rook endings.">
+              <h3 id="ch7-question-4">4. Which statement about the classic rook endings is correct?</h3>
+              <fieldset class="quiz-options" aria-labelledby="ch7-question-4">
+                <label class="quiz-option"><input type="radio" name="ch7-question-4" value="0"> Lucena is a drawing method and Philidor is a mating pattern</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-4" value="1"> Lucena is a winning method and Philidor is a drawing method</label>
+                <label class="quiz-option"><input type="radio" name="ch7-question-4" value="2"> Both positions require the attacker to sacrifice the rook</label>
+              </fieldset>
+              <div class="quiz-question-actions"><button class="quiz-hint" type="button" data-quiz-hint>Hint</button><button type="button" data-quiz-check>Check answer</button></div>
+              <p class="quiz-hint-text" data-quiz-hint-text aria-live="polite"></p><p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="board-challenge" data-board-puzzle
+              data-position="7k/8/PK6/8/8/8/8/8 w - - 0 1"
+              data-from="a6" data-to="a7"
+              data-board-label="Interactive chessboard: advance the supported passed pawn from a6 to a7."
+              data-initial-message="White to move. Advance the passed pawn one square while the king supports it."
+              data-success-message="The pawn advanced to a7. White's king supports its promotion route; in a real position, calculate the opponent's replies before pushing."
+              data-board-hint1="The pawn is passed, and the white king is nearby to support it."
+              data-board-hint2="Move the pawn one square closer to promotion."
+              aria-labelledby="ch7-board-title">
+              <span class="chapter-feature-kicker">Pawn-endgame exercise</span>
+              <h3 id="ch7-board-title">Advance the supported passer</h3>
+              <p>White's king supports a passed pawn. Advance the pawn one square toward promotion, then notice how the king helps control its route.</p>
+              <div class="chapter-board" data-chessboard></div>
+              <p class="board-status" data-board-status role="status" aria-live="polite">White to move. Advance the passed pawn one square while the king supports it.</p>
+              <div class="board-controls"><button type="button" data-board-hint>Hint</button><button type="button" data-board-reset>Reset board</button></div>
+              <p class="board-hint" data-board-hint-text aria-live="polite"></p>
+            </section>
+            <p class="quiz-summary" data-quiz-summary role="status" aria-live="polite"></p>
+            <button class="quiz-reset" type="button" data-quiz-reset>Try again</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+    crossorigin="anonymous"></script>
+  <script>
+    (() => {
+      const themeButton = document.getElementById('theme-toggle');
+      themeButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const dark = document.body.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', dark);
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch { /* Keep this page's theme. */ }
+      });
+
+      const menu = document.querySelector('.menu-checkbox');
+      let scrollPosition = 0;
+      const setMenuLock = () => {
+        if (menu.checked) {
+          scrollPosition = window.scrollY;
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${scrollPosition}px`;
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollPosition);
+      };
+      menu.addEventListener('change', setMenuLock);
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.checked) { menu.checked = false; setMenuLock(); }
+      });
+
+      const quiz = document.querySelector('[data-chapter-quiz]');
+      const questions = [...quiz.querySelectorAll('[data-quiz-question]')];
+      const progress = quiz.querySelector('[data-quiz-progress]');
+      const focus = quiz.querySelector('[data-quiz-focus]');
+      const summary = quiz.querySelector('[data-quiz-summary]');
+      const completed = new Set();
+      const hintCounts = new Map();
+      const updateProgress = () => {
+        const solved = completed.size;
+        const remaining = questions.length - solved;
+        progress.textContent = `Correct answers: ${solved} of ${questions.length}`;
+        focus.textContent = solved === questions.length
+          ? 'Point of focus: You applied the main king, pawn, and rook endgame ideas.'
+          : solved
+            ? `Point of focus: ${solved} question${solved === 1 ? '' : 's'} solved; ${remaining} still need practice.`
+            : 'Point of focus: No questions solved yet. Review king activity and pawn support.';
+      };
+      questions.forEach(question => {
+        const options = [...question.querySelectorAll('input[type="radio"]')];
+        const hintButton = question.querySelector('[data-quiz-hint]');
+        const feedback = question.querySelector('[data-quiz-feedback]');
+        options.forEach(option => option.addEventListener('change', () => {
+          completed.delete(question);
+          question.classList.remove('is-correct');
+          feedback.textContent = '';
+          feedback.removeAttribute('data-state');
+          summary.textContent = '';
+          updateProgress();
+        }));
+        hintButton.addEventListener('click', () => {
+          const next = (hintCounts.get(question) || 0) + 1;
+          const hint = question.dataset[`hint${next}`];
+          if (!hint) return;
+          hintCounts.set(question, next);
+          question.querySelector('[data-quiz-hint-text]').textContent = hint;
+          hintButton.textContent = next < 2 ? 'Show another hint' : 'Hints used';
+          hintButton.disabled = next >= 2;
+        });
+        question.querySelector('[data-quiz-check]').addEventListener('click', () => {
+          const selected = options.find(option => option.checked);
+          if (!selected) {
+            feedback.textContent = 'Choose an option before checking your answer.';
+            feedback.dataset.state = 'try-again';
+          } else if (Number(selected.value) !== Number(question.dataset.answer)) {
+            completed.delete(question);
+            question.classList.remove('is-correct');
+            summary.textContent = '';
+            feedback.textContent = 'Not quite. Review the lesson or use a hint, then try again.';
+            feedback.dataset.state = 'try-again';
+            updateProgress();
+          } else {
+            completed.add(question);
+            question.classList.add('is-correct');
+            feedback.textContent = `Correct. ${question.dataset.explanation}`;
+            feedback.dataset.state = 'correct';
+            updateProgress();
+            if (completed.size === questions.length) summary.textContent = 'Quiz complete! You answered every question correctly.';
+          }
+        });
+      });
+      quiz.querySelector('[data-quiz-reset]').addEventListener('click', () => {
+        completed.clear();
+        hintCounts.clear();
+        summary.textContent = '';
+        questions.forEach(question => {
+          question.classList.remove('is-correct');
+          question.querySelectorAll('input[type="radio"]').forEach(option => { option.checked = false; option.disabled = false; });
+          question.querySelector('[data-quiz-hint-text]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').textContent = '';
+          question.querySelector('[data-quiz-feedback]').removeAttribute('data-state');
+          const hint = question.querySelector('[data-quiz-hint]');
+          hint.disabled = false;
+          hint.textContent = 'Hint';
+          question.querySelector('[data-quiz-check]').disabled = false;
+        });
+        updateProgress();
+      });
+      updateProgress();
+
+      const puzzle = quiz.querySelector('[data-board-puzzle]');
+      const boardElement = puzzle.querySelector('[data-chessboard]');
+      const status = puzzle.querySelector('[data-board-status]');
+      const hintButton = puzzle.querySelector('[data-board-hint]');
+      const resetButton = puzzle.querySelector('[data-board-reset]');
+      const initialPosition = puzzle.dataset.position;
+      const fromSquare = puzzle.dataset.from;
+      const targetSquare = puzzle.dataset.to;
+      const setStatus = (message, state = 'default') => { status.textContent = message; status.dataset.state = state; };
+      let board;
+      let game;
+      let solved = false;
+      let hintsUsed = 0;
+      (async () => {
+        try {
+          const { Chess } = await import('https://esm.sh/chess.js@1.4.0');
+          if (typeof Chessboard !== 'function') throw new Error('The chessboard library did not load.');
+          game = new Chess(initialPosition);
+          boardElement.setAttribute('aria-label', puzzle.dataset.boardLabel);
+          if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) {
+            boardElement.classList.add('touch-board');
+            const preventNativeTouch = event => event.preventDefault();
+            boardElement.addEventListener('touchstart', preventNativeTouch, { passive: false });
+            boardElement.addEventListener('touchmove', preventNativeTouch, { passive: false });
+            boardElement.addEventListener('dragstart', preventNativeTouch);
+          }
+          board = Chessboard(boardElement, {
+            position: initialPosition,
+            draggable: true,
+            pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+            onDragStart: (source, piece) => !solved && source === fromSquare && piece.startsWith('w'),
+            onDrop: (source, target) => {
+              const move = game.moves({ verbose: true }).find(candidate => candidate.from === source && candidate.to === target);
+              if (!move) { setStatus('That is not a legal move. Try another square.', 'error'); return 'snapback'; }
+              if (source !== fromSquare || target !== targetSquare) {
+                setStatus('That move is legal, but it does not meet the challenge. Try again.', 'error');
+                return 'snapback';
+              }
+              game.move({ from: source, to: target });
+              solved = true;
+              setStatus(puzzle.dataset.successMessage, 'success');
+              hintButton.disabled = true;
+            },
+            onSnapEnd: () => board.position(game.fen())
+          });
+          hintButton.addEventListener('click', () => {
+            const next = hintsUsed + 1;
+            const hint = puzzle.dataset[`boardHint${next}`];
+            if (!hint) return;
+            hintsUsed = next;
+            puzzle.querySelector('[data-board-hint-text]').textContent = hint;
+            hintButton.textContent = next < 2 ? 'Show another hint' : 'Hints used';
+            hintButton.disabled = next >= 2;
+          });
+          resetButton.addEventListener('click', () => {
+            game.load(initialPosition);
+            solved = false;
+            hintsUsed = 0;
+            board.position(initialPosition);
+            hintButton.disabled = false;
+            hintButton.textContent = 'Hint';
+            puzzle.querySelector('[data-board-hint-text]').textContent = '';
+            setStatus(puzzle.dataset.initialMessage);
+          });
+          window.addEventListener('resize', () => board.resize());
+        } catch (error) {
+          console.error('Unable to initialize the chapter chessboard.', error);
+          setStatus('The chessboard could not load. Check your connection and refresh to try again.', 'error');
+          hintButton.disabled = true;
+          resetButton.disabled = true;
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>
