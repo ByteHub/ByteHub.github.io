@@ -48,6 +48,8 @@
                 <li><a href="ch2.html"><span class="menu-index">02</span><span class="menu-label">The Pieces</span></a></li>
                 <li><a href="ch3.html"><span class="menu-index">03</span><span class="menu-label">Notation</span></a></li>
                 <li><a href="ch4.html"><span class="menu-index">04</span><span class="menu-label">Tactics</span></a></li>
+                <li><a href="ch6.html"><span class="menu-index">06</span><span class="menu-label">Exchanges</span></a></li>
+                <li><a href="ch7.html"><span class="menu-index">07</span><span class="menu-label">Endgames</span></a></li>
               </ul>
               <div class="menu-footer"><span class="menu-footer-icon">&#10022;</span><span class="menu-footer-text">Explore Chapters</span></div>
             </div>
@@ -83,7 +85,7 @@
             </div>
             <div class="hero-actions">
               <a class="primary-button" href="ch4.html">Previous Chapter</a>
-              <a class="secondary-button" href="../index.html">Home</a>
+              <a class="secondary-button" href="ch6.html">Next Chapter</a>
             </div>
           </section>
 
@@ -180,6 +182,7 @@
             <p class="opening-note"><strong>Remember:</strong> these are guiding principles, not unbreakable rules. A tactical threat or a specific opponent move can make a different choice best.</p>
             <div class="chapter-links">
               <a href="ch4.html" class="chapter-previous-link">Previous Chapter</a>
+              <a href="ch6.html" class="chapter-next-link">Next Chapter</a>
               <a href="../index.html" class="chapter-home-link">Back to Home</a>
             </div>
           </div>
@@ -422,6 +425,8 @@
       const hintButton = puzzle.querySelector('[data-board-hint]');
       const resetBoardButton = puzzle.querySelector('[data-board-reset]');
       const initialPosition = puzzle.dataset.position;
+      const fromSquare = puzzle.dataset.from;
+      const targetSquare = puzzle.dataset.to;
       let board;
       let game;
       let solved = false;
@@ -450,14 +455,14 @@
             position: initialPosition,
             draggable: true,
             pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
-            onDragStart: (source, piece) => !solved && source === puzzle.dataset.from && piece.startsWith('w'),
+            onDragStart: (source, piece) => !solved && source === fromSquare && piece.startsWith('w'),
             onDrop: (source, target) => {
               const move = game.moves({ verbose: true }).find(candidate => candidate.from === source && candidate.to === target);
               if (!move) {
                 setBoardStatus('That is not a legal move. Try another square.', 'error');
                 return 'snapback';
               }
-              if (source !== puzzle.dataset.from || target !== puzzle.dataset.to) {
+              if (source !== fromSquare || target !== targetSquare) {
                 setBoardStatus('That move is legal, but it does not meet the challenge. Try again.', 'error');
                 return 'snapback';
               }
