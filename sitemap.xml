@@ -37,4 +37,16 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Chapter 6 -->
+  <url>
+    <loc>https://bytehub.github.io/chapters/ch6.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Chapter 7 -->
+  <url>
+    <loc>https://bytehub.github.io/chapters/ch7.html</loc>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
